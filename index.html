@@ -18,25 +18,25 @@
 /* Layout : la carte d'une ville fortifiée — gouvernance au centre, ligne de tram en boucle, remparts autour ; panneau de lecture à droite */
 :root{
   --page:#F6F6F6; --paper:#FFFFFF; --city:#EEEEEE; --block:#E5E5E5; --street:#FFFFFF;
-  --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
+  --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --dsfr:#000091; --tag:#EEEEEE; --tag-h:#DDDDDD; --alt:#F6F6F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
   --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A;
   --font:"Marianne", "Segoe UI", system-ui, -apple-system, sans-serif; --serif:"Spectral", Georgia, "Times New Roman", serif;
-  --r:12px;
+  --r:0;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --page:#161616; --paper:#1E1E1E; --city:#242424; --block:#2A2A2A; --street:#2A2A2A;
-  --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
+  --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --dsfr:#8585F6; --tag:#2A2A2A; --tag-h:#353535; --alt:#242424; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
   --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73;
   color-scheme:dark }}
 :root[data-theme="dark"]{
   --page:#161616; --paper:#1E1E1E; --city:#242424; --block:#2A2A2A; --street:#2A2A2A;
-  --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
+  --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --dsfr:#8585F6; --tag:#2A2A2A; --tag-h:#353535; --alt:#242424; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
   --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73;
   color-scheme:dark }
 /* la version à plat est toujours claire (impression) */
 :root.poster-mode{
   --page:#FFFFFF; --paper:#FFFFFF; --city:#EEEEEE; --block:#E5E5E5; --street:#FFFFFF;
-  --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
+  --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --dsfr:#000091; --tag:#EEEEEE; --tag-h:#DDDDDD; --alt:#F6F6F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
   --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A;
   color-scheme:light }
 
@@ -45,26 +45,26 @@ body{background:var(--page);color:var(--ink);font-family:var(--font);font-size:1
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:20px 40px}
 h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
 button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--q2);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:2px solid #0A76F6;outline-offset:2px}
 
 .top{max-width:1500px;margin:0 auto 14px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
-.top .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;font-weight:700}
+.top .kicker{font-size:14px;color:var(--ink-2);margin:0 0 4px;font-weight:700}
 .top h1{font-size:clamp(24px,3vw,34px)}
 .top .sub{margin:6px 0 0;color:var(--ink-2);max-width:62ch}
-.views{display:flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px}
-.views a{padding:7px 14px;border-radius:999px;text-decoration:none;color:var(--ink-2);font-weight:700;font-size:14px}
-.views a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.views{display:flex;gap:0;border:1px solid var(--dsfr);}
+.views a{padding:8px 16px;text-decoration:none;color:var(--dsfr);font-weight:500;font-size:14px;background:var(--paper)}
+.views a[aria-current="page"]{background:var(--dsfr);color:#fff}
 
 .toolbar{max-width:1500px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
 .roles{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-width:0}
-.roles .lbl{font-size:13px;color:var(--muted);font-weight:700;margin-right:4px;letter-spacing:.04em;text-transform:uppercase}
+.roles .lbl{font-size:14px;color:var(--ink-2);font-weight:700;margin-right:4px}
 .roles .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
-.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 11px;font-size:13.5px;cursor:pointer}
-.chip:hover{border-color:var(--ink-2)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.chip{border:0;background:var(--tag);border-radius:1rem;padding:4px 12px;font-size:14px;line-height:1.5rem;cursor:pointer;color:var(--ink)}
+.chip:hover{background:var(--tag-h)}
+.chip[aria-pressed="true"]{background:var(--dsfr);color:#fff}
 .nav{display:flex;gap:6px}
-.btn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 12px;font-size:14px;cursor:pointer;font-weight:700}
-.btn:hover{border-color:var(--ink-2)}
+.btn{border:1px solid var(--dsfr);background:transparent;color:var(--dsfr);border-radius:0;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:500}
+.btn:hover{background:var(--tag)}
 
 .explore{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
 .mapwrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-width:0}
@@ -76,28 +76,28 @@ button{font:inherit;color:inherit}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:8px 8px 2px;font-size:13.5px;color:var(--ink-2)}
 .legend span{display:inline-flex;gap:7px;align-items:center}
 .legend i{display:inline-block;flex:none}
-.lg-c{width:14px;height:14px;border-radius:50%;border:2.5px solid var(--q2)}
-.lg-t{width:22px;height:5px;border-radius:3px;background:var(--tram)}
+.lg-c{width:14px;height:14px;border-radius:50%;border:2px solid var(--q2)}
+.lg-t{width:22px;height:5px;background:var(--tram)}
 .lg-w{width:22px;height:8px;border:2px solid var(--q6);border-style:solid dashed}
-.lg-a{width:26px;height:4px;border-radius:2px;background:var(--q3);position:relative}
+.lg-a{width:26px;height:4px;background:var(--q3);position:relative}
 .lg-a::after{content:"";position:absolute;right:-3px;top:-4px;border:6px solid transparent;border-left:8px solid var(--q3);border-right:0}
 
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;min-width:0;position:sticky;top:calc(env(safe-area-inset-top, 0px) + 12px);max-height:calc(100vh - 24px);overflow:auto}
 .p-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
-.badge{flex:none;width:36px;height:36px;border-radius:50%;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-weight:700;font-size:18px}
-.eyebrow{margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);font-weight:700}
+.badge{flex:none;width:36px;height:36px;border-radius:2px;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-weight:700;font-size:18px}
+.eyebrow{margin:0;font-size:13px;color:var(--ink-2);font-weight:500}
 .panel h2{font-size:22px}
 .lead{font-size:17px;font-weight:700;margin:4px 0 10px}
 .panel p{margin:0 0 10px}
-.panel h3{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.panel h3{font-size:16px;color:var(--ink);font-weight:700;margin:20px 0 8px}
 .panel dl{margin:0;display:grid;gap:8px}
 .panel dt{font-weight:700}
 .panel dd{margin:0;color:var(--ink-2);font-size:15px}
-.note{border-left:4px solid var(--c);background:color-mix(in srgb, var(--c) 9%, var(--paper));padding:10px 14px;border-radius:0 8px 8px 0;font-size:15px;color:var(--ink)}
+.note{border-left:4px solid var(--c);background:var(--alt);padding:12px 16px;border-radius:0;font-size:15px;color:var(--ink)}
 .links{display:grid;gap:6px;margin:0;padding:0;list-style:none}
-.qlink{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);background:transparent;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:14.5px}
-.qlink:hover{border-color:var(--c, var(--ink-2))}
-.qlink .mini{flex:none;width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+.qlink{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);border-bottom:3px solid var(--c, var(--dsfr));background:var(--paper);border-radius:0;padding:8px 10px;cursor:pointer;font-size:14.5px}
+.qlink:hover{background:var(--alt)}
+.qlink .mini{flex:none;width:22px;height:22px;border-radius:2px;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
 .qlink b{display:block}
 .qlink small{color:var(--ink-2);font-size:13.5px}
 .hint{font-size:14px;color:var(--muted)}
@@ -124,6 +124,12 @@ kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;bor
 .serif{font-family:var(--serif);font-style:italic}
 em,i,.ital{font-family:var(--serif);font-style:italic;font-weight:600}
 h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
+.glyph .gl,.glyph .ga{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.glyph .gl{stroke:var(--gc)}
+.glyph .ga{stroke:var(--q2)}
+.glyph[style*="q2"] .ga{stroke:var(--q2)}
+.glyph .gm{fill:#E1000F}
+.glyph .gd{fill:color-mix(in srgb, var(--gc) 16%, var(--paper))}
 .terr{transition:stroke-width .2s}
 .qd:hover .terr{stroke-width:4}
 .qd.sel .terr{stroke:var(--qc);stroke-width:7}
@@ -133,9 +139,9 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .poster-view{max-width:100%;overflow:hidden}
 .sheet-wrap{margin:0 auto;transform-origin:top left}
 .sheet{width:1587px;height:1123px;background:#fff;color:var(--ink);padding:30px 34px;display:grid;grid-template-rows:auto 1fr;gap:16px;border:1px solid var(--line)}
-.sh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;border-bottom:1px solid var(--line);padding-bottom:12px}
 .sh-head h1{font-size:34px}
-.sh-head .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;font-weight:700}
+.sh-head .kicker{font-size:14px;color:var(--ink-2);margin:0 0 4px;font-weight:700}
 .sh-head .sub{margin:6px 0 0;color:var(--ink-2);font-size:15px;max-width:70ch}
 .sh-legend{display:grid;grid-template-columns:auto auto;gap:6px 22px;font-size:13px;color:var(--ink-2)}
 .sh-legend span{display:inline-flex;gap:8px;align-items:center}
@@ -144,7 +150,7 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .sh-center{display:grid;grid-template-rows:auto 1fr;gap:14px;min-height:0}
 .sh-center svg{width:100%;height:auto;display:block}
 .sh-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:0}
-.card{border:1.5px solid var(--c);border-radius:10px;padding:12px 14px;background:color-mix(in srgb, var(--c) 6%, #fff);min-height:0;overflow:hidden;font-size:11.6px;line-height:1.3}
+.card{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:0;padding:12px 14px;background:#fff;min-height:0;overflow:hidden;font-size:11.6px;line-height:1.3}
 .card .p-head{margin-bottom:6px;gap:10px}
 .card .badge{width:28px;height:28px;font-size:15px}
 .card h2{font-size:16.5px}
@@ -379,53 +385,61 @@ function notch(P,seed){const r=rng(seed),out=[];
   return out}
 const tint=(id,p)=>`color-mix(in srgb, var(--${id}) ${p}%, var(--paper))`;
 
-/* monuments (choisis sur la planche de pictos) */
+/* monuments choisis, redessinés au trait dans l'esprit des pictogrammes DSFR */
 const GLYPH={
- q1:(C,W,I)=>[1,`<path d="M-54 -6L0 -42L54 -6Z" fill="${C}"/><rect x="-48" y="-6" width="96" height="13" fill="${C}"/>
-    ${[-40,-20,0,20,40].map(x=>`<rect x="${x-5}" y="-6" width="10" height="13" fill="${W}"/>`).join("")}
-    <rect x="-44" y="7" width="7" height="27" fill="${C}"/><rect x="37" y="7" width="7" height="27" fill="${C}"/>
-    <rect x="-34" y="20" width="68" height="9" rx="2" fill="${C}" opacity=".7"/>
-    <circle cx="-22" cy="15" r="5" fill="${I}"/><circle cx="-6" cy="15" r="5" fill="${C}"/><circle cx="10" cy="15" r="5" fill="${I}"/><circle cx="24" cy="15" r="5" fill="${C}"/>
-    <rect x="-52" y="34" width="104" height="4" rx="2" fill="${I}"/>`],
- q2:(C,W,I)=>[1,`<rect x="-52" y="-6" width="104" height="40" fill="${C}"/><path d="M-54 -6L-46 -24H46L54 -6Z" fill="${C}" opacity=".7"/>
-    ${[-44,-34,27,37].flatMap(x=>[2,18].map(y=>`<rect x="${x}" y="${y}" width="7" height="10" rx="1" fill="${W}"/>`)).join("")}
-    <rect x="-18" y="-34" width="36" height="68" fill="${C}"/><path d="M-22 -34L0 -52L22 -34Z" fill="${C}"/>
-    <circle cx="0" cy="-20" r="9" fill="${W}"/><path d="M0 -25V-20L4 -17" stroke="${C}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <path d="M-9 34V14A9 9 0 0 1 9 14V34Z" fill="${W}"/>
-    <line x1="0" y1="-52" x2="0" y2="-66" stroke="${C}" stroke-width="3"/><path d="M1 -66H16L12 -61L16 -56H1Z" fill="${C}"/>
-    <rect x="-56" y="34" width="112" height="4" rx="2" fill="${I}"/>`],
- q3:(C,W,I)=>[1,`<path d="M-50 -38L50 -52V34H-50Z" fill="${C}"/>
-    <path d="M-40 -30L40 -41V14H-40Z" fill="${W}"/>
-    <path d="M-20 -33V14M0 -36V14M20 -38V14M-40 -8H40" stroke="${C}" stroke-width="3"/>
-    <line x1="-28" y1="-2" x2="-34" y2="12" stroke="${C}" stroke-width="2" opacity=".6"/><line x1="-22" y1="-2" x2="-16" y2="12" stroke="${C}" stroke-width="2" opacity=".6"/><rect x="-32" y="-10" width="14" height="10" fill="${C}" opacity=".5"/>
-    <rect x="16" y="20" width="14" height="14" fill="${W}"/><rect x="-54" y="34" width="108" height="4" rx="2" fill="${I}"/>`],
- q4:(C,W,I)=>[1,`<rect x="-34" y="-20" width="58" height="54" fill="${C}"/>
-    ${[-26,-12,2,16].flatMap(x=>[-12,4,20].map(y=>`<rect x="${x-4}" y="${y}" width="8" height="9" fill="${W}"/>`)).join("")}
-    <rect x="-34" y="-46" width="58" height="26" fill="none" stroke="${C}" stroke-width="3" stroke-dasharray="6 4"/>
-    <path d="M30 -46V34M46 -46V34M30 -46H46M30 -26H46M30 -6H46M30 14H46M30 -46L46 -26M46 -26L30 -6M30 -6L46 14M46 14L30 34" stroke="${I}" stroke-width="2.5" fill="none"/>
-    <rect x="-52" y="34" width="104" height="4" rx="2" fill="${I}"/>`],
- q5:(C,W,I)=>[1,`<line x1="0" y1="-20" x2="0" y2="-24" stroke="${I}" stroke-width="3"/><circle cx="0" cy="-36" r="12" fill="${W}" stroke="${C}" stroke-width="4"/><path d="M0 -43V-36L5 -33" stroke="${I}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <rect x="-44" y="-14" width="5" height="48" fill="${C}" opacity=".6"/><rect x="39" y="-14" width="5" height="48" fill="${C}" opacity=".6"/>
-    <path d="M-56 -22H56L50 -12H-50Z" fill="${C}"/>
-    <rect x="-50" y="0" width="100" height="26" rx="8" fill="${C}"/>
-    ${[-42,-26,-10,6,22].map(x=>`<rect x="${x}" y="6" width="12" height="9" rx="2" fill="${W}"/>`).join("")}<rect x="38" y="6" width="8" height="14" rx="2" fill="${W}"/>
-    ${[-34,-22,22,34].map(x=>`<circle cx="${x}" cy="28" r="4" fill="${I}"/>`).join("")}
-    <rect x="-56" y="33" width="112" height="4" rx="2" fill="${I}"/>`],
- q7:(C,W,I)=>[1,`<path d="M-10 32L-7 -16H7L10 32Z" fill="${C}"/>
-    <path d="M-34 -16L-26 -44H26L34 -16Z" fill="${C}"/><path d="M-27 -38H27L30 -24H-30Z" fill="${W}"/>
-    ${[-14,0,14].map(x=>`<line x1="${x}" y1="-38" x2="${x*1.1}" y2="-24" stroke="${C}" stroke-width="2.5"/>`).join("")}
-    <line x1="0" y1="-44" x2="0" y2="-60" stroke="${C}" stroke-width="3"/><circle cx="0" cy="-62" r="4" fill="${C}"/>
-    <rect x="-38" y="30" width="76" height="7" rx="2" fill="${I}"/>`],
- q8:(C,W,I)=>[1,`<rect x="-46" y="-2" width="92" height="36" fill="${C}"/><rect x="-50" y="-6" width="100" height="7" rx="2" fill="${C}"/>
-    ${[-34,-20,14,28].map(x=>`<rect x="${x}" y="8" width="6" height="14" rx="3" fill="${W}"/>`).join("")}<path d="M-7 34V18A7 7 0 0 1 7 18V34Z" fill="${W}"/>
-    <path d="M-36 -6A36 36 0 0 1 36 -6Z" fill="${C}"/>
-    <path d="M-6 -6V-41.5A36 36 0 0 1 6 -41.5V-6Z" fill="${I}"/>
-    <path d="M-5 -24L17 -58L27 -52L5 -18Z" fill="${I}"/><rect x="14" y="-62" width="16" height="7" rx="2" fill="${I}" transform="rotate(33 22 -58)"/>
-    <path d="M-38 -48l3 7l7 3l-7 3l-3 7l-3 -7l-7 -3l7 -3Z" fill="${C}"/><path d="M40 -30l2 5l5 2l-5 2l-2 5l-2 -5l-5 -2l5 -2Z" fill="${C}" opacity=".6"/>
-    <rect x="-54" y="34" width="108" height="4" rx="2" fill="${I}"/>`]
+ q1:`<ellipse class="gd" cx="0" cy="36" rx="58" ry="8"/>
+   <path class="gl" d="M-52 -4L0 -40L52 -4Z"/><path class="gl" d="M-46 -4V8M46 -4V8M-46 8H46"/>
+   <path class="ga" d="M-46 8Q-38 16 -30 8Q-22 16 -14 8Q-6 16 2 8Q10 16 18 8Q26 16 34 8Q40 14 46 8"/>
+   <path class="gl" d="M-40 14V36M40 14V36M-30 26H30V36H-30Z"/>
+   <circle class="ga" cx="-16" cy="20" r="4"/><circle class="ga" cx="0" cy="20" r="4"/><circle class="ga" cx="16" cy="20" r="4"/>
+   <path class="gl" d="M-56 36H56"/>`,
+ q2:`<ellipse class="gd" cx="0" cy="36" rx="60" ry="8"/>
+   <path class="gl" d="M-50 36V-4H-18M18 -4H50V36M-54 -4L-46 -20H-18M18 -20H46L54 -4"/>
+   <path class="gl" d="M-18 36V-32H18V36M-22 -32L0 -50L22 -32"/>
+   <circle class="ga" cx="0" cy="-16" r="8"/><path class="ga" d="M0 -20V-16L3 -14"/>
+   <path class="gl" d="M-8 36V20A8 8 0 0 1 8 20V36"/>
+   <path class="gl" d="M-42 4V14M-32 4V14M32 4V14M42 4V14M-42 22V30M-32 22V30M32 22V30M42 22V30"/>
+   <path class="gl" d="M0 -50V-64"/><path class="gm" d="M2 -64H16L12 -59L16 -54H2Z"/>
+   <path class="gl" d="M-58 36H58"/>`,
+ q3:`<ellipse class="gd" cx="0" cy="36" rx="58" ry="8"/>
+   <path class="gl" d="M-48 36V-34L48 -48V36"/>
+   <path class="gl" d="M-38 12V-26L38 -37V12Z"/>
+   <path class="ga" d="M-19 -29V12M0 -32V12M19 -34V12M-38 -8H38"/>
+   <path class="gl" d="M14 36V22H30V36"/>
+   <path class="ga" d="M-30 36L-22 18L-14 36M-22 18V14M-30 26H-14"/>
+   <path class="gl" d="M-56 36H56"/>`,
+ q4:`<ellipse class="gd" cx="-4" cy="36" rx="58" ry="8"/>
+   <path class="gl" d="M-36 36V-16H22V36"/>
+   <path class="gl" d="M-36 -16V-44H22V-16" stroke-dasharray="5 5"/>
+   <path class="gl" d="M-26 -6H-18M-6 -6H2M-26 8H-18M-6 8H2M-26 22H-18M-6 22H2"/>
+   <path class="ga" d="M30 -44V36M46 -44V36M30 -44H46M30 -24H46M30 -4H46M30 16H46M30 -44L46 -24M30 -4L46 16"/>
+   <path class="gl" d="M-54 36H56"/>`,
+ q5:`<ellipse class="gd" cx="0" cy="38" rx="58" ry="7"/>
+   <path class="gl" d="M-54 -20H54L48 -10H-48Z"/><path class="gl" d="M-42 -10V36M42 -10V36"/>
+   <path class="gl" d="M0 -20V-26"/><circle class="gl" cx="0" cy="-38" r="12"/><path class="ga" d="M0 -44V-38L5 -35"/>
+   <rect class="gl" x="-48" y="2" width="96" height="24" rx="6"/>
+   <path class="ga" d="M-38 9H-28V17H-38ZM-20 9H-10V17H-20ZM-2 9H8V17H-2ZM16 9H26V17H16Z"/>
+   <circle class="gl" cx="-30" cy="30" r="3.5"/><circle class="gl" cx="30" cy="30" r="3.5"/>
+   <path class="gl" d="M-58 36H58"/>`,
+ q7:`<ellipse class="gd" cx="0" cy="36" rx="50" ry="8"/>
+   <path class="gl" d="M-9 36L-6 -14H6L9 36"/>
+   <path class="gl" d="M-32 -14L-24 -42H24L32 -14Z"/>
+   <path class="ga" d="M-25 -36H25L28 -22H-28Z"/><path class="ga" d="M-9 -36L-10 -22M9 -36L10 -22"/>
+   <path class="gl" d="M0 -42V-56"/><circle class="ga" cx="0" cy="-59" r="3.5"/>
+   <path class="ga" d="M-16 -62A22 22 0 0 1 -8 -68M16 -62A22 22 0 0 0 8 -68"/>
+   <path class="gl" d="M-40 36H40"/>`,
+ q8:`<ellipse class="gd" cx="0" cy="36" rx="56" ry="8"/>
+   <path class="gl" d="M-44 36V-4H44V36M-48 -4H48"/>
+   <path class="gl" d="M-34 -4A34 34 0 0 1 34 -4"/>
+   <path class="ga" d="M-6 -4V-37M6 -4V-37"/>
+   <path class="gl" d="M-2 -18L22 -52L30 -46L6 -12"/><path class="gl" d="M20 -56L34 -46"/>
+   <path class="gl" d="M-7 36V22A7 7 0 0 1 7 22V36M-32 8V20M-20 8V20M20 8V20M32 8V20"/>
+   <path class="ga" d="M-40 -42l2 5l5 2l-5 2l-2 5l-2 -5l-5 -2l5 -2Z"/><path class="ga" d="M40 -28l1.5 3.5l3.5 1.5l-3.5 1.5l-1.5 3.5l-1.5 -3.5l-3.5 -1.5l3.5 -1.5Z"/>
+   <path class="gl" d="M-56 36H56"/>`
 };
-function landmark(id,g){const[k,svg]=GLYPH[id](`var(--${id})`,"var(--paper)","var(--ink)");
-  const inner=S("g",{transform:`scale(${k})`},g);inner.innerHTML=svg;}
+function landmark(id,g,size=128){const k=size/120;
+  const inner=S("g",{class:"glyph",style:`--gc:var(--${id})`,transform:`scale(${k})`},g);
+  inner.innerHTML=GLYPH[id];}
 
 function roundPath(P,r){let d="";const n=P.length;
   for(let i=0;i<n;i++){const p0=P[(i-1+n)%n],p1=P[i],p2=P[(i+1)%n];
@@ -433,12 +447,6 @@ function roundPath(P,r){let d="";const n=P.length;
     const a=[p1[0]+(p0[0]-p1[0])/l1*rr,p1[1]+(p0[1]-p1[1])/l1*rr],b=[p1[0]+(p2[0]-p1[0])/l2*rr,p1[1]+(p2[1]-p1[1])/l2*rr];
     d+=(i?"L":"M")+a[0].toFixed(1)+" "+a[1].toFixed(1)+"Q"+p1[0].toFixed(1)+" "+p1[1].toFixed(1)+" "+b[0].toFixed(1)+" "+b[1].toFixed(1)}
   return d+"Z"}
-// noms des rues : ce qui circule entre deux quartiers voisins
-const STREETS=[
-  {t:"Rue des Besoins",x:232,y:302},{t:"Rue du Pipeline",x:1008,y:302},
-  {t:"Rue du Backlog",x:620,y:184,v:1},{t:"Rue des Indicateurs",x:620,y:810,v:1},
-  {t:"Quai des Retours",x:232,y:664},{t:"Quai du Déploiement",x:1008,y:664}
-];
 function buildMap(svg,interactive){
   if(interactive&&ISO)return buildIso(svg);
   const p=interactive?"m":"p";
@@ -446,13 +454,13 @@ function buildMap(svg,interactive){
   const defs=S("defs",{},svg);
   ["q1","q2","q3","q4","q5","q6","q7","q8"].forEach(id=>{const m=S("marker",{id:p+"-ar-"+id,viewBox:"0 0 10 10",refX:7,refY:5,markerWidth:5,markerHeight:5,orient:"auto-start-reverse"},defs);
     S("path",{d:"M0 0L10 5L0 10z",style:`fill:var(--${id})`},m)});
-  const cp=S("clipPath",{id:p+"-city"},defs);S("rect",{x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:34},cp);
+  const cp=S("clipPath",{id:p+"-city"},defs);S("rect",{x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:0},cp);
   const tree=(g,x,y,r=7)=>{S("circle",{cx:x,cy:y,r,fill:"var(--tree)"},g);S("circle",{cx:x-r*.3,cy:y-r*.3,r:r*.4,fill:"var(--park)",opacity:.55},g)};
 
   const city=S("g",{"clip-path":`url(#${p}-city)`},svg);
   S("rect",{x:X0,y:Y0,width:WALL.w,height:WALL.h,fill:"var(--street)"},city);
   // parc central
-  S("rect",{x:LOOP.x0+13,y:LOOP.y0+13,width:LOOP.x1-LOOP.x0-26,height:LOOP.y1-LOOP.y0-26,rx:58,fill:"var(--park)"},city);
+  S("rect",{x:LOOP.x0+13,y:LOOP.y0+13,width:LOOP.x1-LOOP.x0-26,height:LOOP.y1-LOOP.y0-26,rx:46,fill:"var(--park)"},city);
   // rivière, quais et ponts
   const top="M30 674C250 666 420 682 620 675S1000 666 1210 676",bot="L1210 700C1000 692 820 704 620 699S250 690 30 700Z";
   S("path",{d:top+bot,fill:"var(--water)"},city);
@@ -463,28 +471,27 @@ function buildMap(svg,interactive){
   // quartiers : découpage en îlots de tailles variées, bâtiments, cours et parcs
   const groups={},r=rng(5);
   const TREES=["var(--tree)","var(--tree-2)","var(--tree-3)"];
-  const plant=(g,x,y,rad)=>{S("circle",{cx:x+rad*.25,cy:y+rad*.3,r:rad,fill:"#000",opacity:.12},g);
-    S("circle",{cx:x,cy:y,r:rad,fill:TREES[Math.floor(r()*3)]},g);
-    if(rad>5)S("circle",{cx:x-rad*.32,cy:y-rad*.32,r:rad*.38,fill:"#fff",opacity:.18},g)};
+  const plant=(g,x,y,rad)=>{
+    S("circle",{cx:x,cy:y,r:rad,fill:TREES[Math.floor(r()*3)]},g);};
   const grove=(g,x,y,w,h,dens)=>{const n=Math.max(1,Math.round(w*h/dens)),pts=[];
     for(let i=0;i<n*4&&pts.length<n;i++){const rad=3.5+r()*5.5,px=x+rad+r()*(w-2*rad),py=y+rad+r()*(h-2*rad);
       if(w<2*rad||h<2*rad)continue;if(pts.some(([qx,qy,qr])=>Math.hypot(px-qx,py-qy)<(qr+rad)*.72))continue;pts.push([px,py,rad])}
     pts.sort((a,b)=>a[1]-b[1]).forEach(([px,py,rad])=>plant(g,px,py,rad))};
-  const bldg=(g,x,y,w,h,f)=>{S("rect",{x:x+1.8,y:y+2.2,width:w,height:h,rx:1.5,fill:"#000",opacity:.14},g);S("rect",{x,y,width:w,height:h,rx:1.5,fill:f},g)};
+  const bldg=(g,x,y,w,h,f)=>{S("rect",{x,y,width:w,height:h,fill:f},g)};
   Object.keys(BASE).forEach(id=>{const B=BASE[id],g=S("g",{class:"qd","data-q":id},city);groups[id]=g;
-    S("path",{class:"terr",d:roundPath(B,18),fill:"var(--lot)",stroke:"var(--lot-edge)","stroke-width":2,style:`--qc:var(--${id})`},g);
+    S("path",{class:"terr",d:roundPath(B,2),fill:tint(id,7),stroke:"none","stroke-width":0,style:`--qc:var(--${id})`},g);
     const xs=B.map(p=>p[0]),ys=B.map(p=>p[1]),o=POS[id];
-    const lw=Math.max(Q[id].l1.length*14,Q[id].keys.length*7.2)+56;
-    const blocked=(x,y,w,h)=>{if(x+w>o.lab[0]-8&&x<o.lab[0]+lw&&y+h>o.lab[1]-26&&y<o.lab[1]+88)return true;
-      const dx=Math.max(o.lm[0]-x-w,0,x-o.lm[0]),dy=Math.max(o.lm[1]-y-h,0,y-o.lm[1]);return Math.hypot(dx,dy)<80};
+    const lw=Math.max(Q[id].l1.length*12.2,Q[id].l2.length*9.4,Q[id].keys.length*6.6)+48;
+    const blocked=(x,y,w,h)=>{if(x+w>o.lab[0]-8&&x<o.lab[0]+lw&&y+h>o.lab[1]-24&&y<o.lab[1]+76)return true;
+      const dx=Math.max(o.lm[0]-x-w,0,x-o.lm[0]),dy=Math.max(o.lm[1]-y-h,0,y-o.lm[1]);return Math.hypot(dx,dy)<58};
     const leaves=[];
     const clean=(x,y,w,h)=>[[x-3,y-3],[x+w+3,y-3],[x-3,y+h+3],[x+w+3,y+h+3]].every(([u,v])=>inPoly(u,v,B))&&!blocked(x,y,w,h);
     (function split(x,y,w,h,d){if(w<14||h<12)return;const ok=clean(x,y,w,h);
-      if(!ok&&w<24&&h<18)return;
-      const big=w>150||h>110,stop=ok&&!big&&(d>=5||(w<92&&h<64)||r()<.18);
+      if(!ok&&w<16&&h<12)return;
+      const big=w>120||h>90,stop=ok&&!big&&(d>=6||(w<74&&h<52)||r()<.1);
       if(stop||(ok&&w<44&&h<34)){leaves.push([x,y,w,h]);return}
-      if(!ok&&d>9)return;
-      const vert=w/h>1.15?true:w/h<.85?false:r()<.5,gap=d<2?10:d<3?7:5;
+      if(!ok&&d>12)return;
+      const vert=w/h>1.15?true:w/h<.85?false:r()<.5,gap=d<2?11:d<4?8:6;
       if(vert){const c=w*(.35+r()*.3);split(x,y,c-gap/2,h,d+1);split(x+c+gap/2,y,w-c-gap/2,h,d+1)}
       else{const c=h*(.35+r()*.3);split(x,y,w,c-gap/2,d+1);split(x,y+c+gap/2,w,h-c-gap/2,d+1)}
     })(Math.min(...xs)+9,Math.min(...ys)+9,Math.max(...xs)-Math.min(...xs)-18,Math.max(...ys)-Math.min(...ys)-18,0);
@@ -492,11 +499,10 @@ function buildMap(svg,interactive){
       if(w<14||h<12)return;
       const c=[[x-3,y-3],[x+w+3,y-3],[x-3,y+h+3],[x+w+3,y+h+3]];if(!c.every(([u,v])=>inPoly(u,v,B)))return;
       if(blocked(x,y,w,h))return;
-      const k=r(),shade=()=>["var(--bd-1)","var(--bd-2)","var(--bd-3)"][Math.floor(r()*3)];
-      if(k<.11&&w>34&&h>26){S("rect",{x,y,width:w,height:h,rx:5,fill:"var(--park)"},g);grove(g,x+2,y+2,w-4,h-4,150);return}
+      const k=r(),shade=()=>tint(id,34);
+      if(k<.07&&w>34&&h>26){S("rect",{x,y,width:w,height:h,fill:"var(--park)"},g);return}
       if(k<.45&&w>40&&h>30){const f=shade(),t=6+r()*4;bldg(g,x,y,w,h,f);
-        S("rect",{x:x+t,y:y+t,width:w-2*t,height:h-2*t,rx:1,fill:"var(--lot)"},g);
-        if(w-2*t>18&&h-2*t>14&&r()<.5)plant(g,x+w/2,y+h/2,Math.min(w-2*t,h-2*t)/2-2);
+        S("rect",{x:x+t,y:y+t,width:w-2*t,height:h-2*t,rx:1,fill:tint(id,13)},g);
         if(r()<.6){const sx=x+t+(w-2*t)*(.3+r()*.4);S("rect",{x:sx-1.5,y:y+t,width:3,height:h-2*t,fill:f},g)}return}
       const n=Math.max(1,Math.min(5,Math.round((w>h?w:h)/(14+r()*16))));let pos=0;
       for(let i=0;i<n;i++){const part=i===n-1?1-pos:(1/n)*(.7+r()*.6),f=shade();
@@ -509,7 +515,7 @@ function buildMap(svg,interactive){
   const tram=S("g",{},svg);
   S("path",{d:LOOPD,fill:"none",stroke:"var(--street)","stroke-width":28},tram);
   {const pk=[],ix0=LOOP.x0+14,iy0=LOOP.y0+14,ix1=LOOP.x1-14,iy1=LOOP.y1-14;
-   for(let i=0;i<1600&&pk.length<120;i++){const rad=3.5+r()*6,x=ix0+rad+r()*(ix1-ix0-2*rad),y=iy0+rad+r()*(iy1-iy0-2*rad);
+   for(let i=0;i<1600&&pk.length<0;i++){const rad=3.5+r()*6,x=ix0+rad+r()*(ix1-ix0-2*rad),y=iy0+rad+r()*(iy1-iy0-2*rad);
     if(Math.hypot(x-CX,y-CY)<GOV+12+rad)continue;if(y+rad>660&&y-rad<712)continue;
     const cx=Math.min(Math.max(x,ix0+56),ix1-56),cy=Math.min(Math.max(y,iy0+56),iy1-56);if(Math.hypot(x-cx,y-cy)>56-rad)continue;
     if(pk.some(([qx,qy,qr])=>Math.hypot(x-qx,y-qy)<(qr+rad)*.78))continue;pk.push([x,y,rad])}
@@ -521,13 +527,13 @@ function buildMap(svg,interactive){
 
   // remparts (quartier 6)
   const wall=S("g",{class:"qd wall","data-q":"q6"},svg);
-  S("rect",{class:"qshape",x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:34,fill:"none",stroke:"var(--q6)","stroke-width":7},wall);
-  S("rect",{x:X0-9,y:Y0-9,width:WALL.w+18,height:WALL.h+18,rx:42,fill:"none",stroke:"var(--q6)","stroke-width":7,"stroke-dasharray":"16 12"},wall);
+  S("rect",{class:"qshape",x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:0,fill:"none",stroke:"var(--q6)","stroke-width":6},wall);
+  S("rect",{x:X0-9,y:Y0-9,width:WALL.w+18,height:WALL.h+18,rx:0,fill:"none",stroke:"var(--q6)","stroke-width":6,"stroke-dasharray":"18 10"},wall);
   TOWERS.forEach(t=>{const w=t.t.length*10.5+34;
-    S("rect",{x:t.x-w/2,y:t.y-17,width:w,height:34,rx:8,fill:"var(--q6)"},wall);
+    S("rect",{x:t.x-w/2,y:t.y-17,width:w,height:34,rx:0,fill:"var(--q6)"},wall);
     S("text",{x:t.x,y:t.y+6,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"var(--on-q)"},wall,t.t)});
-  S("rect",{x:CX-210,y:Y0-22,width:420,height:44,rx:22,fill:"var(--paper)",stroke:"var(--q6)","stroke-width":3},wall);
-  S("circle",{cx:CX-184,cy:Y0,r:14,fill:"var(--q6)"},wall);
+  S("rect",{x:CX-210,y:Y0-22,width:420,height:44,rx:0,fill:"var(--paper)",stroke:"var(--q6)","stroke-width":2},wall);
+  S("rect",{x:CX-198,y:Y0-14,width:28,height:28,rx:2,fill:"var(--q6)"},wall);
   S("text",{x:CX-184,y:Y0+6,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},wall,"6");
   S("text",{x:CX-162,y:Y0+7,"font-size":20,"font-weight":700,fill:"var(--ink)"},wall,"Sécurité & conformité");
   S("text",{x:CX+58,y:Y0+7,"font-size":16,"font-style":"italic",class:"ital",fill:"var(--ink-2)"},wall,"· les remparts");
@@ -535,9 +541,9 @@ function buildMap(svg,interactive){
   // centre-ville : la mairie et son parvis
   const gov=S("g",{class:"qd","data-q":"q2"},svg);
   S("circle",{cx:CX,cy:CY,r:GOV+8,fill:"var(--street)"},gov);
-  S("circle",{class:"qshape terr",cx:CX,cy:CY,r:GOV,fill:tint("q2",20),stroke:"var(--q2)","stroke-width":3,style:"--qc:var(--q2)"},gov);
-  landmark("q2",S("g",{transform:`translate(${CX} ${CY-40}) scale(.78)`},gov));
-  S("circle",{cx:CX-76,cy:CY+20,r:15,fill:"var(--q2)"},gov);
+  S("circle",{class:"qshape terr",cx:CX,cy:CY,r:GOV,fill:"var(--paper)",stroke:"var(--q2)","stroke-width":2,style:"--qc:var(--q2)"},gov);
+  landmark("q2",S("g",{transform:`translate(${CX} ${CY-38})`},gov),96);
+  S("rect",{x:CX-91,y:CY+5,width:30,height:30,rx:2,fill:"var(--q2)"},gov);
   S("text",{x:CX-76,y:CY+26,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},gov,"2");
   S("text",{x:CX-55,y:CY+28,"font-size":25,"font-weight":700,fill:"var(--ink)"},gov,"Gouvernance");
   S("text",{x:CX,y:CY+54,"text-anchor":"middle","font-size":15.5,"font-style":"italic",class:"ital","font-weight":700,fill:"var(--q2)"},gov,"La mairie");
@@ -545,31 +551,25 @@ function buildMap(svg,interactive){
 
   // monuments et noms de quartiers
   Object.entries(POS).forEach(([id,o])=>{const g=S("g",{class:"qd","data-q":id,"data-nokb":"1"},svg),q=Q[id],[x,y]=o.lab,[lx,ly]=o.lm;
-    S("circle",{cx:lx,cy:ly,r:74,fill:"var(--paper)",stroke:`var(--${id})`,"stroke-width":4},g);
-    landmark(id,S("g",{transform:`translate(${lx} ${ly+4}) scale(.97)`},g));
-    S("circle",{cx:x+18,cy:y,r:18,fill:`var(--${id})`},g);
-    S("text",{x:x+18,y:y+6.5,"text-anchor":"middle","font-size":19,"font-weight":700,fill:"var(--on-q)"},g,q.n);
-    S("text",{x:x+46,y:y+8,"font-size":27,"font-weight":700,fill:"var(--ink)"},g,q.l1);
-    S("text",{x:x+46,y:y+32,"font-size":(q.l2.length>14?18:21),"font-weight":600,fill:"var(--ink)"},g,q.l2);
-    S("text",{x:x+46,y:y+58,"font-size":17,"font-style":"italic",class:"ital","font-weight":700,fill:`var(--${id})`},g,q.place);
-    S("text",{x:x+46,y:y+80,"font-size":14,fill:"var(--ink-2)"},g,q.keys);
+    landmark(id,S("g",{transform:`translate(${lx} ${ly})`},g),104);
+    S("rect",{x:x,y:y-15,width:30,height:30,rx:2,fill:`var(--${id})`},g);
+    S("text",{x:x+15,y:y+5.5,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},g,q.n);
+    S("text",{x:x+40,y:y+7,"font-size":22,"font-weight":700,fill:"var(--ink)"},g,q.l1);
+    S("text",{x:x+40,y:y+28,"font-size":(q.l2.length>14?15:17),"font-weight":600,fill:"var(--ink)"},g,q.l2);
+    S("text",{x:x+40,y:y+50,"font-size":15,"font-style":"italic",class:"ital","font-weight":700,fill:`var(--${id})`},g,q.place);
+    S("text",{x:x+40,y:y+69,"font-size":12.5,fill:"var(--ink-2)"},g,q.keys);
   });
 
   // stations
   Object.entries(POS).forEach(([id,o])=>{const[px,py]=STP[id],c=`var(--${id})`,sg=S("g",{class:"qd","data-q":id,"data-nokb":"1"},svg);
-    const w=o.verb.length*9.6+50,x0=px-w/2;
-    S("rect",{x:x0,y:py-14,width:w,height:28,rx:14,fill:"var(--paper)",stroke:c,"stroke-width":3.5},sg);
-    S("circle",{cx:x0+15,cy:py,r:10,fill:c},sg);
-    S("text",{x:x0+15,y:py+4.5,"text-anchor":"middle","font-size":13,"font-weight":700,fill:"var(--on-q)"},sg,Q[id].n);
-    S("text",{x:x0+30+(w-30)/2-4,y:py+5,"text-anchor":"middle","font-size":13,"font-weight":700,"letter-spacing":"1",fill:"var(--ink)"},sg,o.verb.toUpperCase())});
+    const w=o.verb.length*9.2+30,x0=px-w/2;
+    S("rect",{x:x0,y:py-14,width:w,height:28,fill:"var(--paper)",stroke:"var(--line)","stroke-width":1},sg);
+    S("rect",{x:x0,y:py-14,width:5,height:28,fill:c},sg);
+    S("text",{x:x0+5+(w-5)/2,y:py+5,"text-anchor":"middle","font-size":13,"font-weight":700,"letter-spacing":".5",fill:"var(--ink)"},sg,o.verb.toUpperCase())});
 
   const arrows=S("g",{},svg);
   let car=null;
-  if(interactive){
-    car=S("g",{class:"tramcar"},svg);
-    S("rect",{x:-17,y:-8,width:34,height:16,rx:6,fill:"var(--tram)",stroke:"var(--paper)","stroke-width":2.5},car);
-    [-9,0,9].forEach(dx=>S("rect",{x:dx-3,y:-4,width:6,height:5,rx:1,fill:"var(--paper)"},car));
-  }
+
   return {arrows,loop,car};
 }
 
@@ -695,7 +695,7 @@ const FLOW={"q1>q3":"Retours usagers","q1>q8":"Retours qualitatifs","q1>q2":"Bes
   "q8>q2":"Indicateurs pour le CMI","q8>q1":"Retours utilisateurs"};
 function anchor(id){
   if(ISO){if(id==="q2"){const[x,y]=P(CX,CY,20);return{x,y,r:60}}if(id==="q6"){const[x,y]=P(990,60,WH+34);return{x,y,r:20}}const e=ell(POS[id].a),[x,y]=P(e.x,e.y);return{x,y,r:18}}
-  if(id==="q2")return{x:CX,y:CY,r:GOV+5};
+  if(id==="q2")return{x:CX,y:CY,r:GOV+12};
   if(id==="q6")return{x:CX,y:Y0,hw:214,hh:26};
   const[x,y]=STP[id];return{x,y,hw:POS[id].verb.length*4.8+29,hh:18};
 }
@@ -707,8 +707,9 @@ function drawArrows(layer,from,prefix){
   const defs=S("defs",{},layer);let gi=0;const cc=ISO?{x:0,y:0}:{x:CX,y:CY};
   Q[from].cx.forEach(([t])=>{if(t==="all")return;
     const A=anchor(from),B=anchor(t),mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y;
-    let c={x:mx-dy*.22,y:my+dx*.22};const c2={x:mx+dy*.22,y:my-dx*.22};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
-    const p0=edge(A,c.x,c.y),p1=edge(B,c.x,c.y),d=`M${p0.x.toFixed(1)} ${p0.y.toFixed(1)}Q${c.x.toFixed(1)} ${c.y.toFixed(1)} ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+    const k=(from==="q2"||t==="q2")?0:.22;let c={x:mx-dy*k,y:my+dx*k};const c2={x:mx+dy*k,y:my-dx*k};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
+    const p0=edge(A,B.x,B.y),p1=edge(B,A.x,A.y);if(k){Object.assign(p0,edge(A,c.x,c.y));Object.assign(p1,edge(B,c.x,c.y))}
+    const d=`M${p0.x.toFixed(1)} ${p0.y.toFixed(1)}Q${c.x.toFixed(1)} ${c.y.toFixed(1)} ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
     const id=`${prefix}-fg${gi++}`,gr=S("linearGradient",{id,gradientUnits:"userSpaceOnUse",x1:p0.x,y1:p0.y,x2:p1.x,y2:p1.y},defs);
     S("stop",{offset:"0",style:`stop-color:var(--${from})`},gr);S("stop",{offset:".4",style:`stop-color:var(--${from})`},gr);S("stop",{offset:"1",style:`stop-color:var(--${t})`},gr);
     const g=S("g",{class:"flow","data-other":t},layer);
@@ -787,12 +788,7 @@ document.getElementById("home").onclick=()=>{role=null;select(null)};
 document.addEventListener("keydown",e=>{if(view!=="map"||e.target.closest("input,textarea"))return;
   if(e.key==="ArrowRight"){e.preventDefault();step(1)}else if(e.key==="ArrowLeft"){e.preventDefault();step(-1)}else if(e.key==="Escape"){role=null;select(null)}});
 
-/* tram */
-(function(){if(!M.car||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  let t0=null;
-  function f(ts){if(t0==null)t0=ts;const L=M.loop.getTotalLength(),s=((ts-t0)/26000%1)*L,a=M.loop.getPointAtLength(s),b=M.loop.getPointAtLength((s+2)%L);
-    M.car.setAttribute("transform",`translate(${a.x} ${a.y}) rotate(${Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI})`);requestAnimationFrame(f)}
-  requestAnimationFrame(f)})();
+
 
 /* ---------- version à plat ---------- */
 function card(id){const q=Q[id];
