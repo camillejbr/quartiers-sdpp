@@ -192,7 +192,7 @@ kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;bor
         <span><i class="lg-c"></i>Mairie : la gouvernance, au centre</span>
         <span><i class="lg-t"></i>Ligne produit : la boucle d’amélioration continue</span>
         <span><i class="lg-w"></i>Remparts : sécurité et conformité, partout</span>
-        <span><i class="lg-a"></i>Échange entre quartiers : de la couleur qui donne à la couleur qui reçoit</span>
+        <span><i class="lg-a"></i>Ce qu’un quartier alimente (au clic sur un quartier)</span>
       </div>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
@@ -697,38 +697,16 @@ function edge(a,tx,ty){const dx=tx-a.x,dy=ty-a.y,d=Math.hypot(dx,dy)||1;
   return{x:a.x+dx/d*a.r,y:a.y+dy/d*a.r}}
 function drawArrows(layer,from,prefix){
   layer.innerHTML="";if(!from)return;
-  const defs=S("defs",{},layer),lines=S("g",{},layer),tags=S("g",{},layer);let gi=0;
-  const cc=ISO?{x:0,y:0}:{x:CX,y:CY};
-  const curve=(s,t,k)=>{const A=anchor(s),B=anchor(t),mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y;
-    let c={x:mx-dy*k,y:my+dx*k};const c2={x:mx+dy*k,y:my-dx*k};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
-    const p0=edge(A,c.x,c.y),p1=edge(B,c.x,c.y);return{p0,p1,c,d:`M${p0.x.toFixed(1)} ${p0.y.toFixed(1)}Q${c.x.toFixed(1)} ${c.y.toFixed(1)} ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`}};
-  const grad=(s,t,p0,p1)=>{const id=`${prefix}-fg${gi++}`,g=S("linearGradient",{id,gradientUnits:"userSpaceOnUse",x1:p0.x,y1:p0.y,x2:p1.x,y2:p1.y},defs);
-    S("stop",{offset:"0",style:`stop-color:var(--${s})`},g);S("stop",{offset:".35",style:`stop-color:var(--${s})`},g);S("stop",{offset:"1",style:`stop-color:var(--${t})`},g);return`url(#${id})`};
-  // « vers tous les quartiers » : rayons fins
-  if(Q[from].cx.some(([t])=>t==="all"))ORDER.filter(o=>o!==from&&o!=="q6").forEach(o=>{const k=curve(from,o,.04);
-    S("path",{d:k.d,class:"flow","data-other":o,fill:"none",stroke:`var(--${from})`,"stroke-width":2.5,"stroke-dasharray":"1 7","stroke-linecap":"round",opacity:.55},lines)});
-  const pairs={},placed=ISO?[]:[[CX-112,CY-112,CX+112,CY+96],...Object.entries(STP).map(([i,[x,y]])=>{const hw=POS[i].verb.length*4.8+25;return[x-hw,y-14,x+hw,y+14]})];
-  Q[from].cx.forEach(([t])=>{if(t!=="all")(pairs[t]=pairs[t]||{}).out=FLOW[from+">"+t]||" "});
-  incoming(from).forEach(o=>{(pairs[o]=pairs[o]||{}).inn=FLOW[o+">"+from]||" "});
-  Object.entries(pairs).forEach(([o,p])=>{const both=p.out&&p.inn,s0=p.out?from:o,t0=p.out?o:from;
-    const k=curve(s0,t0,both?.3:p.out?.24:.16),g=S("g",{class:"flow","data-other":o},lines);
-    S("path",{d:k.d,fill:"none",stroke:"var(--paper)","stroke-width":11,"stroke-linecap":"round"},g);
-    S("path",{d:k.d,fill:"none",stroke:grad(s0,t0,k.p0,k.p1),"stroke-width":p.out?5.5:4,"stroke-linecap":"round",...(p.out?{}:{"stroke-dasharray":"9 7"}),
-      "marker-end":`url(#${prefix}-ar-${t0})`,...(both?{"marker-start":`url(#${prefix}-ar-${s0})`}:{})},g);
-    const rows=[];if(p.out&&p.inn&&p.out===p.inn)rows.push(["⇄",p.out,o]);else{if(p.out&&p.out.trim())rows.push(["→",p.out,o]);if(p.inn&&p.inn.trim())rows.push(["←",p.inn,o]);}if(!rows.length)return;
-    const w=Math.max(...rows.map(r=>r[1].length))*7.7+44,h=rows.length*21+10;
-    const at=t=>({x:(1-t)*(1-t)*k.p0.x+2*(1-t)*t*k.c.x+t*t*k.p1.x,y:(1-t)*(1-t)*k.p0.y+2*(1-t)*t*k.c.y+t*t*k.p1.y});
-    const cost=(x,y)=>placed.reduce((c,b)=>c+Math.max(0,Math.min(x+w/2,b[2]+6)-Math.max(x-w/2,b[0]-6))*Math.max(0,Math.min(y+h/2,b[3]+6)-Math.max(y-h/2,b[1]-6)),0);
-    let pos=at(.5),best=1e12;
-    for(const t of [.5,.42,.58,.34,.66,.26,.74,.2,.8])for(const off of [0,-h-6,h+6,-(h+6)*2,(h+6)*2]){const q=at(t),c=cost(q.x,q.y+off)+Math.abs(off)*3+Math.abs(t-.5)*40;
-      if(c<best){best=c;pos={x:q.x,y:q.y+off}}if(best<1)break}
-    if(Math.abs(pos.y-at(.5).y)>h&&best<1e12){}
-    const mx=pos.x,my=pos.y;placed.push([mx-w/2,my-h/2,mx+w/2,my+h/2]);
-    const tg=S("g",{class:"flow","data-other":o},tags);
-    S("rect",{x:mx-w/2,y:my-h/2,width:w,height:h,rx:12,fill:"var(--paper)",stroke:`var(--${o})`,"stroke-width":2,...(p.out?{}:{"stroke-dasharray":"4 3"})},tg);
-    rows.forEach(([ar,lab],i)=>{const y=my-h/2+5+i*21+15;
-      S("text",{x:mx-w/2+12,y,"font-size":14.5,"font-weight":700,fill:ar==="←"?`var(--${o})`:`var(--${from})`},tg,ar);
-      S("text",{x:mx-w/2+31,y,"font-size":14,"font-weight":700,fill:"var(--ink)"},tg,lab)});
+  const defs=S("defs",{},layer);let gi=0;const cc=ISO?{x:0,y:0}:{x:CX,y:CY};
+  Q[from].cx.forEach(([t])=>{if(t==="all")return;
+    const A=anchor(from),B=anchor(t),mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y;
+    let c={x:mx-dy*.22,y:my+dx*.22};const c2={x:mx+dy*.22,y:my-dx*.22};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
+    const p0=edge(A,c.x,c.y),p1=edge(B,c.x,c.y),d=`M${p0.x.toFixed(1)} ${p0.y.toFixed(1)}Q${c.x.toFixed(1)} ${c.y.toFixed(1)} ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+    const id=`${prefix}-fg${gi++}`,gr=S("linearGradient",{id,gradientUnits:"userSpaceOnUse",x1:p0.x,y1:p0.y,x2:p1.x,y2:p1.y},defs);
+    S("stop",{offset:"0",style:`stop-color:var(--${from})`},gr);S("stop",{offset:".4",style:`stop-color:var(--${from})`},gr);S("stop",{offset:"1",style:`stop-color:var(--${t})`},gr);
+    const g=S("g",{class:"flow","data-other":t},layer);
+    S("path",{d,fill:"none",stroke:"var(--paper)","stroke-width":11,"stroke-linecap":"round"},g);
+    S("path",{d,fill:"none",stroke:`url(#${id})`,"stroke-width":5.5,"stroke-linecap":"round","marker-end":`url(#${prefix}-ar-${t})`},g);
   });
 }
 
@@ -742,7 +720,7 @@ function incoming(id){return ORDER.filter(o=>o!==id&&Q[o].cx.some(([t])=>t===id)
 function qbtn(id,sub){const q=Q[id];return `<button type="button" class="qlink" data-go="${id}" style="--c:var(--${id})"><span class="mini">${q.n}</span><span><b>${q.name}</b>${sub?`<small>${sub}</small>`:""}</span></button>`}
 
 function apply(){
-  const lit=sel?new Set([...targets(sel),...incoming(sel)]):role?new Set(ROLES.find(r=>r.id===role).q):null;
+  const lit=sel?targets(sel):role?new Set(ROLES.find(r=>r.id===role).q):null;
   svg.classList.toggle("has-sel",!!lit);
   svg.classList.toggle("sel-q2",sel==="q2");
   svg.querySelectorAll(".qd").forEach(g=>{const id=g.dataset.q;
@@ -758,8 +736,8 @@ function renderPanel(){
       if(s.roles){h+=`<dl>`+ROLES.filter(r=>r.g==="team").map(r=>`<div><dt>${r.name}</dt><dd>${r.mission}. ${r.contrib}.</dd></div>`).join("")+`</dl>`}
       else h+=`<dl>`+s.items.map(([t,d])=>`<div><dt>${t}</dt><dd>${d}</dd></div>`).join("")+`</dl>`});
     if(q.note)h+=`<h3>À retenir</h3><p class="note">${q.note}</p>`;
-    h+=`<h3>Ce quartier alimente <span class="flowkey">trait plein</span></h3><ul class="links">`+q.cx.map(([t,txt])=>t==="all"?`<li><p class="note" style="margin:0">Tous les quartiers : ${txt.replace(/^.*?: /,"")}</p></li>`:`<li>${qbtn(t,txt)}</li>`).join("")+`</ul>`;
-    const inc=incoming(sel);if(inc.length)h+=`<h3>Il reçoit de <span class="flowkey dash">pointillés</span></h3><ul class="links">`+inc.map(o=>`<li>${qbtn(o,Q[o].cx.find(([t])=>t===sel)[1])}</li>`).join("")+`</ul>`;
+    h+=`<h3>Ce quartier alimente <span class="flowkey">flèches sur la carte</span></h3><ul class="links">`+q.cx.map(([t,txt])=>t==="all"?`<li><p class="note" style="margin:0">Tous les quartiers : ${txt.replace(/^.*?: /,"")}</p></li>`:`<li>${qbtn(t,txt)}</li>`).join("")+`</ul>`;
+    const inc=incoming(sel);if(inc.length)h+=`<h3>Il reçoit de</h3><ul class="links">`+inc.map(o=>`<li>${qbtn(o,Q[o].cx.find(([t])=>t===sel)[1])}</li>`).join("")+`</ul>`;
     panel.innerHTML=h+`</div>`;}
   else if(role){const r=ROLES.find(x=>x.id===role);
     panel.innerHTML=`<p class="eyebrow" style="--c:var(--ink-2)">${r.g==="team"?"Équipe produit":"Écosystème utilisateurs"}</p><h2>${r.name}</h2>
