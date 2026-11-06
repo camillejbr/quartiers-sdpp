@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Cadre commun du mode produit de la sous-direction projets produits du SNUM, représenté comme une ville en huit quartiers.">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cadre commun du mode produit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout : la carte d'une ville fortifiée — gouvernance au centre, ligne de tram en boucle, remparts autour ; panneau de lecture à droite */
+:root{
+  --page:#F6F7FA; --paper:#FFFFFF; --city:#ECEFF4; --block:#DFE4EC; --street:#FFFFFF;
+  --ink:#16213A; --ink-2:#46526D; --muted:#6F7A92; --line:#D7DCE6; --tram:#16213A; --on-q:#FFFFFF; --park:#D3E8CC; --tree:#6AA35E; --tree-2:#4C8746; --tree-3:#93C27E; --water:#BBDAF0; --water-edge:#8EBFE3;
+  --q1:#B97C0C; --q2:#2F4FB5; --q3:#C2456B; --q4:#2479B3; --q5:#7650C0; --q6:#55607A; --q7:#1B8577; --q8:#C95C22;
+  --font:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --page:#0E1322; --paper:#161E33; --city:#131A2B; --block:#1B2439; --street:#242F49;
+  --ink:#E8ECF5; --ink-2:#B9C2D6; --muted:#8B96AE; --line:#2B3651; --tram:#DCE3F2; --on-q:#0E1322; --park:#1B3226; --tree:#3B7A4E; --tree-2:#2C6340; --tree-3:#4F9460; --water:#1A3452; --water-edge:#2C5A86;
+  --q1:#E8B04A; --q2:#86A0FF; --q3:#F084A3; --q4:#62B4EA; --q5:#AD92F2; --q6:#9EA9C4; --q7:#4FC8B6; --q8:#F2955D;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --page:#0E1322; --paper:#161E33; --city:#131A2B; --block:#1B2439; --street:#242F49;
+  --ink:#E8ECF5; --ink-2:#B9C2D6; --muted:#8B96AE; --line:#2B3651; --tram:#DCE3F2; --on-q:#0E1322; --park:#1B3226; --tree:#3B7A4E; --tree-2:#2C6340; --tree-3:#4F9460; --water:#1A3452; --water-edge:#2C5A86;
+  --q1:#E8B04A; --q2:#86A0FF; --q3:#F084A3; --q4:#62B4EA; --q5:#AD92F2; --q6:#9EA9C4; --q7:#4FC8B6; --q8:#F2955D;
+  color-scheme:dark }
+/* la version à plat est toujours claire (impression) */
+:root.poster-mode{
+  --page:#FFFFFF; --paper:#FFFFFF; --city:#ECEFF4; --block:#DFE4EC; --street:#FFFFFF;
+  --ink:#16213A; --ink-2:#46526D; --muted:#6F7A92; --line:#D7DCE6; --tram:#16213A; --on-q:#FFFFFF; --park:#D3E8CC; --tree:#6AA35E; --tree-2:#4C8746; --tree-3:#93C27E; --water:#BBDAF0; --water-edge:#8EBFE3;
+  --q1:#B97C0C; --q2:#2F4FB5; --q3:#C2456B; --q4:#2479B3; --q5:#7650C0; --q6:#55607A; --q7:#1B8577; --q8:#C95C22;
+  color-scheme:light }
+
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:20px 40px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--q2);outline-offset:2px;border-radius:6px}
+
+.top{max-width:1500px;margin:0 auto 14px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+.top .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;font-weight:700}
+.top h1{font-size:clamp(24px,3vw,34px)}
+.top .sub{margin:6px 0 0;color:var(--ink-2);max-width:62ch}
+.views{display:flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px}
+.views a{padding:7px 14px;border-radius:999px;text-decoration:none;color:var(--ink-2);font-weight:700;font-size:14px}
+.views a[aria-current="page"]{background:var(--ink);color:var(--page)}
+
+.toolbar{max-width:1500px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.roles{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-width:0}
+.roles .lbl{font-size:13px;color:var(--muted);font-weight:700;margin-right:4px;letter-spacing:.04em;text-transform:uppercase}
+.roles .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 11px;font-size:13.5px;cursor:pointer}
+.chip:hover{border-color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.nav{display:flex;gap:6px}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 12px;font-size:14px;cursor:pointer;font-weight:700}
+.btn:hover{border-color:var(--ink-2)}
+
+.explore{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+.mapwrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-width:0}
+.mapwrap svg{display:block;width:100%;height:auto}
+.mapbar{display:flex;justify-content:flex-end;padding:0 0 6px}
+.seg{display:flex;gap:3px;background:var(--page);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:5px 14px;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:8px 8px 2px;font-size:13.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;gap:7px;align-items:center}
+.legend i{display:inline-block;flex:none}
+.lg-c{width:14px;height:14px;border-radius:50%;border:2.5px solid var(--q2)}
+.lg-t{width:22px;height:5px;border-radius:3px;background:var(--tram)}
+.lg-w{width:22px;height:8px;border:2px solid var(--q6);border-style:solid dashed}
+.lg-a{width:22px;height:2px;background:var(--ink-2);position:relative}
+.lg-a::after{content:"";position:absolute;right:-2px;top:-4px;border:5px solid transparent;border-left:7px solid var(--ink-2);border-right:0}
+
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;min-width:0;position:sticky;top:calc(env(safe-area-inset-top, 0px) + 12px);max-height:calc(100vh - 24px);overflow:auto}
+.p-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.badge{flex:none;width:36px;height:36px;border-radius:50%;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-weight:700;font-size:18px}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);font-weight:700}
+.panel h2{font-size:22px}
+.lead{font-size:17px;font-weight:700;margin:4px 0 10px}
+.panel p{margin:0 0 10px}
+.panel h3{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.panel dl{margin:0;display:grid;gap:8px}
+.panel dt{font-weight:700}
+.panel dd{margin:0;color:var(--ink-2);font-size:15px}
+.note{border-left:4px solid var(--c);background:color-mix(in srgb, var(--c) 9%, var(--paper));padding:10px 14px;border-radius:0 8px 8px 0;font-size:15px;color:var(--ink)}
+.links{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.qlink{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);background:transparent;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:14.5px}
+.qlink:hover{border-color:var(--c, var(--ink-2))}
+.qlink .mini{flex:none;width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--on-q);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+.qlink b{display:block}
+.qlink small{color:var(--ink-2);font-size:13.5px}
+.hint{font-size:14px;color:var(--muted)}
+kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:12px}
+
+/* carte */
+.qd{cursor:pointer;transition:opacity .25s}
+.qd:focus{outline:none}
+.qd:focus-visible .qshape{stroke-width:6}
+.has-sel .qd:not(.lit):not(.sel){opacity:.25}
+.has-sel .wall:not(.lit):not(.sel){opacity:.35}
+.qd .qshape{transition:stroke-width .2s}
+.qd.sel .qshape{stroke-width:5.5}
+.qd:hover .qshape{stroke-width:4.5}
+.avenue{stroke:var(--street);transition:stroke .25s}
+.sel-q2 .avenue{stroke:color-mix(in srgb, var(--q2) 45%, var(--street))}
+.arrow{fill:none;stroke-width:4;stroke-linecap:round}
+.halo{paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round}
+.terr{transition:stroke-width .2s}
+.qd:hover .terr{stroke-width:4}
+.qd.sel .terr{stroke:var(--qc);stroke-width:7}
+@media (prefers-reduced-motion: reduce){ .qd,.avenue{transition:none} .tramcar{display:none} }
+
+/* version à plat */
+.poster-view{max-width:100%;overflow:hidden}
+.sheet-wrap{margin:0 auto;transform-origin:top left}
+.sheet{width:1587px;height:1123px;background:#fff;color:var(--ink);padding:30px 34px;display:grid;grid-template-rows:auto 1fr;gap:16px;border:1px solid var(--line)}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.sh-head h1{font-size:34px}
+.sh-head .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;font-weight:700}
+.sh-head .sub{margin:6px 0 0;color:var(--ink-2);font-size:15px;max-width:70ch}
+.sh-legend{display:grid;grid-template-columns:auto auto;gap:6px 22px;font-size:13px;color:var(--ink-2)}
+.sh-legend span{display:inline-flex;gap:8px;align-items:center}
+.sh-body{display:grid;grid-template-columns:350px minmax(0,1fr) 350px;gap:16px;min-height:0}
+.sh-col{display:grid;grid-template-rows:repeat(3,1fr);gap:14px;min-height:0}
+.sh-center{display:grid;grid-template-rows:auto 1fr;gap:14px;min-height:0}
+.sh-center svg{width:100%;height:auto;display:block}
+.sh-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:0}
+.card{border:1.5px solid var(--c);border-radius:10px;padding:12px 14px;background:color-mix(in srgb, var(--c) 6%, #fff);min-height:0;overflow:hidden;font-size:12.6px;line-height:1.38}
+.card .p-head{margin-bottom:6px;gap:10px}
+.card .badge{width:28px;height:28px;font-size:15px}
+.card h2{font-size:16.5px}
+.card .eyebrow{font-size:11px}
+.card .lead{font-size:13px;margin:0 0 6px}
+.card ul{margin:0;padding-left:16px;display:grid;gap:3px}
+.card .cx{margin-top:7px;color:var(--ink-2);font-size:12px}
+.card .cx b{color:var(--c)}
+
+@media (max-width: 1050px){
+  .explore{grid-template-columns:1fr}
+  .panel{position:static;max-height:none}
+}
+@media (max-width: 560px){
+  .legend{font-size:12.5px}
+  .panel{padding:16px}
+}
+@page{size:420mm 297mm;margin:0}
+@media print{
+  body{padding:0;background:#fff}
+  .top,.toolbar{display:none!important}
+  .sheet{border:0}
+  .sheet-wrap{transform:none!important;height:auto!important}
+}
+</style>
+
+<header class="top">
+  <div>
+    <p class="kicker">SNUM · Sous-direction projets produits</p>
+    <h1>Cadre commun du mode produit</h1>
+    <p class="sub">Une ville en huit quartiers pour concevoir et faire vivre nos services numériques, pilotés par l’impact.</p>
+  </div>
+  <nav class="views" aria-label="Affichage">
+    <a href="#carte" id="v-map">Carte interactive</a>
+    <a href="#a-plat" id="v-flat">Version à plat</a>
+  </nav>
+</header>
+
+<div id="explore-view">
+  <div class="toolbar">
+    <div class="roles" id="roles" role="group" aria-label="Voir où intervient un rôle"></div>
+    <div class="nav">
+      <button class="btn" id="prev" type="button" aria-label="Quartier précédent">‹</button>
+      <button class="btn" id="home" type="button">Vue d’ensemble</button>
+      <button class="btn" id="next" type="button" aria-label="Quartier suivant">›</button>
+    </div>
+  </div>
+  <main class="explore">
+    <div class="mapwrap">
+      <svg id="map" role="img" aria-label="Carte de la ville du mode produit"></svg>
+      <div class="legend" id="legend2d">
+        <span><i class="lg-c"></i>Mairie : la gouvernance, au centre</span>
+        <span><i class="lg-t"></i>Ligne produit : la boucle d’amélioration continue</span>
+        <span><i class="lg-w"></i>Remparts : sécurité et conformité, partout</span>
+        <span><i class="lg-a"></i>Connexion entre quartiers</span>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </main>
+</div>
+
+<section id="poster-view" class="poster-view" hidden>
+  <div class="sheet-wrap" id="sheet-wrap"><div class="sheet" id="sheet"></div></div>
+</section>
+
+<script>
+const Q = {
+  q1:{n:1,name:"Acteurs & écosystème",l1:"Acteurs",l2:"& écosystème",short:"Acteurs",place:"La halle du marché",keys:"Équipe · Usagers · Sponsor",
+    lead:"Ceux qui font et ceux pour qui on fait : une équipe pluridisciplinaire et autonome, et des utilisateurs impliqués à chaque étape.",
+    text:"Le designer conçoit et teste les parcours, le PO (avec le PPO) priorise selon les besoins utilisateurs, et les développeurs construisent le service. Les utilisateurs participent au cadrage, aux ateliers, aux tests de prototypes et à la revue des incréments. Le PO est leur porte-parole dans l’équipe ; les référents métier alimentent le PPO en expertise métier et en contraintes réelles.",
+    sections:[
+      {title:"L’équipe produit",roles:"team"},
+      {title:"L’écosystème utilisateurs",items:[
+        ["Usagers finaux","Valident l’utilité réelle et l’usage du service : agents des services déconcentrés ou d’administration centrale, citoyens, professionnels…"],
+        ["Référents métier","Apportent la connaissance des processus et des règles."],
+        ["Panel d’utilisateurs","Participent aux entretiens, tests et co-conceptions."],
+        ["Sponsor","Garantit le mandat, les moyens et les arbitrages stratégiques."]]},
+      {title:"Éléments clés",items:[
+        ["Personas","Profils types des utilisateurs."],
+        ["Parcours utilisateurs","Les étapes clés pour accomplir une tâche."],
+        ["Retours utilisateurs","Feedback, enquêtes de satisfaction, interviews, tests utilisateurs."]]}],
+    cx:[["q3","Les retours utilisateurs alimentent la conception."],["q8","Les retours qualitatifs alimentent les indicateurs."],["q2","Les besoins utilisateurs influencent les décisions du CMI."]],
+    poster:["<b>Équipe :</b> product manager, product owner, proxy PO, designer UX/UI, lead tech, développeur·ses, DevOps, chargé·e de déploiement","<b>Utilisateurs :</b> usagers finaux, référents métier, panel d’utilisateurs, sponsor","<b>Outils :</b> personas, parcours utilisateurs, retours utilisateurs"]},
+  q2:{n:2,name:"Gouvernance",short:"Gouvernance",place:"La mairie",keys:"Vision · Feuille de route · CMI",
+    lead:"Le cœur stratégique de la ville : il valide et alimente tous les autres quartiers.",
+    text:"La gouvernance fixe le cap et donne les moyens : le budget pour les développements, les priorités pour les indicateurs.",
+    sections:[{title:"Éléments clés",items:[
+      ["Vision produit","Énoncé clair de l’ambition, des usagers, des macro-services et des principes."],
+      ["Feuille de route pluriannuelle (FDR)","Document stratégique qui décrit la trajectoire pluriannuelle : incréments, jalons à valeur, impact mesuré par des indicateurs, budgets."],
+      ["Comité ministériel d’investissement (CMI)","Comité produit qui valide les investissements, les moyens et les priorités."]]}],
+    cx:[["all","Valide et alimente tous les quartiers : budget pour le développement, priorités pour les indicateurs."],["q3","La vision produit guide la capture du besoin."]],
+    poster:["<b>Vision produit :</b> ambition, usagers, macro-services, principes","<b>Feuille de route pluriannuelle :</b> incréments, jalons à valeur, indicateurs, budgets","<b>CMI :</b> valide les investissements, les moyens et les priorités"]},
+  q3:{n:3,name:"Capture du besoin & design",l1:"Capture du besoin",l2:"& design",short:"Besoin & design",place:"L’atelier d’artiste",keys:"Recherche · Maquettes · Backlog",
+    lead:"Comprendre le problème réel des usagers avant de concevoir la solution.",
+    text:"Ce quartier couvre l’investigation et la conception centrée utilisateur : recherche utilisateur (interviews, ateliers) pour déterminer le problème, prototypage, définition des parcours et des indicateurs d’impact. Selon le produit, cette étape peut être précédée d’un cadrage global qui cerne la totalité du projet : coût, risques et trajectoire dans les feuilles de route.",
+    sections:[{title:"Éléments clés",items:[
+      ["Ateliers de co-conception","Avec les utilisateurs et les parties prenantes, pour déterminer le problème utilisateur."],
+      ["Maquettes","Wireframes et prototypes cliquables (par exemple sur Figma)."],
+      ["Backlog produit","Liste des fonctionnalités priorisées."]]}],
+    note:"L’équipe ne part pas d’une solution imposée : elle instruit un problème réel, recueille les besoins et formule des hypothèses testables. Le design intervient sur toute la durée de vie du produit, pas seulement en amont.",
+    cx:[["q4","Les maquettes et le backlog alimentent les sprints Scrum."],["q1","Les tests utilisateurs valident les maquettes."],["q2","La vision produit guide la capture du besoin."]],
+    poster:["<b>Recherche utilisateur :</b> interviews, ateliers, définition du problème","<b>Co-conception</b> avec usagers et parties prenantes","<b>Maquettes</b> et prototypes cliquables, parcours utilisateurs","<b>Backlog</b> priorisé et indicateurs d’impact","Peut être précédé d’un <b>cadrage global</b> : coût, risques, trajectoire"]},
+  q4:{n:4,name:"Conception & développement agile",l1:"Conception",l2:"& développement agile",short:"Conception & dev",place:"Le chantier",keys:"Sprints · MVP · Rituels Scrum",
+    lead:"Le cœur opérationnel : construire par incréments utiles, au rythme des sprints.",
+    text:"Développement du MVP et des fonctionnalités, sprints (planification, revue, rétrospective) et priorisation du backlog.",
+    sections:[
+      {title:"Rituels",items:[
+        ["Sprint planning · début de sprint","Choisir un objectif de sprint et un incrément à livrer."],
+        ["Daily · chaque jour, 15 min","Synchroniser l’équipe, lever les obstacles."],
+        ["Raffinage du backlog · hebdomadaire ou continu","Affiner, estimer et prioriser les besoins."],
+        ["Ateliers utilisateurs · selon les besoins","Explorer, prototyper, tester et valider."],
+        ["Sprint review · fin de sprint","Montrer l’incrément aux utilisateurs et parties prenantes."],
+        ["Rétrospective · fin de sprint","Améliorer la manière de travailler."],
+        ["Démonstration publique · régulière","Transparence, feedback et adoption."]]},
+      {title:"Éléments clés",items:[
+        ["Backlog produit","Liste des user stories priorisées."],
+        ["MVP","Version minimale viable du produit."],
+        ["Indicateurs d’impact","Chaque fonctionnalité est reliée à ce qu’elle doit changer."]]}],
+    note:"Le backlog est vivant et des incréments utiles sont livrés régulièrement. Pas de cahier des charges figé : les priorités évoluent selon les retours du terrain et les mesures d’impact. Les rituels restent au service de la valeur produite, pas d’une mécanique administrative.",
+    cx:[["q5","Le code est poussé vers le pipeline CI/CD."],["q3","Le backlog est alimenté par les besoins utilisateurs."],["q8","Les fonctionnalités développées sont mesurées via les indicateurs."]],
+    poster:["<b>Rituels :</b> sprint planning, daily, raffinage du backlog, ateliers utilisateurs, sprint review, rétrospective, démonstration publique","<b>MVP</b> puis incréments utiles livrés régulièrement","<b>Backlog vivant</b> : pas de cahier des charges figé"]},
+  q5:{n:5,name:"Intégration continue",l1:"Intégration",l2:"continue",short:"Intégration continue",place:"La gare",keys:"CI/CD · Environnements · Cloud",
+    lead:"Industrialiser la livraison : chaque évolution est testée et déployée automatiquement.",
+    text:"Pipeline CI/CD (intégration et livraison continues), environnements de développement, de test et de production, hébergement cloud.",
+    sections:[{title:"Éléments clés",items:[
+      ["Pipeline CI/CD","Automatisation des tests et des déploiements (par exemple GitLab CI, Jenkins)."],
+      ["Environnements","Développement, recette, pré-production, production."],
+      ["Chargé·e de déploiement","Supervise les mises en production et les rollbacks."]]}],
+    note:"Chaque évolution passe par le dépôt de code, l’intégration continue, les tests, puis un déploiement automatisé sur le cloud.",
+    cx:[["q7","Les déploiements sont surveillés en production."],["q4","Le code est intégré et déployé."],["q6","Les déploiements respectent les normes SSI."]],
+    poster:["<b>Pipeline CI/CD :</b> tests et déploiements automatisés (GitLab CI, Jenkins)","<b>Environnements :</b> développement, recette, pré-production, production","<b>Hébergement cloud</b>","<b>Chargé·e de déploiement :</b> mises en production et rollbacks"]},
+  q6:{n:6,name:"Sécurité & conformité",short:"Sécurité & conformité",place:"Les remparts",keys:"SSI · RGAA · RGPD · Souveraineté",
+    lead:"Protéger toute la ville, dès la conception et non en fin de projet.",
+    text:"La sécurité des systèmes d’information (dont l’homologation), l’accessibilité et la protection des données sont des thèmes transversaux, présents dans tous les quartiers.",
+    sections:[
+      {title:"Les quatre tours",items:[
+        ["SSI","Analyse de risque, mesures de sécurité, gestion des accès et des secrets, journalisation, plan de reprise, homologation."],
+        ["Accessibilité (RGAA)","Conformité intégrée dans les maquettes, les user stories, les composants et les tests ; audit et déclaration d’accessibilité."],
+        ["RGPD","Minimisation des données, finalités documentées, registre des traitements, information des personnes, exercice des droits, avis du DPO lorsque nécessaire."],
+        ["Souveraineté et réutilisation","Code ouvert lorsque possible, standards ouverts, API documentées, architecture modulaire."]]},
+      {title:"Éléments clés",items:[
+        ["Audits SSI","Vérification des vulnérabilités (par exemple avec Snyk)."],
+        ["Audits RGAA","Vérification de la conformité accessibilité."],
+        ["Analyse RGPD","Vérification de la conformité."]]}],
+    cx:[["all","Thèmes transversaux, présents dans tous les quartiers dès la conception."]],
+    poster:["<b>SSI :</b> analyse de risque, accès et secrets, journalisation, plan de reprise, homologation","<b>Accessibilité :</b> RGAA dans les maquettes, user stories, composants et tests ; audit et déclaration","<b>RGPD :</b> minimisation, registre des traitements, droits des personnes, avis du DPO","<b>Souveraineté :</b> code ouvert, standards ouverts, API documentées, architecture modulaire"]},
+  q7:{n:7,name:"Run & observabilité",l1:"Run",l2:"& observabilité",short:"Run",place:"La tour de contrôle",keys:"Supervision · Logs · Alertes",
+    lead:"Faire vivre le service en production : détecter, comprendre, corriger, améliorer.",
+    text:"Supervision (Prometheus, Grafana), observabilité (centralisation des logs, alertes) et support technique.",
+    sections:[{title:"Éléments clés",items:[
+      ["Supervision","Disponibilité, performances (temps de réponse, taux d’erreur), incidents, capacity planning."],
+      ["Observabilité","Logs centralisés (ELK, Loki), métriques métier et techniques, traces distribuées, tableaux de bord."],
+      ["Alertes","Notifications proactives (par exemple Alertmanager)."],
+      ["Mesure d’impact","Adoption, taux de réussite des parcours, satisfaction, gains de service public."],
+      ["Exploitation","Support utilisateurs, correctifs, évolutions, documentation et transfert de compétences."]]}],
+    note:"Le run n’est pas une phase de maintenance descendante : il prolonge le mode produit. La supervision détecte les incidents, l’observabilité explique leur cause, la mesure d’impact oriente les prochaines priorités, et le comité produit décide du réinvestissement.",
+    cx:[["q8","Les données techniques alimentent les indicateurs."],["q5","Les déploiements sont surveillés."],["q2","Les performances sont rapportées au CMI."]],
+    poster:["<b>Supervision :</b> disponibilité, performances, incidents, capacity planning (Prometheus, Grafana)","<b>Observabilité :</b> logs centralisés, métriques, traces, tableaux de bord (ELK, Loki)","<b>Alertes</b> proactives (Alertmanager)","<b>Exploitation :</b> support, correctifs, évolutions, documentation"]},
+  q8:{n:8,name:"Impact & mesure",l1:"Impact",l2:"& mesure",short:"Impact",place:"L’observatoire",keys:"Adoption · Satisfaction · Jalons",
+    lead:"Mesurer ce que le produit change vraiment, pour décider de la suite.",
+    text:"Mesure des indicateurs, analyse des retours utilisateurs et suivi des jalons à valeur.",
+    sections:[
+      {title:"Indicateurs usuels (DINUM)",items:[
+        ["Adoption","Taux d’utilisateurs actifs."],
+        ["Satisfaction","NPS."],
+        ["Efficacité","Temps moyen pour accomplir une tâche."],
+        ["Sécurité","Nombre de vulnérabilités critiques."],
+        ["Accessibilité","Pourcentage de conformité RGAA."]]},
+      {title:"Jalons à valeur",items:[["Des moments où le produit débloque une valeur tangible","Par exemple : « Au 01/01/2027, 100 % des données seront accessibles »."]]}],
+    cx:[["q2","Les indicateurs justifient les investissements en CMI."],["q1","Les retours utilisateurs alimentent les indicateurs."],["all","Les indicateurs mesurent l’impact de chaque phase."]],
+    poster:["<b>Indicateurs DINUM :</b> adoption, satisfaction (NPS), efficacité, sécurité, accessibilité","<b>Retours utilisateurs</b> analysés","<b>Jalons à valeur :</b> « Au 01/01/2027, 100 % des données seront accessibles »"]}
+};
+const ORDER=["q1","q2","q3","q4","q5","q6","q7","q8"];
+
+const ROLES=[
+  {id:"pm",g:"team",name:"Product Manager",mission:"Piloter la trajectoire produit",contrib:"Stratégie, business case, mesure d’impact, coordination des parties prenantes",q:["q2","q8","q1"]},
+  {id:"po",g:"team",name:"Product Owner",abbr:"PO",mission:"Maximiser la valeur du produit",contrib:"Vision, roadmap, priorisation du backlog, arbitrages, indicateurs d’impact",q:["q1","q2","q3","q4","q8"]},
+  {id:"ppo",g:"team",name:"Proxy Product Owner",abbr:"Proxy PO",mission:"Relayer le PO auprès du métier, en s’appuyant sur des référents métier",contrib:"Collecte des besoins, préparation des user stories, arbitrages opérationnels",q:["q1","q3","q4"]},
+  {id:"ux",g:"team",name:"Designer UX/UI",abbr:"Designer",mission:"Concevoir une expérience utile et accessible",contrib:"Recherche utilisateur, parcours, maquettes, prototypes, tests d’usabilité",q:["q1","q3","q4","q6"]},
+  {id:"lead",g:"team",name:"Lead Tech",mission:"Garantir la cohérence technique, l’innovation et la qualité",contrib:"Pilote l’architecture technique et garantit la qualité du code. Anticipe les risques techniques, évalue la faisabilité et propose des solutions.",q:["q4","q5","q6"]},
+  {id:"dev",g:"team",name:"Développeur·se",abbr:"Dev",mission:"Construire le service",contrib:"Code, tests, revue, qualité, sécurité technique, documentation",q:["q4","q5","q6"]},
+  {id:"devops",g:"team",name:"DevOps",mission:"Fiabiliser la chaîne technique",contrib:"CI/CD, infrastructure, sécurité opérationnelle, supervision, reprise",q:["q5","q6","q7"]},
+  {id:"dep",g:"team",name:"Chargé·e de déploiement",abbr:"Déploiement",mission:"Faire adopter le service",contrib:"Accompagnement, formation, animation des référents, collecte des retours, supervision des mises en production",q:["q1","q5","q8"]},
+  {id:"usa",g:"users",name:"Usagers finaux",abbr:"Usagers",mission:"Valider l’utilité réelle et l’usage du service",contrib:"Participent au cadrage, aux ateliers, aux tests de prototypes et à la revue des incréments",q:["q1","q3","q4","q8"]},
+  {id:"ref",g:"users",name:"Référents métier",abbr:"Référents",mission:"Apporter la connaissance des processus et des règles",contrib:"Alimentent le Proxy PO en expertise métier et en contraintes réelles",q:["q1","q3"]},
+  {id:"pan",g:"users",name:"Panel d’utilisateurs",abbr:"Panel",mission:"Participer aux entretiens, tests et co-conceptions",contrib:"Entretiens, tests de prototypes, ateliers de co-conception",q:["q1","q3"]},
+  {id:"spo",g:"users",name:"Sponsor",mission:"Garantir le mandat, les moyens et les arbitrages stratégiques",contrib:"Porte le produit en gouvernance et en CMI",q:["q2"]}
+];
+
+/* ---------- géométrie ---------- */
+const CX=620, CY=482, RX=225, RY=150, GOV=118;
+const ORX=255, ORY=176; // bord des quartiers côté boulevard circulaire
+const WALL={x:40,y:60,w:1160,h:870};
+const X0=WALL.x,Y0=WALL.y,X1=WALL.x+WALL.w,Y1=WALL.y+WALL.h;
+const oell=a=>{const r=a*Math.PI/180;return[CX+ORX*Math.cos(r),CY+ORY*Math.sin(r)]};
+const arc=(a1,a2,n=10)=>Array.from({length:n+1},(_,i)=>oell(a1+(a2-a1)*i/n));
+const BASE={
+  q3:[[62,84],[604,84],[604,284],[62,284]],
+  q4:[[636,84],[1178,84],[1178,284],[636,284]],
+  q1:[[62,312],[410,312],[410,652],[62,652]],
+  q5:[[830,312],[1178,312],[1178,652],[830,652]],
+  q8:[[62,724],[604,724],[604,908],[62,908]],
+  q7:[[636,724],[1178,724],[1178,908],[636,908]]
+};
+const LOOP={x0:425,y0:298,x1:815,y1:712,r:70};
+const LOOPD=`M425 482V368Q425 298 495 298H745Q815 298 815 368V642Q815 712 745 712H495Q425 712 425 642Z`;
+const STP={q1:[425,482],q3:[520,298],q4:[720,298],q5:[815,482],q7:[720,712],q8:[520,712]};
+const POS={ // a : station sur la ligne ; lab : étiquette ; lm : monument
+  q1:{a:180,verb:"Écouter",   lab:[86,358], lm:[236,566]},
+  q3:{a:235,verb:"Comprendre",lab:[98,128], lm:[492,184]},
+  q4:{a:305,verb:"Construire",lab:[670,128],lm:[1082,184]},
+  q5:{a:0,  verb:"Livrer",    lab:[860,358],lm:[1012,566]},
+  q7:{a:55, verb:"Exploiter", lab:[670,770],lm:[1082,816]},
+  q8:{a:125,verb:"Mesurer",   lab:[98,770], lm:[492,816]}
+};
+const LM_DY={q1:0,q3:2,q4:-18,q5:-2,q7:-20,q8:-11};
+const TOWERS=[{t:"RGAA",x:250,y:60},{t:"SSI",x:990,y:60},{t:"Souveraineté",x:250,y:930},{t:"RGPD",x:990,y:930}];
+const ell=a=>({x:CX+RX*Math.cos(a*Math.PI/180),y:CY+RY*Math.sin(a*Math.PI/180)});
+const NS="http://www.w3.org/2000/svg";
+function S(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+function rng(seed){return()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646}}
+function inPoly(x,y,P){let c=false;for(let i=0,j=P.length-1;i<P.length;j=i++){const[xi,yi]=P[i],[xj,yj]=P[j];
+  if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)c=!c}return c}
+// contour irrégulier : petites encoches et avancées le long des grands côtés
+function notch(P,seed){const r=rng(seed),out=[];
+  P.forEach((a,i)=>{const b=P[(i+1)%P.length];out.push(a);const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy);if(L<140)return;
+    const ux=dx/L,uy=dy/L;let nx=-uy,ny=ux;const mx=a[0]+dx/2+nx*6,my=a[1]+dy/2+ny*6;if(!inPoly(mx,my,P)){nx=-nx;ny=-ny}
+    const k=Math.max(1,Math.floor(L/170));
+    for(let j=0;j<k;j++){const t0=(j+.2+r()*.5)/k*L,w=26+r()*34,inward=r()<.65,d=(inward?12+r()*10:7+r()*5)*(inward?1:-1);
+      const p=s=>[a[0]+ux*s,a[1]+uy*s];const[p1,p2]=[p(t0),p(t0+w)];
+      out.push(p1,[p1[0]+nx*d,p1[1]+ny*d],[p2[0]+nx*d,p2[1]+ny*d],p2)}});
+  return out}
+const tint=(id,p)=>`color-mix(in srgb, var(--${id}) ${p}%, var(--paper))`;
+
+/* monuments (choisis sur la planche de pictos) */
+const GLYPH={
+ q1:(C,W,I)=>[1,`<path d="M-54 -6L0 -42L54 -6Z" fill="${C}"/><rect x="-48" y="-6" width="96" height="13" fill="${C}"/>
+    ${[-40,-20,0,20,40].map(x=>`<rect x="${x-5}" y="-6" width="10" height="13" fill="${W}"/>`).join("")}
+    <rect x="-44" y="7" width="7" height="27" fill="${C}"/><rect x="37" y="7" width="7" height="27" fill="${C}"/>
+    <rect x="-34" y="20" width="68" height="9" rx="2" fill="${C}" opacity=".7"/>
+    <circle cx="-22" cy="15" r="5" fill="${I}"/><circle cx="-6" cy="15" r="5" fill="${C}"/><circle cx="10" cy="15" r="5" fill="${I}"/><circle cx="24" cy="15" r="5" fill="${C}"/>
+    <rect x="-52" y="34" width="104" height="4" rx="2" fill="${I}"/>`],
+ q2:(C,W,I)=>[1,`<rect x="-52" y="-6" width="104" height="40" fill="${C}"/><path d="M-54 -6L-46 -24H46L54 -6Z" fill="${C}" opacity=".7"/>
+    ${[-44,-34,27,37].flatMap(x=>[2,18].map(y=>`<rect x="${x}" y="${y}" width="7" height="10" rx="1" fill="${W}"/>`)).join("")}
+    <rect x="-18" y="-34" width="36" height="68" fill="${C}"/><path d="M-22 -34L0 -52L22 -34Z" fill="${C}"/>
+    <circle cx="0" cy="-20" r="9" fill="${W}"/><path d="M0 -25V-20L4 -17" stroke="${C}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M-9 34V14A9 9 0 0 1 9 14V34Z" fill="${W}"/>
+    <line x1="0" y1="-52" x2="0" y2="-66" stroke="${C}" stroke-width="3"/><path d="M1 -66H16L12 -61L16 -56H1Z" fill="${C}"/>
+    <rect x="-56" y="34" width="112" height="4" rx="2" fill="${I}"/>`],
+ q3:(C,W,I)=>[1,`<path d="M-50 -38L50 -52V34H-50Z" fill="${C}"/>
+    <path d="M-40 -30L40 -41V14H-40Z" fill="${W}"/>
+    <path d="M-20 -33V14M0 -36V14M20 -38V14M-40 -8H40" stroke="${C}" stroke-width="3"/>
+    <line x1="-28" y1="-2" x2="-34" y2="12" stroke="${C}" stroke-width="2" opacity=".6"/><line x1="-22" y1="-2" x2="-16" y2="12" stroke="${C}" stroke-width="2" opacity=".6"/><rect x="-32" y="-10" width="14" height="10" fill="${C}" opacity=".5"/>
+    <rect x="16" y="20" width="14" height="14" fill="${W}"/><rect x="-54" y="34" width="108" height="4" rx="2" fill="${I}"/>`],
+ q4:(C,W,I)=>[1,`<rect x="-34" y="-20" width="58" height="54" fill="${C}"/>
+    ${[-26,-12,2,16].flatMap(x=>[-12,4,20].map(y=>`<rect x="${x-4}" y="${y}" width="8" height="9" fill="${W}"/>`)).join("")}
+    <rect x="-34" y="-46" width="58" height="26" fill="none" stroke="${C}" stroke-width="3" stroke-dasharray="6 4"/>
+    <path d="M30 -46V34M46 -46V34M30 -46H46M30 -26H46M30 -6H46M30 14H46M30 -46L46 -26M46 -26L30 -6M30 -6L46 14M46 14L30 34" stroke="${I}" stroke-width="2.5" fill="none"/>
+    <rect x="-52" y="34" width="104" height="4" rx="2" fill="${I}"/>`],
+ q5:(C,W,I)=>[1,`<line x1="0" y1="-20" x2="0" y2="-24" stroke="${I}" stroke-width="3"/><circle cx="0" cy="-36" r="12" fill="${W}" stroke="${C}" stroke-width="4"/><path d="M0 -43V-36L5 -33" stroke="${I}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="-44" y="-14" width="5" height="48" fill="${C}" opacity=".6"/><rect x="39" y="-14" width="5" height="48" fill="${C}" opacity=".6"/>
+    <path d="M-56 -22H56L50 -12H-50Z" fill="${C}"/>
+    <rect x="-50" y="0" width="100" height="26" rx="8" fill="${C}"/>
+    ${[-42,-26,-10,6,22].map(x=>`<rect x="${x}" y="6" width="12" height="9" rx="2" fill="${W}"/>`).join("")}<rect x="38" y="6" width="8" height="14" rx="2" fill="${W}"/>
+    ${[-34,-22,22,34].map(x=>`<circle cx="${x}" cy="28" r="4" fill="${I}"/>`).join("")}
+    <rect x="-56" y="33" width="112" height="4" rx="2" fill="${I}"/>`],
+ q7:(C,W,I)=>[1,`<path d="M-10 32L-7 -16H7L10 32Z" fill="${C}"/>
+    <path d="M-34 -16L-26 -44H26L34 -16Z" fill="${C}"/><path d="M-27 -38H27L30 -24H-30Z" fill="${W}"/>
+    ${[-14,0,14].map(x=>`<line x1="${x}" y1="-38" x2="${x*1.1}" y2="-24" stroke="${C}" stroke-width="2.5"/>`).join("")}
+    <line x1="0" y1="-44" x2="0" y2="-60" stroke="${C}" stroke-width="3"/><circle cx="0" cy="-62" r="4" fill="${C}"/>
+    <rect x="-38" y="30" width="76" height="7" rx="2" fill="${I}"/>`],
+ q8:(C,W,I)=>[1,`<rect x="-46" y="-2" width="92" height="36" fill="${C}"/><rect x="-50" y="-6" width="100" height="7" rx="2" fill="${C}"/>
+    ${[-34,-20,14,28].map(x=>`<rect x="${x}" y="8" width="6" height="14" rx="3" fill="${W}"/>`).join("")}<path d="M-7 34V18A7 7 0 0 1 7 18V34Z" fill="${W}"/>
+    <path d="M-36 -6A36 36 0 0 1 36 -6Z" fill="${C}"/>
+    <path d="M-6 -6V-41.5A36 36 0 0 1 6 -41.5V-6Z" fill="${I}"/>
+    <path d="M-5 -24L17 -58L27 -52L5 -18Z" fill="${I}"/><rect x="14" y="-62" width="16" height="7" rx="2" fill="${I}" transform="rotate(33 22 -58)"/>
+    <path d="M-38 -48l3 7l7 3l-7 3l-3 7l-3 -7l-7 -3l7 -3Z" fill="${C}"/><path d="M40 -30l2 5l5 2l-5 2l-2 5l-2 -5l-5 -2l5 -2Z" fill="${C}" opacity=".6"/>
+    <rect x="-54" y="34" width="108" height="4" rx="2" fill="${I}"/>`]
+};
+function landmark(id,g){const[k,svg]=GLYPH[id](`var(--${id})`,"var(--paper)","var(--ink)");
+  const inner=S("g",{transform:`scale(${k})`},g);inner.innerHTML=svg;}
+
+function roundPath(P,r){let d="";const n=P.length;
+  for(let i=0;i<n;i++){const p0=P[(i-1+n)%n],p1=P[i],p2=P[(i+1)%n];
+    const l1=Math.hypot(p0[0]-p1[0],p0[1]-p1[1]),l2=Math.hypot(p2[0]-p1[0],p2[1]-p1[1]),rr=Math.min(r,l1/2,l2/2);
+    const a=[p1[0]+(p0[0]-p1[0])/l1*rr,p1[1]+(p0[1]-p1[1])/l1*rr],b=[p1[0]+(p2[0]-p1[0])/l2*rr,p1[1]+(p2[1]-p1[1])/l2*rr];
+    d+=(i?"L":"M")+a[0].toFixed(1)+" "+a[1].toFixed(1)+"Q"+p1[0].toFixed(1)+" "+p1[1].toFixed(1)+" "+b[0].toFixed(1)+" "+b[1].toFixed(1)}
+  return d+"Z"}
+// noms des rues : ce qui circule entre deux quartiers voisins
+const STREETS=[
+  {t:"Rue des Besoins",x:232,y:302},{t:"Rue du Pipeline",x:1008,y:302},
+  {t:"Rue du Backlog",x:620,y:184,v:1},{t:"Rue des Indicateurs",x:620,y:810,v:1},
+  {t:"Quai des Retours",x:232,y:664},{t:"Quai du Déploiement",x:1008,y:664}
+];
+function buildMap(svg,interactive){
+  if(interactive&&ISO)return buildIso(svg);
+  const p=interactive?"m":"p";
+  svg.innerHTML="";svg.setAttribute("viewBox","0 0 1240 970");
+  const defs=S("defs",{},svg);
+  ["q1","q2","q3","q4","q5","q6","q7","q8"].forEach(id=>{const m=S("marker",{id:p+"-ar-"+id,viewBox:"0 0 10 10",refX:7,refY:5,markerWidth:5,markerHeight:5,orient:"auto-start-reverse"},defs);
+    S("path",{d:"M0 0L10 5L0 10z",style:`fill:var(--${id})`},m)});
+  const cp=S("clipPath",{id:p+"-city"},defs);S("rect",{x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:34},cp);
+  const tree=(g,x,y,r=7)=>{S("circle",{cx:x,cy:y,r,fill:"var(--tree)"},g);S("circle",{cx:x-r*.3,cy:y-r*.3,r:r*.4,fill:"var(--park)",opacity:.55},g)};
+
+  const city=S("g",{"clip-path":`url(#${p}-city)`},svg);
+  S("rect",{x:X0,y:Y0,width:WALL.w,height:WALL.h,fill:"var(--street)"},city);
+  // parc central
+  S("rect",{x:LOOP.x0+13,y:LOOP.y0+13,width:LOOP.x1-LOOP.x0-26,height:LOOP.y1-LOOP.y0-26,rx:58,fill:"var(--park)"},city);
+  // rivière, quais et ponts
+  const top="M30 674C250 666 420 682 620 675S1000 666 1210 676",bot="L1210 700C1000 692 820 704 620 699S250 690 30 700Z";
+  S("path",{d:top+bot,fill:"var(--water)"},city);
+  S("path",{d:top,fill:"none",stroke:"var(--water-edge)","stroke-width":2},city);
+  [236,1004].forEach(x=>{S("rect",{x:x-16,y:656,width:32,height:64,fill:"var(--street)"},city);
+    S("path",{d:`M${x-16} 664V712M${x+16} 664V712`,stroke:"var(--ink-2)","stroke-width":2,opacity:.45},city)});
+
+  // quartiers : découpage en îlots de tailles variées, bâtiments, cours et parcs
+  const groups={},r=rng(5);
+  const TREES=["var(--tree)","var(--tree-2)","var(--tree-3)"];
+  const plant=(g,x,y,rad)=>{S("circle",{cx:x+rad*.25,cy:y+rad*.3,r:rad,fill:"#000",opacity:.12},g);
+    S("circle",{cx:x,cy:y,r:rad,fill:TREES[Math.floor(r()*3)]},g);
+    if(rad>5)S("circle",{cx:x-rad*.32,cy:y-rad*.32,r:rad*.38,fill:"#fff",opacity:.18},g)};
+  const grove=(g,x,y,w,h,dens)=>{const n=Math.max(1,Math.round(w*h/dens)),pts=[];
+    for(let i=0;i<n*4&&pts.length<n;i++){const rad=3.5+r()*5.5,px=x+rad+r()*(w-2*rad),py=y+rad+r()*(h-2*rad);
+      if(w<2*rad||h<2*rad)continue;if(pts.some(([qx,qy,qr])=>Math.hypot(px-qx,py-qy)<(qr+rad)*.72))continue;pts.push([px,py,rad])}
+    pts.sort((a,b)=>a[1]-b[1]).forEach(([px,py,rad])=>plant(g,px,py,rad))};
+  const bldg=(g,x,y,w,h,f)=>{S("rect",{x:x+1.8,y:y+2.2,width:w,height:h,rx:1.5,fill:"#000",opacity:.14},g);S("rect",{x,y,width:w,height:h,rx:1.5,fill:f},g)};
+  Object.keys(BASE).forEach(id=>{const B=BASE[id],g=S("g",{class:"qd","data-q":id},city);groups[id]=g;
+    S("path",{class:"terr",d:roundPath(B,18),fill:tint(id,14),stroke:`var(--${id})`,"stroke-width":2.5,style:`--qc:var(--${id})`},g);
+    const xs=B.map(p=>p[0]),ys=B.map(p=>p[1]),o=POS[id];
+    const lw=Math.max(Q[id].l1.length*14,Q[id].keys.length*7.2)+56;
+    const blocked=(x,y,w,h)=>{if(x+w>o.lab[0]-8&&x<o.lab[0]+lw&&y+h>o.lab[1]-26&&y<o.lab[1]+88)return true;
+      const dx=Math.max(o.lm[0]-x-w,0,x-o.lm[0]),dy=Math.max(o.lm[1]-y-h,0,y-o.lm[1]);return Math.hypot(dx,dy)<80};
+    const leaves=[];
+    const clean=(x,y,w,h)=>[[x-3,y-3],[x+w+3,y-3],[x-3,y+h+3],[x+w+3,y+h+3]].every(([u,v])=>inPoly(u,v,B))&&!blocked(x,y,w,h);
+    (function split(x,y,w,h,d){if(w<14||h<12)return;const ok=clean(x,y,w,h);
+      if(!ok&&w<24&&h<18)return;
+      const big=w>150||h>110,stop=ok&&!big&&(d>=5||(w<92&&h<64)||r()<.18);
+      if(stop||(ok&&w<44&&h<34)){leaves.push([x,y,w,h]);return}
+      if(!ok&&d>9)return;
+      const vert=w/h>1.15?true:w/h<.85?false:r()<.5,gap=d<2?10:d<3?7:5;
+      if(vert){const c=w*(.35+r()*.3);split(x,y,c-gap/2,h,d+1);split(x+c+gap/2,y,w-c-gap/2,h,d+1)}
+      else{const c=h*(.35+r()*.3);split(x,y,w,c-gap/2,d+1);split(x,y+c+gap/2,w,h-c-gap/2,d+1)}
+    })(Math.min(...xs)+9,Math.min(...ys)+9,Math.max(...xs)-Math.min(...xs)-18,Math.max(...ys)-Math.min(...ys)-18,0);
+    leaves.forEach(([x,y,w,h])=>{
+      if(w<14||h<12)return;
+      const c=[[x-3,y-3],[x+w+3,y-3],[x-3,y+h+3],[x+w+3,y+h+3]];if(!c.every(([u,v])=>inPoly(u,v,B)))return;
+      if(blocked(x,y,w,h))return;
+      const k=r(),shade=()=>tint(id,[36,44,54,64][Math.floor(r()*4)]);
+      if(k<.11&&w>34&&h>26){S("rect",{x,y,width:w,height:h,rx:5,fill:"var(--park)"},g);grove(g,x+2,y+2,w-4,h-4,150);return}
+      if(k<.45&&w>40&&h>30){const f=shade(),t=6+r()*4;bldg(g,x,y,w,h,f);
+        S("rect",{x:x+t,y:y+t,width:w-2*t,height:h-2*t,rx:1,fill:tint(id,10)},g);
+        if(w-2*t>18&&h-2*t>14&&r()<.5)plant(g,x+w/2,y+h/2,Math.min(w-2*t,h-2*t)/2-2);
+        if(r()<.6){const sx=x+t+(w-2*t)*(.3+r()*.4);S("rect",{x:sx-1.5,y:y+t,width:3,height:h-2*t,fill:f},g)}return}
+      const n=Math.max(1,Math.min(5,Math.round((w>h?w:h)/(14+r()*16))));let pos=0;
+      for(let i=0;i<n;i++){const part=i===n-1?1-pos:(1/n)*(.7+r()*.6),f=shade();
+        if(w>h){const bx=x+pos*w,bw=part*w-(i<n-1?2:0),bh=h*(r()<.25?.55+r()*.3:1);bldg(g,bx,y,bw,h*(bh<h?1:1)>0?bh:h,f)}
+        else{const by=y+pos*h,bh=part*h-(i<n-1?2:0),bw=w*(r()<.25?.55+r()*.3:1);bldg(g,x,by,bw,bh,f)}
+        pos+=part}});
+  });
+
+  // ligne de tram : une boucle qui longe chaque quartier
+  const tram=S("g",{},svg);
+  S("path",{d:LOOPD,fill:"none",stroke:"var(--street)","stroke-width":28},tram);
+  {const pk=[],ix0=LOOP.x0+14,iy0=LOOP.y0+14,ix1=LOOP.x1-14,iy1=LOOP.y1-14;
+   for(let i=0;i<1600&&pk.length<120;i++){const rad=3.5+r()*6,x=ix0+rad+r()*(ix1-ix0-2*rad),y=iy0+rad+r()*(iy1-iy0-2*rad);
+    if(Math.hypot(x-CX,y-CY)<GOV+12+rad)continue;if(y+rad>660&&y-rad<712)continue;
+    const cx=Math.min(Math.max(x,ix0+56),ix1-56),cy=Math.min(Math.max(y,iy0+56),iy1-56);if(Math.hypot(x-cx,y-cy)>56-rad)continue;
+    if(pk.some(([qx,qy,qr])=>Math.hypot(x-qx,y-qy)<(qr+rad)*.78))continue;pk.push([x,y,rad])}
+   pk.sort((p1,p2)=>p1[1]-p2[1]).forEach(([x,y,rad])=>plant(tram,x,y,rad))}
+  const loop=S("path",{d:LOOPD,fill:"none",stroke:"var(--tram)","stroke-width":7,"stroke-linejoin":"round"},tram);
+  [[425,590,-90],[425,380,-90],[815,380,90],[815,590,90]].forEach(([x,y,t])=>{
+    S("circle",{cx:x,cy:y,r:11,fill:"var(--tram)"},tram);
+    S("path",{d:"M-3 -5L3 0L-3 5",fill:"none",stroke:"var(--paper)","stroke-width":2.6,"stroke-linecap":"round","stroke-linejoin":"round",transform:`translate(${x} ${y}) rotate(${t})`},tram)});
+
+  // remparts (quartier 6)
+  const wall=S("g",{class:"qd wall","data-q":"q6"},svg);
+  S("rect",{class:"qshape",x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:34,fill:"none",stroke:"var(--q6)","stroke-width":7},wall);
+  S("rect",{x:X0-9,y:Y0-9,width:WALL.w+18,height:WALL.h+18,rx:42,fill:"none",stroke:"var(--q6)","stroke-width":7,"stroke-dasharray":"16 12"},wall);
+  TOWERS.forEach(t=>{const w=t.t.length*10.5+34;
+    S("rect",{x:t.x-w/2,y:t.y-17,width:w,height:34,rx:8,fill:"var(--q6)"},wall);
+    S("text",{x:t.x,y:t.y+6,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"var(--on-q)"},wall,t.t)});
+  S("rect",{x:CX-210,y:Y0-22,width:420,height:44,rx:22,fill:"var(--paper)",stroke:"var(--q6)","stroke-width":3},wall);
+  S("circle",{cx:CX-184,cy:Y0,r:14,fill:"var(--q6)"},wall);
+  S("text",{x:CX-184,y:Y0+6,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},wall,"6");
+  S("text",{x:CX-162,y:Y0+7,"font-size":19,"font-weight":700,fill:"var(--ink)"},wall,"Sécurité & conformité");
+  S("text",{x:CX+58,y:Y0+7,"font-size":16,"font-style":"italic",fill:"var(--ink-2)"},wall,"· les remparts");
+
+  // centre-ville : la mairie et son parvis
+  const gov=S("g",{class:"qd","data-q":"q2"},svg);
+  S("circle",{cx:CX,cy:CY,r:GOV+8,fill:"var(--street)"},gov);
+  S("circle",{class:"qshape terr",cx:CX,cy:CY,r:GOV,fill:tint("q2",20),stroke:"var(--q2)","stroke-width":3,style:"--qc:var(--q2)"},gov);
+  landmark("q2",S("g",{transform:`translate(${CX} ${CY-40}) scale(.78)`},gov));
+  S("circle",{cx:CX-76,cy:CY+20,r:15,fill:"var(--q2)"},gov);
+  S("text",{x:CX-76,y:CY+26,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},gov,"2");
+  S("text",{class:"halo",x:CX-55,y:CY+28,"font-size":23,"font-weight":700,fill:"var(--ink)"},gov,"Gouvernance");
+  S("text",{class:"halo",x:CX,y:CY+54,"text-anchor":"middle","font-size":15.5,"font-style":"italic","font-weight":700,fill:"var(--q2)"},gov,"La mairie");
+  S("text",{class:"halo",x:CX,y:CY+76,"text-anchor":"middle","font-size":13.5,fill:"var(--ink-2)"},gov,"Vision · FDR · CMI");
+
+  // monuments et noms de quartiers
+  Object.entries(POS).forEach(([id,o])=>{const g=S("g",{class:"qd","data-q":id,"data-nokb":"1"},svg),q=Q[id],[x,y]=o.lab,[lx,ly]=o.lm;
+    S("circle",{cx:lx,cy:ly,r:74,fill:"var(--paper)",stroke:`var(--${id})`,"stroke-width":4},g);
+    landmark(id,S("g",{transform:`translate(${lx} ${ly+4}) scale(.97)`},g));
+    S("circle",{cx:x+18,cy:y,r:18,fill:`var(--${id})`},g);
+    S("text",{x:x+18,y:y+6.5,"text-anchor":"middle","font-size":19,"font-weight":700,fill:"var(--on-q)"},g,q.n);
+    S("text",{class:"halo",x:x+46,y:y+8,"font-size":25,"font-weight":700,fill:"var(--ink)"},g,q.l1);
+    S("text",{class:"halo",x:x+46,y:y+32,"font-size":(q.l2.length>14?17:20),"font-weight":700,fill:"var(--ink)"},g,q.l2);
+    S("text",{class:"halo",x:x+46,y:y+58,"font-size":17,"font-style":"italic","font-weight":700,fill:`var(--${id})`},g,q.place);
+    S("text",{class:"halo",x:x+46,y:y+80,"font-size":14,fill:"var(--ink-2)"},g,q.keys);
+  });
+
+  // stations
+  Object.entries(POS).forEach(([id,o])=>{const[px,py]=STP[id],c=`var(--${id})`,sg=S("g",{class:"qd","data-q":id,"data-nokb":"1"},svg);
+    const w=o.verb.length*9.6+50,x0=px-w/2;
+    S("rect",{x:x0,y:py-14,width:w,height:28,rx:14,fill:"var(--paper)",stroke:c,"stroke-width":3.5},sg);
+    S("circle",{cx:x0+15,cy:py,r:10,fill:c},sg);
+    S("text",{x:x0+15,y:py+4.5,"text-anchor":"middle","font-size":13,"font-weight":700,fill:"var(--on-q)"},sg,Q[id].n);
+    S("text",{x:x0+30+(w-30)/2-4,y:py+5,"text-anchor":"middle","font-size":13,"font-weight":700,"letter-spacing":"1",fill:"var(--ink)"},sg,o.verb.toUpperCase())});
+
+  const arrows=S("g",{},svg);
+  let car=null;
+  if(interactive){
+    car=S("g",{class:"tramcar"},svg);
+    S("rect",{x:-17,y:-8,width:34,height:16,rx:6,fill:"var(--tram)",stroke:"var(--paper)","stroke-width":2.5},car);
+    [-9,0,9].forEach(dx=>S("rect",{x:dx-3,y:-4,width:6,height:5,rx:1,fill:"var(--paper)"},car));
+  }
+  return {arrows,loop,car};
+}
+
+/* ---------- vue 3D isométrique ---------- */
+let ISO=false;
+const IS=0.8, WH=26;
+const P=(x,y,z=0)=>{const u=x-CX,v=y-CY;return[(u-v)*0.866*IS,(u+v)*0.5*IS-z]};
+const pts=a=>a.map(p=>p.map(n=>n.toFixed(1)).join(",")).join(" ");
+const shade=(c,k)=>`color-mix(in srgb, ${c} ${100-k}%, #000)`;
+function box(g,bx,by,w,h,z,top,east,south,stroke){
+  const A=P(bx,by,z),B=P(bx+w,by,z),C=P(bx+w,by+h,z),D=P(bx,by+h,z),B0=P(bx+w,by),C0=P(bx+w,by+h),D0=P(bx,by+h);
+  const st=stroke?{stroke,"stroke-width":1.5,"stroke-linejoin":"round"}:{};
+  S("polygon",{points:pts([B0,C0,C,B]),fill:east,...st},g);
+  S("polygon",{points:pts([D0,C0,C,D]),fill:south,...st},g);
+  S("polygon",{points:pts([A,B,C,D]),fill:top,...st},g);
+}
+function buildIso(svg){
+  const p="m";
+  svg.innerHTML="";svg.setAttribute("viewBox","-745 -470 1490 880");
+  const defs=S("defs",{},svg);
+  ["q1","q2","q3","q4","q5","q6","q7","q8"].forEach(id=>{const m=S("marker",{id:p+"-ar-"+id,viewBox:"0 0 10 10",refX:7,refY:5,markerWidth:5,markerHeight:5,orient:"auto-start-reverse"},defs);
+    S("path",{d:"M0 0L10 5L0 10z",style:`fill:var(--${id})`},m)});
+  const POLY={};let seed=3;Object.keys(BASE).forEach(id=>{POLY[id]=notch(BASE[id],seed+=17)});
+  const Q6="var(--q6)",q6e=`color-mix(in srgb, var(--q6) 80%, var(--paper))`,q6s=shade("var(--q6)",18);
+
+  // sol
+  const ground=S("g",{},svg);
+  S("polygon",{points:pts([P(X0,Y0),P(X1,Y0),P(X1,Y1),P(X0,Y1)]),fill:"var(--street)"},ground);
+  Object.keys(BASE).forEach(id=>{const g=S("g",{class:"qd","data-q":id},ground);
+    S("polygon",{class:"terr",points:pts(POLY[id].map(([x,y])=>P(x,y))),fill:tint(id,22),stroke:`var(--${id})`,"stroke-width":2,"stroke-linejoin":"round",style:`--qc:var(--${id})`},g)});
+  // boulevard et tram
+  const ringPts=Array.from({length:97},(_,i)=>{const a=180+i*360/96;const e=ell(a);return P(e.x,e.y)});
+  const loopD="M"+ringPts.map(p=>p.map(n=>n.toFixed(1)).join(" ")).join("L");
+  S("path",{d:loopD,fill:"none",stroke:"var(--street)","stroke-width":22},ground);
+  const loop=S("path",{d:loopD,fill:"none",stroke:"var(--tram)","stroke-width":5.5},ground);
+
+  // remparts arrière
+  const wallBack=S("g",{class:"qd wall","data-q":"q6","data-nokb":"1"},svg);
+  box(wallBack,X0-12,Y0-12,WALL.w+12,12,WH,Q6,q6e,q6s);
+  box(wallBack,X0-12,Y0,12,WALL.h,WH,Q6,q6e,q6s);
+  for(let x=X0-6;x<X1-10;x+=44)box(wallBack,x,Y0-12,16,12,WH+9,Q6,q6e,q6s);
+  for(let y=Y0+20;y<Y1-10;y+=44)box(wallBack,X0-12,y,12,16,WH+9,Q6,q6e,q6s);
+  TOWERS.filter(t=>t.y===Y0).forEach(t=>box(wallBack,t.x-24,Y0-30,48,48,WH+34,Q6,q6e,q6s));
+
+  // volumes triés de l'arrière vers l'avant
+  const items=[],r=rng(11);
+  for(let x=X0+14;x<X1-20;x+=42){for(let y=Y0+14;y<Y1-16;y+=36){
+    const w=24+r()*12,h=18+r()*10,bx=x+r()*5,by=y+r()*5,mx=bx+w/2,my=by+h/2,hz=r(),skip=r()<.12;if(skip)continue;
+    let id=null;const pad=4,corners=[[bx-pad,by-pad],[bx+w+pad,by-pad],[bx-pad,by+h+pad],[bx+w+pad,by+h+pad]];
+    for(const k in POLY){if(corners.every(([u,v])=>inPoly(u,v,POLY[k]))){id=k;break}}
+    if(id){const o=POS[id];if(mx>o.lab[0]-12&&mx<o.lab[0]+262&&my>o.lab[1]-34&&my<o.lab[1]+94)continue;if(Math.hypot(mx-o.lm[0],my-o.lm[1])<80)continue;
+      const z=(id==="q4"?22:14)+hz*(id==="q4"?44:30),c=`var(--${id})`;
+      items.push({d:bx+w+by+h,id,f:g=>box(g,bx,by,w,h,z,tint(id,hz<.3?62:44),`color-mix(in srgb, ${c} 62%, var(--paper))`,shade(c,12))});}
+    else{if(Object.values(POLY).some(P_=>corners.some(([u,v])=>inPoly(u,v,P_))))continue;
+      if(Math.hypot((mx-CX)/(ORX-4),(my-CY)/(ORY-4))<1||mx<X0+20||mx>X1-30||my<Y0+20||my>Y1-30)continue;
+      items.push({d:bx+w+by+h,id:null,f:g=>box(g,bx,by,w,h,8+hz*10,"var(--block)",shade("var(--block)",10),shade("var(--block)",20))});}
+  }}
+  // monuments sur socle
+  Object.entries(POS).forEach(([id,o])=>{const[lx,ly]=o.lm,c=`var(--${id})`;
+    items.push({d:lx+ly+70,id,f:g=>{box(g,lx-46,ly-46,92,92,16,"var(--paper)",`color-mix(in srgb, ${c} 35%, var(--paper))`,`color-mix(in srgb, ${c} 60%, var(--paper))`,c);
+      const[sx,sy]=P(lx,ly,16);landmark(id,S("g",{transform:`translate(${sx} ${sy-44}) scale(1.2)`},g));}})});
+  // mairie au centre
+  items.push({d:CX+CY,id:"q2",f:g=>{const ring=z=>Array.from({length:60},(_,i)=>{const a=i*6*Math.PI/180;return P(CX+GOV*Math.cos(a),CY+GOV*Math.sin(a),z)});
+    S("polygon",{points:pts(ring(0)),fill:shade("var(--q2)",25)},g);
+    S("polygon",{class:"terr",points:pts(ring(14)),fill:tint("q2",28),stroke:"var(--q2)","stroke-width":2.5,style:"--qc:var(--q2)"},g);
+    const[sx,sy]=P(CX,CY,14);landmark("q2",S("g",{transform:`translate(${sx} ${sy-30}) scale(1)`},g));}});
+  items.sort((a,b)=>a.d-b.d).forEach(it=>{const g=S("g",{class:"qd","data-q":it.id||"none","data-nokb":"1"},svg);if(!it.id)g.classList.remove("qd");it.f(g)});
+
+  // remparts avant
+  const wallFront=S("g",{class:"qd wall","data-q":"q6"},svg);
+  box(wallFront,X1,Y0-12,12,WALL.h+12,WH,Q6,q6e,q6s);
+  for(let y=Y0+20;y<Y1;y+=44)box(wallFront,X1,y,12,16,WH+9,Q6,q6e,q6s);
+  box(wallFront,X0-12,Y1,WALL.w+24,12,WH,Q6,q6e,q6s);
+  for(let x=X0-6;x<X1;x+=44)box(wallFront,x,Y1,16,12,WH+9,Q6,q6e,q6s);
+  TOWERS.filter(t=>t.y===Y1).forEach(t=>box(wallFront,t.x-24,Y1-18,48,48,WH+34,Q6,q6e,q6s));
+
+  // panneaux
+  const signs=S("g",{},svg);
+  TOWERS.forEach(t=>{const[sx,sy]=P(t.x,t.y,WH+34),w=t.t.length*9.5+26,g=S("g",{class:"qd wall","data-q":"q6","data-nokb":"1"},signs);
+    S("rect",{x:sx-w/2,y:sy-44,width:w,height:28,rx:7,fill:"var(--q6)"},g);
+    S("text",{x:sx,y:sy-25,"text-anchor":"middle","font-size":15,"font-weight":700,fill:"var(--on-q)"},g,t.t)});
+  {const sx=260,sy=-400,g=S("g",{class:"qd wall","data-q":"q6","data-nokb":"1"},signs);
+    S("rect",{x:sx-150,y:sy-20,width:300,height:40,rx:20,fill:"var(--paper)",stroke:"var(--q6)","stroke-width":3},g);
+    S("circle",{cx:sx-126,cy:sy,r:13,fill:"var(--q6)"},g);
+    S("text",{x:sx-126,y:sy+5.5,"text-anchor":"middle","font-size":15,"font-weight":700,fill:"var(--on-q)"},g,"6");
+    S("text",{x:sx-106,y:sy+6,"font-size":17,"font-weight":700,fill:"var(--ink)"},g,"Sécurité & conformité");
+    S("text",{x:sx+88,y:sy+6,"font-size":14,"font-style":"italic",fill:"var(--ink-2)"},g,"remparts");}
+  const LBL={q3:[-400,-395],q1:[-600,-255],q8:[-600,145],q7:[-320,335],q5:[540,260],q4:[520,-250]};
+  Object.entries(LBL).forEach(([id,[lx,ly]])=>{const q=Q[id],B=BASE[id],cx=B.reduce((t,p)=>t+p[0],0)/B.length,cy=B.reduce((t,p)=>t+p[1],0)/B.length,[gx,gy]=P(cx,cy);
+    const g=S("g",{class:"qd","data-q":id,"data-nokb":"1"},signs),w=Math.max(q.l1.length*11.5,q.l2.length*8.6,q.place.length*7.8)+62,h=78;
+    S("line",{x1:lx,y1:ly,x2:gx,y2:gy,stroke:"var(--paper)","stroke-width":6,"stroke-linecap":"round"},g);
+    S("line",{x1:lx,y1:ly,x2:gx,y2:gy,stroke:`var(--${id})`,"stroke-width":2.5,"stroke-dasharray":"2 5","stroke-linecap":"round"},g);
+    S("circle",{cx:gx,cy:gy,r:7,fill:`var(--${id})`,stroke:"var(--paper)","stroke-width":3},g);
+    const top=ly-h/2,x=lx-w/2;
+    S("rect",{x,y:top,width:w,height:h,rx:10,fill:"var(--paper)",stroke:`var(--${id})`,"stroke-width":3},g);
+    S("circle",{cx:x+27,cy:top+24,r:15,fill:`var(--${id})`},g);
+    S("text",{x:x+27,y:top+30,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},g,q.n);
+    S("text",{x:x+50,y:top+30,"font-size":21,"font-weight":700,fill:"var(--ink)"},g,q.l1);
+    S("text",{x:x+50,y:top+50,"font-size":15,"font-weight":700,fill:"var(--ink)"},g,q.l2);
+    S("text",{x:x+50,y:top+69,"font-size":14,"font-style":"italic","font-weight":700,fill:`var(--${id})`},g,q.place)});
+  {const g=S("g",{class:"qd","data-q":"q2","data-nokb":"1"},signs);
+    S("circle",{cx:-62,cy:24,r:13,fill:"var(--q2)"},g);
+    S("text",{x:-62,y:29.5,"text-anchor":"middle","font-size":15,"font-weight":700,fill:"var(--on-q)"},g,"2");
+    S("text",{class:"halo",x:-44,y:31,"font-size":20,"font-weight":700,fill:"var(--ink)"},g,"Gouvernance");
+    S("text",{class:"halo",x:0,y:50,"text-anchor":"middle","font-size":13.5,"font-style":"italic","font-weight":700,fill:"var(--q2)"},g,"La mairie");}
+  Object.values(POS).forEach(o=>{const e=ell(o.a),[sx,sy]=P(e.x,e.y),w=o.verb.length*8.6+20;
+    S("rect",{x:sx-w/2,y:sy-12,width:w,height:24,rx:12,fill:"var(--paper)",stroke:"var(--tram)","stroke-width":3},signs);
+    S("text",{x:sx,y:sy+4.5,"text-anchor":"middle","font-size":12,"font-weight":700,"letter-spacing":"1",fill:"var(--ink)"},signs,o.verb.toUpperCase())});
+
+  const arrows=S("g",{},svg);
+  const car=S("g",{class:"tramcar"},svg);
+  S("rect",{x:-14,y:-7,width:28,height:14,rx:5,fill:"var(--tram)",stroke:"var(--paper)","stroke-width":2},car);
+  return {arrows,loop,car};
+}
+
+/* ---------- connexions ---------- */
+function anchor(id){
+  if(ISO){if(id==="q2"){const[x,y]=P(CX,CY,20);return{x,y,r:60}}if(id==="q6"){const[x,y]=P(990,60,WH+34);return{x,y,r:20}}const e=ell(POS[id].a),[x,y]=P(e.x,e.y);return{x,y,r:18}}
+  if(id==="q2")return{x:CX,y:CY,r:GOV+6};
+  if(id==="q6")return{x:990,y:60,r:24};
+  const[x,y]=STP[id];return{x,y,r:24};
+}
+function edge(a,tx,ty){const dx=tx-a.x,dy=ty-a.y,d=Math.hypot(dx,dy)||1;return{x:a.x+dx/d*a.r,y:a.y+dy/d*a.r}}
+function drawArrows(layer,from,prefix){
+  layer.innerHTML="";if(!from)return;
+  Q[from].cx.forEach(([to])=>{if(to==="all")return;
+    const A=anchor(from),B=anchor(to);
+    const mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y,L=Math.hypot(dx,dy);
+    let c={x:mx-dy*.22,y:my+dx*.22};const c2={x:mx+dy*.22,y:my-dx*.22};const cc=ISO?{x:0,y:0}:{x:CX,y:CY};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
+    const p0=edge(A,c.x,c.y),p1=edge(B,c.x,c.y);
+    S("path",{d:`M${p0.x} ${p0.y}Q${c.x} ${c.y} ${p1.x} ${p1.y}`,class:"arrow",stroke:"var(--paper)","stroke-width":9},layer);
+    S("path",{d:`M${p0.x} ${p0.y}Q${c.x} ${c.y} ${p1.x} ${p1.y}`,class:"arrow",stroke:`var(--${from})`,"marker-end":`url(#${prefix}-ar-${from})`},layer);
+  });
+}
+
+/* ---------- état ---------- */
+const svg=document.getElementById("map"), panel=document.getElementById("panel");
+let M=buildMap(svg,true);
+let sel=null, role=null;
+
+function targets(id){const s=new Set();Q[id].cx.forEach(([t])=>{if(t==="all")ORDER.forEach(o=>s.add(o));else s.add(t)});s.delete(id);return s}
+function incoming(id){return ORDER.filter(o=>o!==id&&Q[o].cx.some(([t])=>t===id))}
+function qbtn(id,sub){const q=Q[id];return `<button type="button" class="qlink" data-go="${id}" style="--c:var(--${id})"><span class="mini">${q.n}</span><span><b>${q.name}</b>${sub?`<small>${sub}</small>`:""}</span></button>`}
+
+function apply(){
+  const lit=sel?targets(sel):role?new Set(ROLES.find(r=>r.id===role).q):null;
+  svg.classList.toggle("has-sel",!!lit);
+  svg.classList.toggle("sel-q2",sel==="q2");
+  svg.querySelectorAll(".qd").forEach(g=>{const id=g.dataset.q;
+    g.classList.toggle("sel",id===sel);g.classList.toggle("lit",!!lit&&lit.has(id))});
+  drawArrows(M.arrows,sel,"m");
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.role===role));
+  renderPanel();
+}
+function renderPanel(){
+  if(sel){const q=Q[sel];let h=`<div class="p-head" style="--c:var(--${sel})"><span class="badge">${q.n}</span><div><p class="eyebrow">Quartier ${q.n} · ${q.place}</p><h2>${q.name}</h2></div></div>
+    <div style="--c:var(--${sel})"><p class="lead">${q.lead}</p><p>${q.text}</p>`;
+    q.sections.forEach(s=>{h+=`<h3>${s.title}</h3>`;
+      if(s.roles){h+=`<dl>`+ROLES.filter(r=>r.g==="team").map(r=>`<div><dt>${r.name}</dt><dd>${r.mission}. ${r.contrib}.</dd></div>`).join("")+`</dl>`}
+      else h+=`<dl>`+s.items.map(([t,d])=>`<div><dt>${t}</dt><dd>${d}</dd></div>`).join("")+`</dl>`});
+    if(q.note)h+=`<h3>À retenir</h3><p class="note">${q.note}</p>`;
+    h+=`<h3>Ce quartier alimente</h3><ul class="links">`+q.cx.map(([t,txt])=>t==="all"?`<li><p class="note" style="margin:0">Tous les quartiers : ${txt.replace(/^.*?: /,"")}</p></li>`:`<li>${qbtn(t,txt)}</li>`).join("")+`</ul>`;
+    const inc=incoming(sel);if(inc.length)h+=`<h3>Il reçoit de</h3><ul class="links">`+inc.map(o=>`<li>${qbtn(o,Q[o].cx.find(([t])=>t===sel)[1])}</li>`).join("")+`</ul>`;
+    panel.innerHTML=h+`</div>`;}
+  else if(role){const r=ROLES.find(x=>x.id===role);
+    panel.innerHTML=`<p class="eyebrow" style="--c:var(--ink-2)">${r.g==="team"?"Équipe produit":"Écosystème utilisateurs"}</p><h2>${r.name}</h2>
+      <p class="lead">${r.mission}.</p><p>${r.contrib}.</p><h3>Où intervient ce rôle</h3><ul class="links">${r.q.map(id=>`<li>${qbtn(id,Q[id].place)}</li>`).join("")}</ul>
+      <p class="hint" style="margin-top:14px">Les quartiers concernés sont mis en évidence sur la carte.</p>`}
+  else{panel.innerHTML=`<h2>Comment lire la carte</h2>
+    <p style="margin-top:10px">Le mode produit est une ville. Chaque quartier est un pilier de la démarche ; les rues et la ligne de tram montrent comment ils échangent.</p>
+    <dl style="margin:14px 0">
+      <div><dt>Au centre, la mairie</dt><dd>La gouvernance (vision, feuille de route, CMI) valide et alimente tous les quartiers.</dd></div>
+      <div><dt>En boucle, la ligne produit</dt><dd>Écouter, comprendre, construire, livrer, exploiter, mesurer… puis recommencer. On avance par itérations, pas en ligne droite.</dd></div>
+      <div><dt>Tout autour, les remparts</dt><dd>Sécurité, accessibilité, RGPD et souveraineté protègent toute la ville, dès la conception.</dd></div>
+    </dl>
+    <h3>Les huit quartiers</h3><ul class="links">${ORDER.map(id=>`<li>${qbtn(id,Q[id].place)}</li>`).join("")}</ul>
+    <p class="hint" style="margin-top:14px">Cliquez sur un quartier, ou utilisez <kbd>←</kbd> <kbd>→</kbd>. Choisissez un rôle en haut pour voir où il intervient.</p>`}
+}
+function select(id){sel=id;role=null;apply();try{history.replaceState(null,"",id?"#"+id:"#carte")}catch(e){}}
+
+function bind(){svg.querySelectorAll(".qd:not([data-nokb])").forEach(g=>{
+  g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label","Quartier "+Q[g.dataset.q].n+" : "+Q[g.dataset.q].name)})}
+bind();
+svg.addEventListener("click",e=>{const g=e.target.closest(".qd");if(g&&Q[g.dataset.q])select(sel===g.dataset.q?null:g.dataset.q)});
+svg.addEventListener("keydown",e=>{const g=e.target.closest(".qd");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();select(g.dataset.q)}});
+document.getElementById("mode")?.addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(!b)return;const want=b.dataset.mode==="3d";if(want===ISO)return;
+  ISO=want;M=buildMap(svg,true);bind();apply();
+  document.querySelectorAll("#mode [data-mode]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));});
+panel.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b)select(b.dataset.go)});
+
+const rolesEl=document.getElementById("roles");
+rolesEl.innerHTML=`<span class="lbl">Rôle</span>`+ROLES.filter(r=>r.g==="team").map(r=>`<button type="button" class="chip" data-role="${r.id}" aria-pressed="false">${r.abbr||r.name}</button>`).join("")
+  +`<span class="sep"></span>`+ROLES.filter(r=>r.g==="users").map(r=>`<button type="button" class="chip" data-role="${r.id}" aria-pressed="false">${r.abbr||r.name}</button>`).join("");
+rolesEl.addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;role=role===c.dataset.role?null:c.dataset.role;sel=null;apply()});
+
+const step=d=>{const i=sel?ORDER.indexOf(sel):(d>0?-1:ORDER.length);select(ORDER[(i+d+ORDER.length)%ORDER.length])};
+document.getElementById("prev").onclick=()=>step(-1);
+document.getElementById("next").onclick=()=>step(1);
+document.getElementById("home").onclick=()=>{role=null;select(null)};
+document.addEventListener("keydown",e=>{if(view!=="map"||e.target.closest("input,textarea"))return;
+  if(e.key==="ArrowRight"){e.preventDefault();step(1)}else if(e.key==="ArrowLeft"){e.preventDefault();step(-1)}else if(e.key==="Escape"){role=null;select(null)}});
+
+/* tram */
+(function(){if(!M.car||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  let t0=null;
+  function f(ts){if(t0==null)t0=ts;const L=M.loop.getTotalLength(),s=((ts-t0)/26000%1)*L,a=M.loop.getPointAtLength(s),b=M.loop.getPointAtLength((s+2)%L);
+    M.car.setAttribute("transform",`translate(${a.x} ${a.y}) rotate(${Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI})`);requestAnimationFrame(f)}
+  requestAnimationFrame(f)})();
+
+/* ---------- version à plat ---------- */
+function card(id){const q=Q[id];
+  const cx=q.cx.map(([t])=>t==="all"?"tous les quartiers":Q[t].n+" "+Q[t].short);
+  return `<article class="card" style="--c:var(--${id})"><div class="p-head"><span class="badge">${q.n}</span><div><p class="eyebrow">${q.place}</p><h2>${q.name}</h2></div></div>
+    <p class="lead">${q.lead}</p><ul>${q.poster.map(x=>`<li>${x}</li>`).join("")}</ul><p class="cx"><b>→</b> Alimente : ${cx.join(" · ")}</p></article>`}
+function buildPoster(){
+  const sh=document.getElementById("sheet");
+  sh.innerHTML=`<div class="sh-head"><div><p class="kicker">SNUM · Sous-direction projets produits</p><h1>Cadre commun du mode produit</h1>
+      <p class="sub">Comprendre un problème réel d’usagers, construire par itérations, mesurer, sécuriser et faire vivre le service en continu. Inspiré de l’approche Startup d’État / beta.gouv.fr de la DINUM.</p></div>
+    <div class="sh-legend"><span><i class="lg-c"></i>Mairie : la gouvernance</span><span><i class="lg-t"></i>Ligne produit : la boucle</span>
+      <span><i class="lg-w"></i>Remparts : sécurité et conformité</span><span><b style="color:var(--ink)">1 → 8</b>&nbsp;numéros du cadre commun</span></div></div>
+    <div class="sh-body"><div class="sh-col">${card("q3")}${card("q1")}${card("q8")}</div>
+      <div class="sh-center"><svg id="pmap" role="img" aria-label="Carte de la ville du mode produit"></svg><div class="sh-pair">${card("q2")}${card("q6")}</div></div>
+      <div class="sh-col">${card("q4")}${card("q5")}${card("q7")}</div></div>`;
+  buildMap(document.getElementById("pmap"),false);
+}
+function fitPoster(){const w=document.getElementById("sheet-wrap"),avail=document.getElementById("poster-view").clientWidth;
+  const s=Math.min(1,avail/1587);w.style.transform=`scale(${s})`;w.style.width="1587px";w.style.height=(1123*s)+"px";}
+
+/* ---------- vues ---------- */
+let view="map", posterBuilt=false;
+function route(){const h=location.hash.slice(1);
+  view=h==="a-plat"?"flat":"map";
+  document.documentElement.classList.toggle("poster-mode",view==="flat");
+  document.getElementById("explore-view").hidden=view!=="map";
+  document.getElementById("poster-view").hidden=view!=="flat";
+  document.getElementById("v-map").setAttribute("aria-current",view==="map"?"page":"false");
+  document.getElementById("v-flat").setAttribute("aria-current",view==="flat"?"page":"false");
+  if(view==="flat"){if(!posterBuilt){buildPoster();posterBuilt=true}fitPoster()}
+  else{sel=Q[h]?h:null;role=null;apply()}}
+addEventListener("hashchange",route);addEventListener("resize",()=>{if(view==="flat")fitPoster()});
+route();
+</script>
+
+</body>
+</html>
