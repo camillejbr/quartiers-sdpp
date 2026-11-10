@@ -22,25 +22,25 @@
 :root{
   --page:#FFFFFF; --paper:#FFFFFF; --city:#EEEEEE; --block:#E5E5E5; --street:#FFFFFF;
   --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --dsfr:#000091; --tag:#EEEEEE; --tag-h:#DDDDDD; --tag-bg:#E3E3FD; --tag-bg-h:#C1C1FB; --tag-txt:#000091; --tag-on:#000091; --tag-on-h:#1212FF; --tag-on-txt:#F5F5FE; --alt:#F6F6F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
-  --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A;
+  --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A; --e1:#009099; --e2:#465F9D; --e3:#C08C65;
   --font:"Marianne", "Segoe UI", system-ui, -apple-system, sans-serif; --serif:"Spectral", Georgia, "Times New Roman", serif;
   --r:0;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --page:#161616; --paper:#1E1E1E; --city:#242424; --block:#2A2A2A; --street:#2A2A2A;
   --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --dsfr:#8585F6; --tag:#2A2A2A; --tag-h:#353535; --tag-bg:#1B1B35; --tag-bg-h:#3A3A68; --tag-txt:#8585F6; --tag-on:#8585F6; --tag-on-h:#B1B1F9; --tag-on-txt:#000091; --alt:#242424; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
-  --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73;
+  --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73; --e1:#34BAB5; --e2:#8B9EDB; --e3:#E2B998;
   color-scheme:dark }}
 :root[data-theme="dark"]{
   --page:#161616; --paper:#1E1E1E; --city:#242424; --block:#2A2A2A; --street:#2A2A2A;
   --ink:#EEEEEE; --ink-2:#CECECE; --muted:#929292; --line:#353535; --tram:#DDDDDD; --on-q:#161616; --park:#1F2B1B; --tree:#447049; --tree-2:#2F4A2C; --tree-3:#68A532; --water:#1D2437; --water-edge:#2A3C6B; --dsfr:#8585F6; --tag:#2A2A2A; --tag-h:#353535; --tag-bg:#1B1B35; --tag-bg-h:#3A3A68; --tag-txt:#8585F6; --tag-on:#8585F6; --tag-on-h:#B1B1F9; --tag-on-txt:#000091; --alt:#242424; --lot:#222222; --lot-edge:#353535; --bd-1:#2E2E2E; --bd-2:#353535; --bd-3:#3E3E3E;
-  --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73;
+  --q1:#D8B24B; --q2:#8585F6; --q3:#C383BF; --q4:#6F9DDB; --q5:#E18B76; --q6:#929292; --q7:#21AB8E; --q8:#F09A73; --e1:#34BAB5; --e2:#8B9EDB; --e3:#E2B998;
   color-scheme:dark }
 /* la version à plat est toujours claire (impression) */
 :root.poster-mode{
   --page:#FFFFFF; --paper:#FFFFFF; --city:#EEEEEE; --block:#E5E5E5; --street:#FFFFFF;
   --ink:#161616; --ink-2:#3A3A3A; --muted:#666666; --line:#DDDDDD; --tram:#161616; --on-q:#FFFFFF; --park:#E6F4D9; --tree:#68A532; --tree-2:#447049; --tree-3:#00A95F; --water:#DAE6FD; --water-edge:#A1C0F6; --dsfr:#000091; --tag:#EEEEEE; --tag-h:#DDDDDD; --tag-bg:#E3E3FD; --tag-bg-h:#C1C1FB; --tag-txt:#000091; --tag-on:#000091; --tag-on-h:#1212FF; --tag-on-txt:#F5F5FE; --alt:#F6F6F6; --lot:#F0F0F0; --lot-edge:#DDDDDD; --bd-1:#E5E5E5; --bd-2:#DDDDDD; --bd-3:#CECECE;
-  --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A;
+  --q1:#C3992A; --q2:#000091; --q3:#A558A0; --q4:#417DC4; --q5:#CE614A; --q6:#666666; --q7:#009081; --q8:#E4794A; --e1:#009099; --e2:#465F9D; --e3:#C08C65;
   color-scheme:light }
 
 *{box-sizing:border-box}
@@ -99,12 +99,15 @@ button{font:inherit;color:inherit}
 .legend li{display:flex;gap:9px;align-items:center}
 .legend[data-state="quartier"] .lg-group[data-mode="role"],.legend[data-state="role"] .lg-group[data-mode="quartier"]{opacity:.4}
 .legend[data-state="quartier"] .lg-group[data-mode="quartier"] .lg-title,.legend[data-state="role"] .lg-group[data-mode="role"] .lg-title{color:var(--dsfr)}
+.lg-a.in{background:repeating-linear-gradient(90deg,var(--q3) 0 6px,transparent 6px 10px)}
+.lg-a.both::before{content:"";position:absolute;left:-3px;top:-4px;border:6px solid transparent;border-right:8px solid var(--q3);border-left:0}
+.lg-e{width:22px;height:14px;background:color-mix(in srgb,var(--e2) 10%,var(--paper));border-left:4px solid var(--e2)}
 .lg-box{width:22px;height:14px;background:color-mix(in srgb,var(--q4) 14%,var(--paper));border:2.5px solid var(--q4)}
 .lg-box.part{border-style:dashed}
 .lg-box.off{background:var(--bd-1);border:1px solid var(--bd-3)}
 .legend li i{flex:none}
 .legend i{display:inline-block;flex:none}
-.lg-c{width:14px;height:14px;border-radius:50%;border:2px solid var(--q2)}
+.lg-c{width:14px;height:14px;border-radius:50%;border:2px solid var(--q1)}
 .lg-t{width:22px;height:5px;background:var(--tram)}
 .lg-w{width:22px;height:8px;border:2px solid var(--q6);border-style:solid dashed}
 .lg-a{width:26px;height:4px;background:var(--q3);position:relative}
@@ -181,7 +184,7 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .sh-body{display:grid;grid-template-columns:350px minmax(0,1fr) 350px;gap:16px;min-height:0}
 .sh-col{display:grid;grid-template-rows:repeat(3,1fr);gap:14px;min-height:0}
 .sh-center{display:grid;grid-template-rows:auto 1fr;gap:14px;min-height:0}
-.sh-center svg{width:100%;height:auto;display:block}
+.sh-center svg{height:616px;width:auto;max-width:100%;display:block;margin:0 auto}
 .sh-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:0}
 .card{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:0;padding:12px 14px;background:#fff;min-height:0;overflow:hidden;font-size:11.6px;line-height:1.3}
 .card .p-head{margin-bottom:6px;gap:10px}
@@ -190,9 +193,30 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .card .eyebrow{font-size:11px}
 .card .lead{font-size:13px;margin:0 0 6px}
 .card ul{margin:0;padding-left:16px;display:grid;gap:2px}
-.card .cx{margin-top:5px;color:var(--ink-2);font-size:12px}
+.card .cx{margin-top:3px;color:var(--ink-2);font-size:12px}
 .card .cx b{color:var(--c)}
 
+/* tout visible sans défiler (écrans d'ordinateur, vue carte) */
+@media (min-width: 1051px) and (min-height: 620px){
+  .fit,.fit body{height:100%}
+  .fit body{display:flex;flex-direction:column;overflow:hidden;padding-block:12px}
+  .fit .top{margin-bottom:8px;width:100%;align-items:center}
+  .fit .top h1{font-size:28px}
+  .fit .top .sub{margin-top:2px;font-size:15px}
+  .fit .fr-segmented__legend{display:none}
+  .fit #explore-view{flex:1;min-height:0;display:flex;flex-direction:column;width:100%;max-width:1500px;margin:0 auto}
+  .fit .toolbar{margin-bottom:8px;flex-wrap:nowrap;width:100%}
+  .fit .fr-tag{font-size:.75rem;line-height:1.25rem;min-height:1.5rem;padding:.125rem .5rem;border-radius:.75rem;margin:0 .2rem .25rem}
+  .fit .fr-tags-group>li{line-height:1.9rem}
+  .fit .roles .lbl{font-size:13px}
+  .fit .btn{padding:4px 10px;font-size:13px}
+  .fit .explore{flex:1;min-height:0;align-items:stretch;width:100%;grid-template-columns:minmax(0,1fr) 380px}
+  .fit .mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:14px;min-height:0}
+  .fit .mapwrap svg{width:100%;height:100%;min-height:0}
+  .fit .legend{display:flex;flex-direction:column;gap:14px;border-top:0;border-left:1px solid var(--line);margin:0;padding:4px 0 4px 14px;overflow:auto;font-size:12.5px}
+  .fit .lg-title{font-size:13px}
+  .fit .panel{position:static;max-height:none;min-height:0;overflow:auto;padding:16px 18px}
+}
 @media (max-width: 1050px){
   .explore{grid-template-columns:1fr}
   .panel{position:static;max-height:none}
@@ -241,16 +265,19 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
         <div class="lg-group" data-mode="base">
           <p class="lg-title">Lire la ville</p>
           <ul>
-            <li><i class="lg-c"></i>Mairie : la gouvernance, au centre</li>
+            <li><i class="lg-c"></i>Au centre : les acteurs et l’écosystème</li>
             <li><i class="lg-t"></i>Ligne produit : la boucle continue</li>
             <li><i class="lg-w"></i>Remparts : sécurité et conformité, partout</li>
+            <li><i class="lg-e"></i>Hors les murs : territoires voisins</li>
           </ul>
         </div>
         <div class="lg-group" data-mode="quartier">
           <p class="lg-title">Au clic sur un quartier</p>
           <ul>
-            <li><i class="lg-a"></i>Flèche : ce que le quartier alimente</li>
-            <li><i class="lg-box"></i>Contour plein : quartier alimenté</li>
+            <li><i class="lg-a"></i>Trait plein : ce que le quartier alimente</li>
+            <li><i class="lg-a in"></i>Pointillés : ce qu’il reçoit</li>
+            <li><i class="lg-a both"></i>Double pointe : échange dans les deux sens</li>
+            <li><i class="lg-box"></i>Contour plein : quartier en lien</li>
             <li><i class="lg-box off"></i>Grisé : sans lien direct</li>
           </ul>
         </div>
@@ -290,7 +317,7 @@ const Q = {
         ["Retours utilisateurs","Feedback, enquêtes de satisfaction, interviews, tests utilisateurs."]]}],
     cx:[["q3","Les retours utilisateurs alimentent la conception."],["q8","Les retours qualitatifs alimentent les indicateurs."],["q2","Les besoins utilisateurs influencent les décisions du CMI."]],
     poster:["<b>Équipe :</b> product manager, product owner, proxy PO, designer UX/UI, lead tech, développeur·ses, DevOps, chargé·e de déploiement","<b>Utilisateurs :</b> usagers finaux, référents métier, panel d’utilisateurs, sponsor","<b>Outils :</b> personas, parcours utilisateurs, retours utilisateurs"]},
-  q2:{n:2,name:"Gouvernance",short:"Gouvernance",place:"La mairie",keys:"Vision · Feuille de route · CMI",
+  q2:{n:2,name:"Gouvernance",l1:"Gouvernance",l2:"",short:"Gouvernance",place:"La mairie",keys:"Vision · Feuille de route · CMI",
     lead:"Le cœur stratégique de la ville : il valide et alimente tous les autres quartiers.",
     text:"La gouvernance fixe le cap et donne les moyens : le budget pour les développements, les priorités pour les indicateurs.",
     sections:[{title:"Éléments clés",items:[
@@ -380,6 +407,21 @@ const Q = {
     poster:["<b>Indicateurs DINUM :</b> adoption, satisfaction (NPS), efficacité, sécurité, accessibilité","<b>Retours utilisateurs</b> analysés","<b>Jalons à valeur :</b> « Au 01/01/2027, 100 % des données seront accessibles »"]}
 };
 const ORDER=["q1","q2","q3","q4","q5","q6","q7","q8"];
+/* Territoires voisins, hors les murs (textes fournis par l'équipe) */
+const NEIGH_INTRO="Notre cité ne vit pas seule. Elle est reliée à d’autres territoires du service numérique du ministère.";
+const NEIGH_COMMON="Notre mode produit doit donc être un langage commun avec ces acteurs. Nous ne demandons pas à l’infrastructure de « fournir des serveurs », à l’atelier de « faire une maquette » ou à la stratégie de « valider un projet ». Nous construisons ensemble des trajectoires de valeur, avec des responsabilités partagées et des interfaces explicites.";
+const EXT={
+ e1:{ext:1,n:"",name:"Atelier numérique",short:"Atelier numérique",place:"Le quartier de l’innovation",
+   lead:"Il explore, protège l’expérimentation et développe des solutions innovantes qui peuvent ensuite être industrialisées ou intégrées dans nos produits.",
+   map:["Explore et protège","l’expérimentation ; ses solutions","peuvent rejoindre nos produits."],cx:[]},
+ e2:{ext:1,n:"",name:"DSPN",full:"Département stratégie et pilotage numérique",short:"DSPN",place:"La boussole",
+   lead:"Notre observatoire et notre boussole : il porte les visions stratégiques, éclaire les orientations et nous aide à relier les produits aux ambitions du ministère.",
+   map:["Porte les visions stratégiques","et relie nos produits aux","ambitions du ministère."],cx:[]},
+ e3:{ext:1,n:"",name:"DPNC",full:"Département des politiques numériques culturelles",short:"DPNC",place:"Le diapason",
+   lead:"Il donne le la des transformations à faire avec l’apport du numérique au sein du ministère de la Culture.",
+   map:["Donne le la des","transformations numériques","du ministère de la Culture."],cx:[]}
+};
+Object.assign(Q,EXT);
 
 const ROLES=[
   {id:"pm",g:"team",name:"Product Manager",mission:"Piloter la trajectoire produit",contrib:"Stratégie, business case, mesure d’impact, coordination des parties prenantes",q:["q2","q8","q1"]},
@@ -461,6 +503,7 @@ const WHERE={
 };
 
 /* ---------- géométrie ---------- */
+const CENTER="q1";
 const CX=620, CY=482, RX=225, RY=150, GOV=118;
 const ORX=255, ORY=176; // bord des quartiers côté boulevard circulaire
 const WALL={x:40,y:60,w:1160,h:870};
@@ -470,16 +513,16 @@ const arc=(a1,a2,n=10)=>Array.from({length:n+1},(_,i)=>oell(a1+(a2-a1)*i/n));
 const BASE={
   q3:[[62,84],[604,84],[604,284],[62,284]],
   q4:[[636,84],[1178,84],[1178,284],[636,284]],
-  q1:[[62,312],[410,312],[410,652],[62,652]],
+  q2:[[62,312],[410,312],[410,652],[62,652]],
   q5:[[830,312],[1178,312],[1178,652],[830,652]],
   q8:[[62,724],[604,724],[604,908],[62,908]],
   q7:[[636,724],[1178,724],[1178,908],[636,908]]
 };
 const LOOP={x0:425,y0:298,x1:815,y1:712,r:70};
 const LOOPD=`M425 482V368Q425 298 495 298H745Q815 298 815 368V642Q815 712 745 712H495Q425 712 425 642Z`;
-const STP={q1:[425,482],q3:[520,298],q4:[720,298],q5:[815,482],q7:[720,712],q8:[520,712]};
+const STP={q2:[425,482],q3:[520,298],q4:[720,298],q5:[815,482],q7:[720,712],q8:[520,712]};
 const POS={ // a : station sur la ligne ; lab : étiquette ; lm : monument
-  q1:{a:180,verb:"Écouter",   lab:[86,358], lm:[236,566]},
+  q2:{a:180,verb:"Décider",   lab:[86,358], lm:[236,566]},
   q3:{a:235,verb:"Comprendre",lab:[98,128], lm:[492,184]},
   q4:{a:305,verb:"Construire",lab:[670,128],lm:[1082,184]},
   q5:{a:0,  verb:"Livrer",    lab:[860,358],lm:[1012,566]},
@@ -506,6 +549,21 @@ function notch(P,seed){const r=rng(seed),out=[];
 const tint=(id,p)=>`color-mix(in srgb, var(--${id}) ${p}%, var(--paper))`;
 
 /* monuments choisis, redessinés au trait dans l'esprit des pictogrammes DSFR */
+const GLYPH_EXT={
+ e1:`<ellipse class="gd" cx="0" cy="36" rx="44" ry="7"/>
+   <path class="gl" d="M-14 14V6C-26 -2 -30 -14 -30 -24A30 30 0 0 1 30 -24C30 -14 26 -2 14 6V14Z"/>
+   <path class="gl" d="M-12 22H12M-8 30H8"/>
+   <path class="ga" d="M-8 6V-14L0 -6L8 -14V6"/>
+   <path class="ga" d="M-44 -30L-36 -26M44 -30L36 -26M0 -66V-58M-32 -56L-26 -50M32 -56L26 -50"/>`,
+ e2:`<ellipse class="gd" cx="0" cy="38" rx="44" ry="7"/>
+   <circle class="gl" cx="0" cy="-6" r="36"/><circle class="gl" cx="0" cy="-6" r="4"/>
+   <path class="ga" d="M0 -10L10 -34L4 -6Z M0 -2L-10 22L-4 -6Z"/>
+   <path class="gl" d="M0 -46V-40M0 28V34M-40 -6H-34M34 -6H40"/>`,
+ e3:`<ellipse class="gd" cx="0" cy="38" rx="40" ry="7"/>
+   <path class="gl" d="M-12 -52V-6A12 12 0 0 0 12 -6V-52"/>
+   <path class="gl" d="M0 6V34M-10 34H10"/>
+   <path class="ga" d="M-26 -40A28 28 0 0 0 -26 -6M26 -40A28 28 0 0 1 26 -6M-38 -48A42 42 0 0 0 -38 2M38 -48A42 42 0 0 1 38 2"/>`
+};
 const GLYPH={
  q1:`<ellipse class="gd" cx="0" cy="36" rx="58" ry="8"/>
    <path class="gl" d="M-52 -4L0 -40L52 -4Z"/><path class="gl" d="M-46 -4V8M46 -4V8M-46 8H46"/>
@@ -559,7 +617,7 @@ const GLYPH={
 };
 function landmark(id,g,size=128){const k=size/120;
   const inner=S("g",{class:"glyph",style:`--gc:var(--${id})`,transform:`scale(${k})`},g);
-  inner.innerHTML=GLYPH[id];}
+  inner.innerHTML=GLYPH[id]||GLYPH_EXT[id];}
 
 function roundPath(P,r){let d="";const n=P.length;
   for(let i=0;i<n;i++){const p0=P[(i-1+n)%n],p1=P[i],p2=P[(i+1)%n];
@@ -570,7 +628,7 @@ function roundPath(P,r){let d="";const n=P.length;
 function buildMap(svg,interactive){
   if(interactive&&ISO)return buildIso(svg);
   const p=interactive?"m":"p";
-  svg.innerHTML="";svg.setAttribute("viewBox","0 0 1240 970");
+  svg.innerHTML="";svg.setAttribute("viewBox","0 0 1240 1262");
   const defs=S("defs",{},svg);
   ["q1","q2","q3","q4","q5","q6","q7","q8"].forEach(id=>{const m=S("marker",{id:p+"-ar-"+id,viewBox:"0 0 10 10",refX:7,refY:5,markerWidth:5,markerHeight:5,orient:"auto-start-reverse"},defs);
     S("path",{d:"M0 0L10 5L0 10z",style:`fill:var(--${id})`},m)});
@@ -645,6 +703,24 @@ function buildMap(svg,interactive){
     S("circle",{cx:x,cy:y,r:11,fill:"var(--tram)"},tram);
     S("path",{d:"M-3 -5L3 0L-3 5",fill:"none",stroke:"var(--paper)","stroke-width":2.6,"stroke-linecap":"round","stroke-linejoin":"round",transform:`translate(${x} ${y}) rotate(${t})`},tram)});
 
+  // hors les murs : territoires voisins, sous la ville, reliés par une route et une porte du rempart
+  {const ny=1046,nh=196,gap=24,nw=(WALL.w-2*gap)/3,lay=S("g",{},svg);
+   S("text",{x:X0,y:996,"font-size":14,"font-weight":700,"letter-spacing":"1.2",fill:"var(--muted)"},lay,"HORS LES MURS");
+   ["e1","e2","e3"].forEach((id,i)=>{const q=Q[id],x=X0+i*(nw+gap),cx=x+nw/2,g=S("g",{class:"qd ext","data-q":id},svg);
+     S("path",{d:`M${cx} ${Y1}V${ny}`,stroke:"var(--street)","stroke-width":24,fill:"none"},g);
+     S("path",{d:`M${cx} ${Y1+8}V${ny}`,stroke:"var(--bd-3)","stroke-width":2,"stroke-dasharray":"8 7",fill:"none"},g);
+     S("rect",{x:cx-16,y:Y1-9,width:32,height:18,fill:"var(--paper)"},g);
+     S("rect",{class:"terr",x,y:ny,width:nw,height:nh,fill:tint(id,9),style:`--qc:var(--${id})`},g);
+     S("rect",{x,y:ny,width:nw,height:6,fill:`var(--${id})`},g);
+     landmark(id,S("g",{transform:`translate(${x+nw-62} ${ny+72})`},g),86);
+     S("text",{x:x+22,y:ny+44,"font-size":26,"font-weight":700,fill:"var(--ink)"},g,q.name);
+     let yy=ny+44;
+     if(q.full){const w=q.full.split(" "),L=[""];w.forEach(t=>{if((L[L.length-1]+" "+t).trim().length>26)L.push(t);else L[L.length-1]=(L[L.length-1]+" "+t).trim()});
+       L.forEach((t,k)=>S("text",{x:x+22,y:ny+68+k*18,"font-size":14,fill:"var(--ink-2)"},g,t));yy=ny+68+(L.length-1)*18}
+     S("text",{x:x+22,y:Math.max(yy+30,ny+102),"font-size":18,class:"ital","font-style":"italic",fill:`var(--${id})`},g,q.place);
+     q.map.forEach((t,k)=>S("text",{x:x+22,y:Math.max(yy+30,ny+102)+26+k*20,"font-size":15,fill:"var(--ink-2)"},g,t));
+   });}
+
   // remparts (quartier 6)
   const wall=S("g",{class:"qd wall","data-q":"q6"},svg);
   S("rect",{class:"qshape",x:X0,y:Y0,width:WALL.w,height:WALL.h,rx:0,fill:"none",stroke:"var(--q6)","stroke-width":6},wall);
@@ -658,16 +734,17 @@ function buildMap(svg,interactive){
   S("text",{x:CX-162,y:Y0+7,"font-size":20,"font-weight":700,fill:"var(--ink)"},wall,"Sécurité & conformité");
   S("text",{x:CX+58,y:Y0+7,"font-size":16,"font-style":"italic",class:"ital",fill:"var(--ink-2)"},wall,"· les remparts");
 
-  // centre-ville : la mairie et son parvis
-  const gov=S("g",{class:"qd","data-q":"q2"},svg);
+  // centre-ville : la halle du marché, Acteurs & écosystème
+  {const C=CENTER,qc=Q[C],gov=S("g",{class:"qd","data-q":C},svg);
   S("circle",{cx:CX,cy:CY,r:GOV+8,fill:"var(--street)"},gov);
-  S("circle",{class:"qshape terr",cx:CX,cy:CY,r:GOV,fill:"var(--paper)",stroke:"var(--q2)","stroke-width":2,style:"--qc:var(--q2)"},gov);
-  landmark("q2",S("g",{transform:`translate(${CX} ${CY-38})`},gov),96);
-  S("rect",{x:CX-91,y:CY+5,width:30,height:30,rx:2,fill:"var(--q2)"},gov);
-  S("text",{x:CX-76,y:CY+26,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},gov,"2");
-  S("text",{x:CX-55,y:CY+28,"font-size":25,"font-weight":700,fill:"var(--ink)"},gov,"Gouvernance");
-  S("text",{x:CX,y:CY+54,"text-anchor":"middle","font-size":15.5,"font-style":"italic",class:"ital","font-weight":700,fill:"var(--q2)"},gov,"La mairie");
-  S("text",{x:CX,y:CY+76,"text-anchor":"middle","font-size":13.5,fill:"var(--ink-2)"},gov,"Vision · FDR · CMI");
+  S("circle",{class:"qshape terr",cx:CX,cy:CY,r:GOV,fill:"var(--paper)",stroke:`var(--${C})`,"stroke-width":2,style:`--qc:var(--${C})`},gov);
+  landmark(C,S("g",{transform:`translate(${CX} ${CY-52})`},gov),84);
+  S("rect",{x:CX-78,y:CY-9,width:28,height:28,rx:2,fill:`var(--${C})`},gov);
+  S("text",{x:CX-64,y:CY+11,"text-anchor":"middle","font-size":15,"font-weight":700,fill:"var(--on-q)"},gov,qc.n);
+  S("text",{x:CX-42,y:CY+14,"font-size":24,"font-weight":700,fill:"var(--ink)"},gov,qc.l1);
+  S("text",{x:CX,y:CY+36,"text-anchor":"middle","font-size":16,"font-weight":600,fill:"var(--ink)"},gov,qc.l2);
+  S("text",{x:CX,y:CY+58,"text-anchor":"middle","font-size":15.5,"font-style":"italic",class:"ital",fill:`var(--${C})`},gov,qc.place);
+  S("text",{x:CX,y:CY+78,"text-anchor":"middle","font-size":12,fill:"var(--ink-2)"},gov,qc.keys);}
 
   // monuments et noms de quartiers
   Object.entries(POS).forEach(([id,o])=>{const g=S("g",{class:"qd","data-q":id,"data-nokb":"1"},svg),q=Q[id],[x,y]=o.lab,[lx,ly]=o.lm;
@@ -676,8 +753,9 @@ function buildMap(svg,interactive){
     S("text",{x:x+15,y:y+5.5,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"var(--on-q)"},g,q.n);
     S("text",{x:x+40,y:y+7,"font-size":22,"font-weight":700,fill:"var(--ink)"},g,q.l1);
     S("text",{x:x+40,y:y+28,"font-size":(q.l2.length>14?15:17),"font-weight":600,fill:"var(--ink)"},g,q.l2);
-    S("text",{x:x+40,y:y+50,"font-size":15,"font-style":"italic",class:"ital","font-weight":700,fill:`var(--${id})`},g,q.place);
-    S("text",{x:x+40,y:y+69,"font-size":12.5,fill:"var(--ink-2)"},g,q.keys);
+    const dy=q.l2?0:-20;
+    S("text",{x:x+40,y:y+50+dy,"font-size":15,"font-style":"italic",class:"ital","font-weight":700,fill:`var(--${id})`},g,q.place);
+    S("text",{x:x+40,y:y+69+dy,"font-size":12.5,fill:"var(--ink-2)"},g,q.keys);
   });
 
   // stations
@@ -815,26 +893,45 @@ const FLOW={"q1>q3":"Retours usagers","q1>q8":"Retours qualitatifs","q1>q2":"Bes
   "q8>q2":"Indicateurs pour le CMI","q8>q1":"Retours utilisateurs"};
 function anchor(id){
   if(ISO){if(id==="q2"){const[x,y]=P(CX,CY,20);return{x,y,r:60}}if(id==="q6"){const[x,y]=P(990,60,WH+34);return{x,y,r:20}}const e=ell(POS[id].a),[x,y]=P(e.x,e.y);return{x,y,r:18}}
-  if(id==="q2")return{x:CX,y:CY,r:GOV+12};
+  if(id===CENTER)return{x:CX,y:CY,r:GOV+12};
   if(id==="q6")return{x:CX,y:Y0,hw:214,hh:26};
   const[x,y]=STP[id];return{x,y,hw:POS[id].verb.length*4.8+29,hh:18};
 }
 function edge(a,tx,ty){const dx=tx-a.x,dy=ty-a.y,d=Math.hypot(dx,dy)||1;
   if(a.hw){const t=Math.min(a.hw/Math.abs(dx||1e-6),a.hh/Math.abs(dy||1e-6));return{x:a.x+dx*t,y:a.y+dy*t}}
   return{x:a.x+dx/d*a.r,y:a.y+dy/d*a.r}}
+/* Flèches : ce que le quartier sélectionné alimente, d'arrêt à arrêt.
+   Ligne droite si elle ne touche rien, légère courbe vers le parc sinon, contournement du cercle central si besoin. */
+function stBox(id){const[x,y]=STP[id],hw=POS[id].verb.length*4.6+20;return{x,y,hw:hw+3,hh:17}}
+function arrowPath(src,dst){
+  if(dst==="q6"||src==="q6"){const st=src==="q6"?dst:src,b=stBox(st),c=[[X1,b.y],[X0,b.y],[b.x,Y0],[b.x,Y1]].sort((p,q)=>Math.hypot(p[0]-b.x,p[1]-b.y)-Math.hypot(q[0]-b.x,q[1]-b.y))[0];
+    const p0=edge(b,c[0],c[1]),dx=Math.sign(c[0]-b.x),dy=Math.sign(c[1]-b.y),w=[c[0]-dx*12,c[1]-dy*12];
+    return src==="q6"?`M${w[0]} ${w[1]}L${p0.x} ${p0.y}`:`M${p0.x} ${p0.y}L${w[0]} ${w[1]}`}
+  const A=src===CENTER?{x:CX,y:CY,r:GOV+10}:stBox(src),B=dst===CENTER?{x:CX,y:CY,r:GOV+10}:stBox(dst);
+  const m={x:(A.x+B.x)/2,y:(A.y+B.y)/2},vx=B.x-A.x,vy=B.y-A.y,L=Math.hypot(vx,vy);let c=null;
+  if(src!==CENTER&&dst!==CENTER){
+    const u=Math.max(0,Math.min(1,((CX-A.x)*vx+(CY-A.y)*vy)/(L*L))),dist=Math.hypot(CX-(A.x+vx*u),CY-(A.y+vy*u));
+    if(dist<GOV+28){ // contournement : passe par un point bien à l'écart du cercle, courbe lisse
+      let ux=m.x-CX,uy=m.y-CY,ul=Math.hypot(ux,uy);if(ul<25){ux=vy;uy=-vx;ul=L}
+      const W={x:CX+ux/ul*(GOV+46),y:CY+uy/ul*(GOV+46)},T={x:(B.x-A.x)/2,y:(B.y-A.y)/2};
+      const p0=edge(A,W.x,W.y),p1=edge(B,W.x,W.y),f=n=>n.toFixed(1);
+      return `M${f(p0.x)} ${f(p0.y)}C${f(p0.x+(W.x-p0.x)/2)} ${f(p0.y+(W.y-p0.y)/2)} ${f(W.x-T.x/3)} ${f(W.y-T.y/3)} ${f(W.x)} ${f(W.y)}`+
+             `C${f(W.x+T.x/3)} ${f(W.y+T.y/3)} ${f(p1.x+(W.x-p1.x)/2)} ${f(p1.y+(W.y-p1.y)/2)} ${f(p1.x)} ${f(p1.y)}`}
+    else{let nx=-vy/L,ny=vx/L;if((CX-m.x)*nx+(CY-m.y)*ny<0){nx=-nx;ny=-ny}const bend=Math.min(L*.2,44);c={x:m.x+nx*bend*2,y:m.y+ny*bend*2}}}
+  const p0=edge(A,c?c.x:B.x,c?c.y:B.y),p1=edge(B,c?c.x:A.x,c?c.y:A.y),f=n=>n.toFixed(1);
+  return c?`M${f(p0.x)} ${f(p0.y)}Q${f(c.x)} ${f(c.y)} ${f(p1.x)} ${f(p1.y)}`:`M${f(p0.x)} ${f(p0.y)}L${f(p1.x)} ${f(p1.y)}`}
+/* sortant = trait plein (couleur du quartier sélectionné) ; reçu = pointillés (couleur d'origine) ; réciproque = double pointe */
 function drawArrows(layer,from,prefix){
-  layer.innerHTML="";if(!from)return;
-  const defs=S("defs",{},layer);let gi=0;const cc=ISO?{x:0,y:0}:{x:CX,y:CY};
-  Q[from].cx.forEach(([t])=>{if(t==="all")return;
-    const A=anchor(from),B=anchor(t),mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y;
-    const k=(from==="q2"||t==="q2")?0:.22;let c={x:mx-dy*k,y:my+dx*k};const c2={x:mx+dy*k,y:my-dx*k};if(Math.hypot(c2.x-cc.x,c2.y-cc.y)<Math.hypot(c.x-cc.x,c.y-cc.y))c=c2;
-    const p0=edge(A,B.x,B.y),p1=edge(B,A.x,A.y);if(k){Object.assign(p0,edge(A,c.x,c.y));Object.assign(p1,edge(B,c.x,c.y))}
-    const d=`M${p0.x.toFixed(1)} ${p0.y.toFixed(1)}Q${c.x.toFixed(1)} ${c.y.toFixed(1)} ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
-    const id=`${prefix}-fg${gi++}`,gr=S("linearGradient",{id,gradientUnits:"userSpaceOnUse",x1:p0.x,y1:p0.y,x2:p1.x,y2:p1.y},defs);
-    S("stop",{offset:"0",style:`stop-color:var(--${from})`},gr);S("stop",{offset:".4",style:`stop-color:var(--${from})`},gr);S("stop",{offset:"1",style:`stop-color:var(--${t})`},gr);
-    const g=S("g",{class:"flow","data-other":t},layer);
-    S("path",{d,fill:"none",stroke:"var(--paper)","stroke-width":11,"stroke-linecap":"round"},g);
-    S("path",{d,fill:"none",stroke:`var(--${from})`,"stroke-width":5.5,"stroke-linecap":"round","marker-end":`url(#${prefix}-ar-${from})`},g);
+  layer.innerHTML="";if(!from||ISO)return;
+  const pairs={};
+  Q[from].cx.forEach(([t])=>{if(t!=="all")(pairs[t]=pairs[t]||{}).out=1});
+  incoming(from).forEach(o=>{(pairs[o]=pairs[o]||{}).inn=1});
+  Object.entries(pairs).sort((a,b)=>(a[1].out?1:0)-(b[1].out?1:0)).forEach(([o,p])=>{
+    const both=p.out&&p.inn,src=p.out?from:o,dst=p.out?o:from,col=p.out?from:o,d=arrowPath(src,dst);
+    const g=S("g",{class:"flow","data-other":o},layer);
+    S("path",{d,fill:"none",stroke:"var(--paper)","stroke-width":10,"stroke-linecap":"round"},g);
+    S("path",{d,fill:"none",stroke:`var(--${col})`,"stroke-width":p.out?5:4,"stroke-linecap":p.out?"round":"butt",...(p.out?{}:{"stroke-dasharray":"8 6"}),
+      "marker-end":`url(#${prefix}-ar-${col})`,...(both?{"marker-start":`url(#${prefix}-ar-${col})`}:{})},g);
   });
 }
 
@@ -843,12 +940,12 @@ const svg=document.getElementById("map"), panel=document.getElementById("panel")
 let M=buildMap(svg,true);
 let sel=null, role=null;
 
-function targets(id){const s=new Set();Q[id].cx.forEach(([t])=>{if(t==="all")ORDER.forEach(o=>s.add(o));else s.add(t)});s.delete(id);return s}
+function targets(id){const s=new Set();(Q[id].cx||[]).forEach(([t])=>{if(t==="all")ORDER.forEach(o=>s.add(o));else s.add(t)});s.delete(id);return s}
 function incoming(id){return ORDER.filter(o=>o!==id&&Q[o].cx.some(([t])=>t===id))}
 function qbtn(id,sub){const q=Q[id];return `<button type="button" class="qlink" data-go="${id}" style="--c:var(--${id})"><span class="mini">${q.n}</span><span><b>${q.name}</b>${sub?`<small>${sub}</small>`:""}</span></button>`}
 
 function apply(){
-  const W=role?WHERE[role]:null,lit=sel?targets(sel):W?new Set(Object.keys(W)):null;
+  const W=role?WHERE[role]:null,lit=sel?new Set([...targets(sel),...incoming(sel)]):W?new Set(Object.keys(W)):null;
   svg.classList.toggle("has-sel",!!lit);
   svg.classList.toggle("sel-q2",sel==="q2");
   svg.querySelectorAll(".qd").forEach(g=>{const id=g.dataset.q;
@@ -859,6 +956,11 @@ function apply(){
   renderPanel();
 }
 function renderPanel(){
+  if(sel&&Q[sel].ext){const q=Q[sel];
+    panel.innerHTML=`<div class="p-head" style="--c:var(--${sel})"><span class="badge" style="background:var(--${sel})">↗</span><div><p class="eyebrow">Hors les murs · ${q.place}</p><h2>${q.name}</h2></div></div>
+      ${q.full?`<p class="lead" style="margin-top:0">${q.full}</p>`:""}<p>${q.lead}</p>
+      <h3>Un territoire voisin</h3><p>${NEIGH_INTRO}</p>
+      <p class="note" style="--c:var(--${sel})">${NEIGH_COMMON}</p>`;return}
   if(sel){const q=Q[sel];let h=`<div class="p-head" style="--c:var(--${sel})"><span class="badge">${q.n}</span><div><p class="eyebrow">Quartier ${q.n} · ${q.place}</p><h2>${q.name}</h2></div></div>
     <div style="--c:var(--${sel})"><p class="lead">${q.lead}</p><p>${q.text}</p>`;
     q.sections.forEach(s=>{h+=`<h3>${s.title}</h3>`;
@@ -877,8 +979,10 @@ function renderPanel(){
   else{panel.innerHTML=`<h2>Comment lire la carte</h2>
     <p style="margin-top:10px">Le mode produit est une ville. Chaque quartier est un pilier de la démarche ; les rues et la ligne de tram montrent comment ils échangent.</p>
     <dl style="margin:14px 0">
-      <div><dt>Au centre, la mairie</dt><dd>La gouvernance (vision, feuille de route, CMI) valide et alimente tous les quartiers.</dd></div>
-      <div><dt>En boucle, la ligne produit</dt><dd>Écouter, comprendre, construire, livrer, exploiter, mesurer… puis recommencer. On avance par itérations, pas en ligne droite.</dd></div>
+      <div><dt>Au centre, les acteurs et l’écosystème</dt><dd>L’équipe et les usagers sont au cœur de la ville : tous les quartiers travaillent avec eux et pour eux.</dd></div>
+      <div><dt>La mairie</dt><dd>La gouvernance (vision, feuille de route, CMI) valide et alimente tous les quartiers.</dd></div>
+      <div><dt>En boucle, la ligne produit</dt><dd>Comprendre, construire, livrer, exploiter, mesurer, décider… puis recommencer. On avance par itérations, pas en ligne droite.</dd></div>
+      <div><dt>Hors les murs, les territoires voisins</dt><dd>Atelier numérique, DSPN et DPNC : la cité est reliée à d’autres territoires du service numérique, avec qui elle construit des trajectoires de valeur.</dd></div>
       <div><dt>Tout autour, les remparts</dt><dd>Sécurité, accessibilité, RGPD et souveraineté protègent toute la ville, dès la conception.</dd></div>
     </dl>
     <h3>Les huit quartiers</h3><ul class="links">${ORDER.map(id=>`<li>${qbtn(id,Q[id].place)}</li>`).join("")}</ul>
@@ -887,7 +991,7 @@ function renderPanel(){
 function select(id){sel=id;role=null;apply();try{history.replaceState(null,"",id?"#"+id:"#carte")}catch(e){}}
 
 function bind(){svg.querySelectorAll(".qd:not([data-nokb])").forEach(g=>{
-  g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label","Quartier "+Q[g.dataset.q].n+" : "+Q[g.dataset.q].name)})}
+  g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label",(Q[g.dataset.q].ext?"Territoire voisin : ":"Quartier "+Q[g.dataset.q].n+" : ")+Q[g.dataset.q].name)})}
 bind();
 svg.addEventListener("click",e=>{const g=e.target.closest(".qd");if(g&&Q[g.dataset.q])select(sel===g.dataset.q?null:g.dataset.q)});
 svg.addEventListener("keydown",e=>{const g=e.target.closest(".qd");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();select(g.dataset.q)}});
@@ -922,10 +1026,10 @@ function buildPoster(){
   const sh=document.getElementById("sheet");
   sh.innerHTML=`<div class="sh-head"><div><p class="kicker">SNUM · Sous-direction projets produits</p><h1>Cadre commun du mode produit</h1>
       <p class="sub">Comprendre un problème réel d’usagers, construire par itérations, mesurer, sécuriser et faire vivre le service en continu. Inspiré de l’approche Startup d’État / beta.gouv.fr de la DINUM.</p></div>
-    <div class="sh-legend"><span><i class="lg-c"></i>Mairie : la gouvernance</span><span><i class="lg-t"></i>Ligne produit : la boucle</span>
+    <div class="sh-legend"><span><i class="lg-c"></i>Au centre : acteurs et écosystème</span><span><i class="lg-t"></i>Ligne produit : la boucle</span>
       <span><i class="lg-w"></i>Remparts : sécurité et conformité</span><span><b style="color:var(--ink)">1 → 8</b>&nbsp;numéros du cadre commun</span></div></div>
-    <div class="sh-body"><div class="sh-col">${card("q3")}${card("q1")}${card("q8")}</div>
-      <div class="sh-center"><svg id="pmap" role="img" aria-label="Carte de la ville du mode produit"></svg><div class="sh-pair">${card("q2")}${card("q6")}</div></div>
+    <div class="sh-body"><div class="sh-col">${card("q3")}${card("q2")}${card("q8")}</div>
+      <div class="sh-center"><svg id="pmap" role="img" aria-label="Carte de la ville du mode produit"></svg><div class="sh-pair">${card("q1")}${card("q6")}</div></div>
       <div class="sh-col">${card("q4")}${card("q5")}${card("q7")}</div></div>`;
   buildMap(document.getElementById("pmap"),false);
 }
@@ -938,6 +1042,7 @@ function route(){const h=location.hash.slice(1);
   view=h==="a-plat"?"flat":"map";
   document.documentElement.classList.toggle("poster-mode",view==="flat");
   document.getElementById("explore-view").hidden=view!=="map";
+  document.documentElement.classList.toggle("fit",view==="map");
   document.getElementById("poster-view").hidden=view!=="flat";
   document.getElementById("v-map").checked=view==="map";
   document.getElementById("v-flat").checked=view==="flat";
