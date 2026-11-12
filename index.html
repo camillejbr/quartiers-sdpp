@@ -323,7 +323,7 @@ const Q = {
       {title:"Éléments clés",items:[
         ["Personas","Profils types des utilisateurs."],
         ["Parcours utilisateurs","Les étapes clés pour accomplir une tâche."],
-        ["Retours utilisateurs","Feedback, enquêtes de satisfaction, interviews, tests utilisateurs."]]}],
+        ["Retours utilisateurs","Feedback, enquêtes de satisfaction, entretiens, tests utilisateurs."]]}],
     cx:[["q3","Les retours utilisateurs alimentent la conception."],["q8","Les retours qualitatifs alimentent les indicateurs."],["q2","Les besoins utilisateurs influencent les décisions du CMI."]],
     poster:["<b>Équipe :</b> product manager, product owner, proxy PO, designer UX/UI, lead tech, développeur·ses, DevOps, chargé·e de déploiement","<b>Utilisateurs :</b> usagers finaux, référents métier, panel d’utilisateurs, sponsor","<b>Outils :</b> personas, parcours utilisateurs, retours utilisateurs"]},
   q2:{n:2,name:"Gouvernance",l1:"Gouvernance",l2:"",short:"Gouvernance",place:"La mairie",keys:"Vision · Feuille de route · CMI",
@@ -337,14 +337,14 @@ const Q = {
     poster:["<b>Vision produit :</b> ambition, usagers, macro-services, principes","<b>Feuille de route pluriannuelle :</b> incréments, jalons à valeur, indicateurs, budgets","<b>CMI :</b> valide les investissements, les moyens et les priorités"]},
   q3:{n:3,name:"Capture du besoin & design",l1:"Capture du besoin",l2:"& design",short:"Besoin & design",place:"L’atelier d’artiste",keys:"Recherche · Maquettes · Backlog",
     lead:"Comprendre le problème réel des usagers avant de concevoir la solution.",
-    text:"Ce quartier couvre l’investigation et la conception centrée utilisateur : recherche utilisateur (interviews, ateliers) pour déterminer le problème, prototypage, définition des parcours et des indicateurs d’impact. Selon le produit, cette étape peut être précédée d’un cadrage global qui cerne la totalité du projet : coût, risques et trajectoire dans les feuilles de route.",
+    text:"Ce quartier couvre l’investigation et la conception centrée utilisateur : recherche utilisateur (entretiens, ateliers) pour déterminer le problème, prototypage, définition des parcours et des indicateurs d’impact. Selon le produit, cette étape peut être précédée d’un cadrage global qui cerne la totalité du projet : coût, risques et trajectoire dans les feuilles de route.",
     sections:[{title:"Éléments clés",items:[
       ["Ateliers de co-conception","Avec les utilisateurs et les parties prenantes, pour déterminer le problème utilisateur."],
       ["Maquettes","Wireframes et prototypes cliquables (par exemple sur Figma)."],
       ["Backlog produit","Liste des fonctionnalités priorisées."]]}],
     note:"L’équipe ne part pas d’une solution imposée : elle instruit un problème réel, recueille les besoins et formule des hypothèses testables. Le design intervient sur toute la durée de vie du produit, pas seulement en amont.",
     cx:[["q4","Les maquettes et le backlog alimentent les sprints Scrum."],["q1","Les tests utilisateurs valident les maquettes."],["q2","La vision produit guide la capture du besoin."],["q8","Les indicateurs d’impact sont définis dès la conception."]],
-    poster:["<b>Recherche utilisateur :</b> interviews, ateliers, définition du problème","<b>Co-conception</b> avec usagers et parties prenantes","<b>Maquettes</b> et prototypes cliquables, parcours utilisateurs","<b>Backlog</b> priorisé et indicateurs d’impact","Peut être précédé d’un <b>cadrage global</b> : coût, risques, trajectoire"]},
+    poster:["<b>Recherche utilisateur :</b> entretiens, ateliers, définition du problème","<b>Co-conception</b> avec usagers et parties prenantes","<b>Maquettes</b> et prototypes cliquables, parcours utilisateurs","<b>Backlog</b> priorisé et indicateurs d’impact","Peut être précédé d’un <b>cadrage global</b> : coût, risques, trajectoire"]},
   q4:{n:4,name:"Conception & développement agile",l1:"Conception",l2:"& développement agile",short:"Conception & dev",place:"Le chantier",keys:"Sprints · MVP · Rituels Scrum",
     lead:"Le cœur opérationnel : construire par incréments utiles, au rythme des sprints.",
     text:"Développement du MVP et des fonctionnalités, sprints (planification, revue, rétrospective) et priorisation du backlog.",
@@ -407,13 +407,13 @@ const Q = {
     sections:[
       {title:"Indicateurs usuels (DINUM)",items:[
         ["Adoption","Taux d’utilisateurs actifs."],
-        ["Satisfaction","NPS."],
+        ["Satisfaction","Net Promoter Score (NPS) : la part d’usagers prêts à recommander le service, moins celle des insatisfaits."],
         ["Efficacité","Temps moyen pour accomplir une tâche."],
         ["Sécurité","Nombre de vulnérabilités critiques."],
         ["Accessibilité","Pourcentage de conformité RGAA."]]},
       {title:"Jalons à valeur",items:[["Des moments où le produit débloque une valeur tangible","Par exemple : « Au 01/01/2027, 100 % des données seront accessibles »."]]}],
     cx:[["q2","Les indicateurs justifient les investissements en CMI."],["q1","Les retours utilisateurs alimentent les indicateurs."],["q3","Les mesures d’impact orientent les prochains besoins à instruire."],["all","Les indicateurs mesurent l’impact de chaque phase."]],
-    poster:["<b>Indicateurs DINUM :</b> adoption, satisfaction (NPS), efficacité, sécurité, accessibilité","<b>Retours utilisateurs</b> analysés","<b>Jalons à valeur :</b> « Au 01/01/2027, 100 % des données seront accessibles »"]}
+    poster:["<b>Indicateurs DINUM :</b> adoption, satisfaction (taux de recommandation, NPS), efficacité, sécurité, accessibilité","<b>Retours utilisateurs</b> analysés","<b>Jalons à valeur :</b> « Au 01/01/2027, 100 % des données seront accessibles »"]}
 };
 const ORDER=["q1","q2","q3","q4","q5","q6","q7","q8"];
 /* Territoires voisins, hors les murs (textes fournis par l'équipe) */
@@ -441,9 +441,8 @@ const ROLES=[
   {id:"dev",g:"team",name:"Développeur·se",abbr:"Dev",mission:"Construire le service",contrib:"Code, tests, revue, qualité, sécurité technique, documentation",q:["q4","q5","q6"]},
   {id:"devops",g:"team",name:"DevOps",mission:"Fiabiliser la chaîne technique",contrib:"CI/CD, infrastructure, sécurité opérationnelle, supervision, reprise",q:["q5","q6","q7"]},
   {id:"dep",g:"team",name:"Chargé·e de déploiement",abbr:"Déploiement",mission:"Faire adopter le service",contrib:"Accompagnement, formation, animation des référents, collecte des retours, supervision des mises en production",q:["q1","q5","q8"]},
-  {id:"usa",g:"users",name:"Usagers finaux",abbr:"Usagers",mission:"Valider l’utilité réelle et l’usage du service",contrib:"Participent au cadrage, aux ateliers, aux tests de prototypes et à la revue des incréments",q:["q1","q3","q4","q8"]},
+  {id:"usa",g:"users",name:"Usagers",abbr:"Usagers",mission:"Valider l’utilité réelle et l’usage du service",contrib:"Usagers finaux et panel d’utilisateurs : participent au cadrage, aux entretiens, aux ateliers de co-conception, aux tests de prototypes et à la revue des incréments",q:["q1","q3","q4","q8"]},
   {id:"ref",g:"users",name:"Référents métier",abbr:"Référents",mission:"Apporter la connaissance des processus et des règles",contrib:"Alimentent le Proxy PO en expertise métier et en contraintes réelles",q:["q1","q3"]},
-  {id:"pan",g:"users",name:"Panel d’utilisateurs",abbr:"Panel",mission:"Participer aux entretiens, tests et co-conceptions",contrib:"Entretiens, tests de prototypes, ateliers de co-conception",q:["q1","q3"]},
   {id:"spo",g:"users",name:"Sponsor",mission:"Garantir le mandat, les moyens et les arbitrages stratégiques",contrib:"Porte le produit en gouvernance et en CMI",q:["q2"]}
 ];
 
@@ -473,6 +472,7 @@ const WHERE={
  ux:{q3:["c","Recherche utilisateur, parcours, maquettes et prototypes"],
      q1:["c","Entretiens, tests d’usabilité et ateliers avec les usagers"],
      q4:["c","Travaille dans les sprints : maquettes prêtes pour les user stories, revue des incréments"],
+     q5:["p","Recette des parcours et des évolutions avant mise en production"],
      q6:["p","Accessibilité (RGAA) intégrée dès les maquettes"],
      q8:["p","Mesure le taux de réussite des parcours et la satisfaction"]},
  lead:{q4:["c","Architecture, qualité du code, revues, choix techniques"],
@@ -495,17 +495,14 @@ const WHERE={
       q8:["c","Suit l’adoption du service"],
       q7:["p","Premier niveau de support utilisateurs et documentation"],
       q4:["p","Présente les démonstrations publiques et recueille les retours"]},
- usa:{q1:["c","Expriment leurs usages, leurs difficultés et leurs retours"],
-      q3:["c","Participent aux entretiens, ateliers et tests de prototypes"],
+ usa:{q1:["c","Expriment leurs usages, leurs difficultés et leurs retours ; le panel représente la diversité des usagers"],
+      q3:["c","Participent aux entretiens, ateliers de co-conception et tests de prototypes"],
       q4:["p","Assistent aux sprint reviews et démonstrations"],
       q8:["p","Répondent aux enquêtes de satisfaction"]},
  ref:{q1:["c","Relais du métier dans l’écosystème"],
       q3:["c","Apportent la connaissance des processus et des règles"],
       q4:["p","Précisent les règles métier pendant le raffinage et la recette"],
       q7:["p","Relaient les remontées des utilisateurs de leur périmètre"]},
- pan:{q3:["c","Entretiens, tests et co-conception"],
-      q1:["p","Représentent la diversité des usagers"],
-      q8:["p","Enquêtes de satisfaction et tests de parcours"]},
  spo:{q2:["c","Donne le mandat et les moyens, tranche les arbitrages stratégiques au CMI"],
       q8:["p","S’appuie sur les indicateurs pour décider du réinvestissement"],
       q1:["p","Porte le produit auprès de l’écosystème"]}
