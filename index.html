@@ -205,6 +205,15 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .card .cx{margin-top:3px;color:var(--ink-2);font-size:12px}
 .card .cx b{color:var(--c)}
 
+/* mode grand écran : la carte seule, à pleine taille */
+html.present .top,html.present .roles .lbl{display:none}
+html.present .panel,html.present .lgwrap{display:none!important}
+html.present .explore{grid-template-columns:1fr!important}
+html.present .mapwrap{grid-template-columns:1fr!important;border:0;padding:0;display:flex;justify-content:center}
+html.present .mapscroll{width:100%!important;height:100%;overflow:visible}
+html.present .mapscroll svg{width:100%!important;height:100%!important;max-width:none}
+html.present #present{background:var(--dsfr);color:#fff}
+@media (max-width: 1199px){ html.present .mapscroll svg{height:auto!important} }
 /* écrans larges : la page occupe toute la largeur, marges latérales réduites */
 @media (min-width: 1200px){ body{padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))} }
 @media (min-width: 1200px) and (min-height: 620px){
@@ -315,6 +324,7 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
       <button class="btn" id="prev" type="button" aria-label="Quartier précédent">‹</button>
       <button class="btn" id="home" type="button">Vue d’ensemble</button>
       <button class="btn" id="next" type="button" aria-label="Quartier suivant">›</button>
+      <button class="btn" id="present" type="button" aria-pressed="false">Grand écran</button>
     </div>
   </div>
   <main class="explore">
@@ -687,7 +697,7 @@ function roundPath(P,r){let d="";const n=P.length;
 function buildMap(svg,interactive){
   if(interactive&&ISO)return buildIso(svg);
   const p=interactive?"m":"p";
-  svg.innerHTML="";svg.setAttribute("viewBox","0 0 1240 1262");
+  svg.innerHTML="";svg.setAttribute("viewBox",interactive&&WIDE?"0 0 1670 990":"0 0 1240 1262");
   const defs=S("defs",{},svg);
   ["q1","q2","q3","q4","q5","q6","q7","q8"].forEach(id=>{const m=S("marker",{id:p+"-ar-"+id,viewBox:"0 0 10 10",refX:7,refY:5,markerWidth:5,markerHeight:5,orient:"auto-start-reverse"},defs);
     S("path",{d:"M0 0L10 5L0 10z",style:`fill:var(--${id})`},m)});
@@ -763,16 +773,18 @@ function buildMap(svg,interactive){
     S("path",{d:"M-3 -5L3 0L-3 5",fill:"none",stroke:"var(--paper)","stroke-width":2.6,"stroke-linecap":"round","stroke-linejoin":"round",transform:`translate(${x} ${y}) rotate(${t})`},tram)});
 
   // hors les murs : territoires voisins, sous la ville, reliés par une route et une porte du rempart
-  {const ny=1046,nh=196,gap=24,nw=(WALL.w-2*gap)/3,lay=S("g",{},svg);
-   S("text",{x:X0,y:996,"font-size":14,"font-weight":700,"letter-spacing":"1.2",fill:"var(--muted)"},lay,"HORS LES MURS");
-   ["e1","e2","e3"].forEach((id,i)=>{const q=Q[id],x=X0+i*(nw+gap),cx=x+nw/2,g=S("g",{class:"qd ext","data-q":id},svg);
-     S("path",{d:`M${cx} ${Y1}V${ny}`,stroke:"var(--street)","stroke-width":24,fill:"none"},g);
-     S("path",{d:`M${cx} ${Y1+8}V${ny}`,stroke:"var(--bd-3)","stroke-width":2,"stroke-dasharray":"8 7",fill:"none"},g);
-     S("rect",{x:cx-16,y:Y1-9,width:32,height:18,fill:"var(--paper)"},g);
+  {const wide=interactive&&WIDE,gap=24,nw=wide?374:(WALL.w-2*gap)/3,nh=wide?(WALL.h-2*gap)/3:196,lay=S("g",{},svg);
+   const NX0=wide?X1+72:X0,NY0=wide?Y0:1046;
+   S("text",wide?{x:NX0,y:Y0-24,"font-size":14,"font-weight":700,"letter-spacing":"1.2",fill:"var(--muted)"}:{x:X0,y:996,"font-size":14,"font-weight":700,"letter-spacing":"1.2",fill:"var(--muted)"},lay,"HORS LES MURS");
+   ["e1","e2","e3"].forEach((id,i)=>{const q=Q[id],x=wide?NX0:X0+i*(nw+gap),ny=wide?NY0+i*(nh+gap):NY0,cx=x+nw/2,cy=ny+nh/2,g=S("g",{class:"qd ext","data-q":id},svg);
+     const road=wide?`M${X1} ${cy}H${x}`:`M${cx} ${Y1}V${ny}`,dash=wide?`M${X1+8} ${cy}H${x}`:`M${cx} ${Y1+8}V${ny}`;
+     S("path",{d:road,stroke:"var(--street)","stroke-width":24,fill:"none"},g);
+     S("path",{d:dash,stroke:"var(--bd-3)","stroke-width":2,"stroke-dasharray":"8 7",fill:"none"},g);
+     S("rect",wide?{x:X1-9,y:cy-16,width:18,height:32,fill:"var(--paper)"}:{x:cx-16,y:Y1-9,width:32,height:18,fill:"var(--paper)"},g);
      S("rect",{class:"terr",x,y:ny,width:nw,height:nh,fill:tint(id,9),style:`--qc:var(--${id})`},g);
-     S("rect",{x,y:ny,width:nw,height:6,fill:`var(--${id})`},g);
+     S("rect",wide?{x,y:ny,width:6,height:nh,fill:`var(--${id})`}:{x,y:ny,width:nw,height:6,fill:`var(--${id})`},g);
      landmark(id,S("g",{transform:`translate(${x+nw-62} ${ny+72})`},g),86);
-     S("text",{x:x+22,y:ny+44,"font-size":26,"font-weight":700,fill:"var(--ink)"},g,q.name);
+     S("text",{x:x+22,y:ny+44,"font-size":q.name.length>12?24:26,"font-weight":700,fill:"var(--ink)"},g,q.name);
      let yy=ny+44;
      if(q.full){const w=q.full.split(" "),L=[""];w.forEach(t=>{if((L[L.length-1]+" "+t).trim().length>26)L.push(t);else L[L.length-1]=(L[L.length-1]+" "+t).trim()});
        L.forEach((t,k)=>S("text",{x:x+22,y:ny+68+k*18,"font-size":14,fill:"var(--ink-2)"},g,t));yy=ny+68+(L.length-1)*18}
@@ -837,7 +849,7 @@ function buildMap(svg,interactive){
 }
 
 /* ---------- vue 3D isométrique ---------- */
-let ISO=false;
+let ISO=false, WIDE=false;
 const IS=0.8, WH=26;
 const P=(x,y,z=0)=>{const u=x-CX,v=y-CY;return[(u-v)*0.866*IS,(u+v)*0.5*IS-z]};
 const pts=a=>a.map(p=>p.map(n=>n.toFixed(1)).join(",")).join(" ");
@@ -1120,6 +1132,17 @@ function route(){const h=location.hash.slice(1);
 addEventListener("hashchange",route);
 document.getElementById("views").addEventListener("change",e=>{location.hash=e.target.value==="a-plat"?"a-plat":"carte"});addEventListener("resize",()=>{if(view==="flat")fitPoster()});
 route();
+/* bouton Grand écran (et lien direct #grand-ecran) */
+const presentBtn=document.getElementById("present");
+function setPresent(on){document.documentElement.classList.toggle("present",on);presentBtn.setAttribute("aria-pressed",String(on));
+  presentBtn.textContent=on?"Quitter le grand écran":"Grand écran";
+  if(on&&document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+  if(!on&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  const w=on&&innerWidth/innerHeight>1.3;if(w!==WIDE){WIDE=w;M=buildMap(svg,true);bind();apply()}
+  requestAnimationFrame(()=>{if(typeof fitMap==="function")fitMap()})}
+presentBtn.addEventListener("click",()=>setPresent(!document.documentElement.classList.contains("present")));
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement&&document.documentElement.classList.contains("present"))setPresent(false)});
+document.addEventListener("keydown",e=>{if(e.key==="f"&&!e.target.closest("input,textarea")&&view==="map")setPresent(!document.documentElement.classList.contains("present"))});
 /* la rame fait le tour de la boucle (désactivé si l'utilisateur préfère réduire les animations) */
 (function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;let t0=null;
   function f(ts){if(t0==null)t0=ts;if(M&&M.car&&M.loop&&document.documentElement.classList.contains("fit")||M&&M.car&&!document.getElementById("explore-view").hidden){
