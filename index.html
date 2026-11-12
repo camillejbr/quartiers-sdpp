@@ -50,7 +50,7 @@ h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid #0A76F6;outline-offset:2px}
 
-.top{max-width:1500px;margin:0 auto 14px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+.top{margin:0 auto 14px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
 .top .kicker{font-size:14px;color:var(--ink-2);margin:0 0 4px;font-weight:700}
 .top h1{font-size:clamp(24px,3vw,34px)}
 .top .sub{margin:6px 0 0;color:var(--ink-2);max-width:62ch}
@@ -65,7 +65,7 @@ button{font:inherit;color:inherit}
 .fr-segmented__element input:checked+label{color:var(--dsfr);box-shadow:inset 0 0 0 1px var(--dsfr);background:var(--paper)}
 .fr-segmented__element input:focus-visible+label{outline:2px solid #0A76F6;outline-offset:2px}
 
-.toolbar{max-width:1500px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.toolbar{margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
 .roles{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;min-width:0}
 .roles .lbl{font-size:14px;color:var(--ink-2);font-weight:700}
 /* composant DSFR : tag sélectionnable (fr-tag, aria-pressed) */
@@ -85,7 +85,7 @@ button{font:inherit;color:inherit}
 .btn{border:1px solid var(--dsfr);background:transparent;color:var(--dsfr);border-radius:0;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:500}
 .btn:hover{background:var(--tag)}
 
-.explore{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+.explore{margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
 .mapwrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-width:0}
 .mapwrap svg{display:block;width:100%;height:auto}
 .mapbar{display:flex;justify-content:flex-end;padding:0 0 6px}
@@ -178,8 +178,8 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .top{align-items:flex-start}
 #views{align-self:flex-start;margin-top:0}
 .fr-segmented__legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (min-width: 1051px) and (min-height: 620px){ .poster-mode body{padding-block:12px 40px} }
-@media (max-width: 1050px), (max-height: 619px){ #views{order:-1} .poster-mode .top{justify-content:flex-start} }
+@media (min-width: 1200px) and (min-height: 620px){ .poster-mode body{padding-block:12px 40px} }
+@media (max-width: 1199px), (max-height: 619px){ .top{flex-direction:column;align-items:flex-start} #views{order:-1} .poster-mode .top{justify-content:flex-start} }
 /* version à plat */
 .poster-view{max-width:100%;overflow:hidden}
 .sheet-wrap{margin:0 auto;transform-origin:top left}
@@ -205,15 +205,25 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
 .card .cx{margin-top:3px;color:var(--ink-2);font-size:12px}
 .card .cx b{color:var(--c)}
 
+/* écrans larges : la page occupe toute la largeur, marges latérales réduites */
+@media (min-width: 1200px){ body{padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))} }
+@media (min-width: 1200px) and (min-height: 620px){
+  /* la carte prend sa largeur naturelle à pleine hauteur, le panneau récupère le reste */
+  html.fit .explore{grid-template-columns:calc(var(--mapw, 900px) + 250px + 36px) minmax(380px,1fr)}
+  html.fit .mapwrap{grid-template-columns:var(--mapw, 900px) 250px}
+  html.fit .mapscroll{height:100%;width:var(--mapw, 900px)}
+  html.fit .mapscroll svg{width:100%;height:100%}
+  html.fit .panel>*{max-width:76ch}
+}
 /* tout visible sans défiler (écrans d'ordinateur, vue carte) */
-@media (min-width: 1051px) and (min-height: 620px){
+@media (min-width: 1200px) and (min-height: 620px){
   .fit,.fit body{height:100%}
   .fit body{display:flex;flex-direction:column;overflow:hidden;padding-block:12px}
   .fit .top{margin-bottom:8px;width:100%;align-items:flex-start}
   .fit .top h1{font-size:28px}
   .fit .top .sub{margin-top:2px;font-size:15px}
   .fit .fr-segmented__legend{display:none}
-  .fit #explore-view{flex:1;min-height:0;display:flex;flex-direction:column;width:100%;max-width:1500px;margin:0 auto}
+  .fit #explore-view{flex:1;min-height:0;display:flex;flex-direction:column;width:100%;margin:0 auto}
   .fit .toolbar{margin-bottom:8px;flex-wrap:nowrap;width:100%}
   .fit .fr-tag{font-size:.75rem;line-height:1.25rem;min-height:1.5rem;padding:.125rem .5rem;border-radius:.75rem;margin:0 .2rem .25rem}
   .fit .fr-tags-group>li{line-height:1.9rem}
@@ -221,20 +231,60 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
   .fit .btn{padding:4px 10px;font-size:13px}
   .fit .explore{flex:1;min-height:0;align-items:stretch;width:100%;grid-template-columns:minmax(0,1fr) 380px}
   .fit .mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:14px;min-height:0}
+  .fit .mapscroll{min-height:0;height:100%}
   .fit .mapwrap svg{width:100%;height:100%;min-height:0}
-  .fit .legend{display:flex;flex-direction:column;gap:14px;border-top:0;border-left:1px solid var(--line);margin:0;padding:4px 0 4px 14px;overflow:auto;font-size:12.5px}
+  .fit .lgwrap{min-height:0;overflow:auto;border-left:1px solid var(--line);padding:4px 0 4px 14px}
+  .fit .lgwrap summary{display:none}
+  .fit .legend{display:flex;flex-direction:column;gap:14px;border-top:0;margin:0;padding:0;font-size:12.5px}
   .fit .lg-title{font-size:13px}
   .fit .panel{position:static;max-height:none;min-height:0;overflow:auto;padding:16px 18px}
 }
-@media (max-width: 1050px){
+@media (max-width: 1199px){
   .explore{grid-template-columns:1fr}
   .panel{position:static;max-height:none}
 }
-@media (max-width: 560px){
-  .legend{font-size:12.5px}
+.maphint{display:none}
+.lgwrap summary{display:none}
+.panel .back{display:none}
+@media (max-width: 1199px){
+  .lgwrap summary{display:block;cursor:pointer;font-weight:700;padding:10px 8px 4px;color:var(--dsfr)}
+  .panel .back{display:inline-flex;margin-bottom:12px}
+}
+@media (max-width: 640px){
+  .top h1{font-size:24px}
+  .top .sub{font-size:15px}
+  .toolbar{gap:8px}
+  .roles{display:block;width:100%}
+  .roles .lbl{display:block;margin-bottom:6px}
+  .fr-tags-group{flex-wrap:nowrap;overflow-x:auto;margin:0 0 4px;padding-bottom:4px;scrollbar-width:thin}
+  .fr-tags-group>li{flex:none;line-height:2.2rem}
+  .fr-tag{font-size:.8125rem;min-height:1.75rem;padding:.125rem .625rem;margin:0 .25rem .25rem 0}
+  .nav{width:100%}
+  .nav #home{flex:1}
+  .mapwrap{padding:6px}
+  .mapscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .mapscroll svg{width:820px;max-width:none;height:auto}
+  .maphint{display:block;margin:6px 4px 0;font-size:13px;color:var(--muted)}
+  .legend{font-size:13px;grid-template-columns:1fr}
   .panel{padding:16px}
 }
 @page{size:420mm 297mm;margin:0}
+@media (max-width: 1199px){
+  .sheet{width:auto;height:auto;display:block;padding:20px 18px;border:0}
+  .sh-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .sh-head h1{font-size:26px}
+  .sh-legend{grid-template-columns:1fr 1fr}
+  .sh-body{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .sh-col,.sh-center,.sh-pair{display:contents}
+  .sh-center svg{order:0;grid-column:1/-1;width:100%;height:auto;margin:0 0 6px}
+  .card{font-size:14px;line-height:1.45;overflow:visible}
+  .card h2{font-size:19px}.card .lead{font-size:15px}.card .eyebrow{font-size:13px}.card .cx{font-size:13.5px}
+}
+@media (max-width: 640px){
+  .sh-body{grid-template-columns:1fr}
+  .sh-legend{grid-template-columns:1fr}
+  .poster-view{overflow:visible}
+}
 @media print{
   body{padding:0;background:#fff}
   .top,.toolbar{display:none!important}
@@ -269,7 +319,9 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
   </div>
   <main class="explore">
     <div class="mapwrap">
-      <svg id="map" role="img" aria-label="Carte de la ville du mode produit"></svg>
+      <div class="mapscroll" id="mapscroll"><svg id="map" role="img" aria-label="Carte de la ville du mode produit"></svg></div>
+      <p class="maphint">Faites glisser la carte pour l’explorer, touchez un quartier pour l’ouvrir.</p>
+      <details class="lgwrap" id="lgwrap" open><summary>Légende</summary>
       <div class="legend" id="legend2d">
         <div class="lg-group" data-mode="base">
           <p class="lg-title">Lire la ville</p>
@@ -299,6 +351,7 @@ h1{font-family:var(--font);font-weight:700;letter-spacing:-.01em}
           </ul>
         </div>
       </div>
+      </details>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </main>
@@ -962,6 +1015,7 @@ function apply(){
   renderPanel();
 }
 function renderPanel(){
+  queueMicrotask(()=>{if(!panel.querySelector(".back"))panel.insertAdjacentHTML("afterbegin",`<button type="button" class="btn back">↑ Revenir à la carte</button>`)});
   if(sel&&Q[sel].ext){const q=Q[sel];
     panel.innerHTML=`<div class="p-head" style="--c:var(--${sel})"><span class="badge" style="background:var(--${sel})">↗</span><div><p class="eyebrow">Hors les murs · ${q.place}</p><h2>${q.name}</h2></div></div>
       ${q.full?`<p class="lead" style="margin-top:0">${q.full}</p>`:""}<p>${q.lead}</p>
@@ -994,17 +1048,19 @@ function renderPanel(){
     <h3>Les huit quartiers</h3><ul class="links">${ORDER.map(id=>`<li>${qbtn(id,Q[id].place)}</li>`).join("")}</ul>
     <p class="hint" style="margin-top:14px">Cliquez sur un quartier, ou utilisez <kbd>←</kbd> <kbd>→</kbd>. Choisissez un rôle en haut pour voir où il intervient.</p>`}
 }
-function select(id){sel=id;role=null;apply();try{history.replaceState(null,"",id?"#"+id:"#carte")}catch(e){}}
+const narrow=()=>matchMedia("(max-width: 1199px)").matches;
+function reveal(){if(narrow())panel.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
+function select(id,user){sel=id;role=null;apply();try{history.replaceState(null,"",id?"#"+id:"#carte")}catch(e){}if(user&&id)reveal()}
 
 function bind(){svg.querySelectorAll(".qd:not([data-nokb])").forEach(g=>{
   g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label",(Q[g.dataset.q].ext?"Territoire voisin : ":"Quartier "+Q[g.dataset.q].n+" : ")+Q[g.dataset.q].name)})}
 bind();
-svg.addEventListener("click",e=>{const g=e.target.closest(".qd");if(g&&Q[g.dataset.q])select(sel===g.dataset.q?null:g.dataset.q)});
+svg.addEventListener("click",e=>{const g=e.target.closest(".qd");if(g&&Q[g.dataset.q])select(sel===g.dataset.q?null:g.dataset.q,true)});
 svg.addEventListener("keydown",e=>{const g=e.target.closest(".qd");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();select(g.dataset.q)}});
 document.getElementById("mode")?.addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(!b)return;const want=b.dataset.mode==="3d";if(want===ISO)return;
   ISO=want;M=buildMap(svg,true);bind();apply();
   document.querySelectorAll("#mode [data-mode]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));});
-panel.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b)select(b.dataset.go)});
+panel.addEventListener("click",e=>{if(e.target.closest(".back")){document.querySelector(".mapwrap").scrollIntoView({behavior:"smooth",block:"start"});return}const b=e.target.closest("[data-go]");if(b)select(b.dataset.go)});
 panel.addEventListener("mouseover",e=>{const b=e.target.closest("[data-go]");const L=M.arrows;if(!b||!sel){L.classList.remove("focus");return}
   L.classList.add("focus");L.querySelectorAll(".flow").forEach(f=>f.classList.toggle("on",f.dataset.other===b.dataset.go))});
 panel.addEventListener("mouseleave",()=>M.arrows.classList.remove("focus"));
@@ -1012,7 +1068,7 @@ panel.addEventListener("mouseleave",()=>M.arrows.classList.remove("focus"));
 const rolesEl=document.getElementById("roles");
 const tagList=g=>`<ul class="fr-tags-group" aria-label="${g==="team"?"Équipe produit":"Écosystème utilisateurs"}">`+ROLES.filter(r=>r.g===g).map(r=>`<li><button type="button" class="fr-tag" data-role="${r.id}" aria-pressed="false">${r.abbr||r.name}</button></li>`).join("")+`</ul>`;
 rolesEl.innerHTML=`<span class="lbl" id="roles-lbl">Voir où intervient un rôle</span>`+tagList("team")+tagList("users");
-rolesEl.addEventListener("click",e=>{const c=e.target.closest(".fr-tag[data-role]");if(!c)return;role=role===c.dataset.role?null:c.dataset.role;sel=null;apply()});
+rolesEl.addEventListener("click",e=>{const c=e.target.closest(".fr-tag[data-role]");if(!c)return;role=role===c.dataset.role?null:c.dataset.role;sel=null;apply();if(role)reveal()});
 
 const step=d=>{const i=sel?ORDER.indexOf(sel):(d>0?-1:ORDER.length);select(ORDER[(i+d+ORDER.length)%ORDER.length])};
 document.getElementById("prev").onclick=()=>step(-1);
@@ -1026,7 +1082,7 @@ document.addEventListener("keydown",e=>{if(view!=="map"||e.target.closest("input
 /* ---------- version à plat ---------- */
 function card(id){const q=Q[id];
   const cx=q.cx.map(([t])=>t==="all"?"tous les quartiers":Q[t].n+" "+Q[t].short);
-  return `<article class="card" style="--c:var(--${id})"><div class="p-head"><span class="badge">${q.n}</span><div><p class="eyebrow">${q.place}</p><h2>${q.name}</h2></div></div>
+  return `<article class="card" style="--c:var(--${id});order:${q.n}"><div class="p-head"><span class="badge">${q.n}</span><div><p class="eyebrow">${q.place}</p><h2>${q.name}</h2></div></div>
     <p class="lead">${q.lead}</p><ul>${q.poster.map(x=>`<li>${x}</li>`).join("")}</ul><p class="cx"><b>→</b> Alimente : ${cx.join(" · ")}</p></article>`}
 function buildPoster(){
   const sh=document.getElementById("sheet");
@@ -1040,6 +1096,7 @@ function buildPoster(){
   buildMap(document.getElementById("pmap"),false);
 }
 function fitPoster(){const w=document.getElementById("sheet-wrap"),avail=document.getElementById("poster-view").clientWidth;
+  if(narrow()){w.style.transform="none";w.style.width="auto";w.style.height="auto";return}
   const s=Math.min(1,avail/1587);w.style.transform=`scale(${s})`;w.style.width="1587px";w.style.height=(1123*s)+"px";}
 
 /* ---------- vues ---------- */
@@ -1057,6 +1114,13 @@ function route(){const h=location.hash.slice(1);
 addEventListener("hashchange",route);
 document.getElementById("views").addEventListener("change",e=>{location.hash=e.target.value==="a-plat"?"a-plat":"carte"});addEventListener("resize",()=>{if(view==="flat")fitPoster()});
 route();
+/* écran large : la carte prend la largeur qui correspond à sa hauteur, le panneau prend le reste */
+function fitMap(){const ex=document.querySelector(".explore"),ms=document.getElementById("mapscroll");
+  if(!document.documentElement.classList.contains("fit")||!matchMedia("(min-width: 1200px) and (min-height: 620px)").matches){ex.style.removeProperty("--mapw");return}
+  const h=ms.clientHeight,maxw=innerWidth-380-250-36-18-40;ex.style.setProperty("--mapw",Math.max(320,Math.min(h*1240/1262,maxw))+"px")}
+addEventListener("resize",fitMap);addEventListener("hashchange",()=>requestAnimationFrame(fitMap));requestAnimationFrame(fitMap);
+(function(){const ms=document.getElementById("mapscroll");if(matchMedia("(max-width: 640px)").matches){
+  document.getElementById("lgwrap").open=false;requestAnimationFrame(()=>{ms.scrollLeft=(ms.scrollWidth-ms.clientWidth)/2})}})();
 </script>
 
 </body>
