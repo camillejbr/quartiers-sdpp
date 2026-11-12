@@ -82,7 +82,8 @@ button{font:inherit;color:inherit}
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z'/%3E%3C/svg%3E") center/100% 100%;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z'/%3E%3C/svg%3E") center/100% 100%}
 .fr-tag:focus-visible{outline:2px solid #0A76F6;outline-offset:2px}
 .nav{display:flex;gap:6px}
-.btn{border:1px solid var(--dsfr);background:transparent;color:var(--dsfr);border-radius:0;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:500}
+.btn{border:1px solid var(--dsfr);background:transparent;color:var(--dsfr);border-radius:0;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:500;white-space:nowrap}
+.nav{flex:none}
 .btn:hover{background:var(--tag)}
 
 .explore{margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
@@ -388,7 +389,7 @@ const Q = {
         ["Parcours utilisateurs","Les étapes clés pour accomplir une tâche."],
         ["Retours utilisateurs","Feedback, enquêtes de satisfaction, entretiens, tests utilisateurs."]]}],
     cx:[["q3","Les retours utilisateurs alimentent la conception."],["q8","Les retours qualitatifs alimentent les indicateurs."],["q2","Les besoins utilisateurs influencent les décisions du CMI."]],
-    poster:["<b>Équipe :</b> product manager, product owner, proxy PO, designer UX/UI, lead tech, développeur·ses, DevOps, chargé·e de déploiement","<b>Utilisateurs :</b> usagers finaux, référents métier, panel d’utilisateurs, sponsor","<b>Outils :</b> personas, parcours utilisateurs, retours utilisateurs"]},
+    poster:["<b>Équipe :</b> product manager, product owner, proxy PO, designer UX/UI, lead tech, développeur·ses, DevOps, chargé·e de déploiement, data analyst, data ingénieur·e","<b>Utilisateurs :</b> usagers finaux, référents métier, panel d’utilisateurs, sponsor","<b>Outils :</b> personas, parcours utilisateurs, retours utilisateurs"]},
   q2:{n:2,name:"Gouvernance",l1:"Gouvernance",l2:"",short:"Gouvernance",place:"La mairie",keys:"Vision · Feuille de route · CMI",
     lead:"Le cœur stratégique de la ville : il valide et alimente tous les autres quartiers.",
     text:"La gouvernance fixe le cap et donne les moyens : le budget pour les développements, les priorités pour les indicateurs.",
@@ -504,6 +505,8 @@ const ROLES=[
   {id:"dev",g:"team",name:"Développeur·se",abbr:"Dev",mission:"Construire le service",contrib:"Code, tests, revue, qualité, sécurité technique, documentation",q:["q4","q5","q6"]},
   {id:"devops",g:"team",name:"DevOps",mission:"Fiabiliser la chaîne technique",contrib:"CI/CD, infrastructure, sécurité opérationnelle, supervision, reprise",q:["q5","q6","q7"]},
   {id:"dep",g:"team",name:"Chargé·e de déploiement",abbr:"Déploiement",mission:"Faire adopter le service",contrib:"Accompagnement, formation, animation des référents, collecte des retours, supervision des mises en production",q:["q1","q5","q8"]},
+  {id:"da",g:"team",name:"Data analyst",abbr:"Data analyst",mission:"Analyser les données produites et utilisées par les métiers",contrib:"Spécifie les nouveaux traitements de données, développe les restitutions BI (dataviz)",q:["q8","q3"]},
+  {id:"de",g:"team",name:"Data ingénieur·e",abbr:"Data ingénieur",mission:"Produire les traitements de données nécessaires aux applications et aux restitutions",contrib:"Transforme la donnée puis alimente les bases de données centralisées de l’infrastructure, pour les applications et les data analysts",q:["q4","q7"]},
   {id:"usa",g:"users",name:"Usagers",abbr:"Usagers",mission:"Valider l’utilité réelle et l’usage du service",contrib:"Usagers finaux et panel d’utilisateurs : participent au cadrage, aux entretiens, aux ateliers de co-conception, aux tests de prototypes et à la revue des incréments",q:["q1","q3","q4","q8"]},
   {id:"ref",g:"users",name:"Référents métier",abbr:"Référents",mission:"Apporter la connaissance des processus et des règles",contrib:"Alimentent le Proxy PO en expertise métier et en contraintes réelles",q:["q1","q3"]},
   {id:"spo",g:"users",name:"Sponsor",mission:"Garantir le mandat, les moyens et les arbitrages stratégiques",contrib:"Porte le produit en gouvernance et en CMI",q:["q2"]}
@@ -558,6 +561,16 @@ const WHERE={
       q8:["c","Suit l’adoption du service"],
       q7:["p","Premier niveau de support utilisateurs et documentation"],
       q4:["p","Présente les démonstrations publiques et recueille les retours"]},
+ da:{q8:["c","Développe les restitutions BI et les tableaux de bord qui donnent à voir les indicateurs d’impact"],
+     q3:["c","Analyse les données produites et utilisées par les métiers pour objectiver le besoin"],
+     q4:["p","Spécifie les nouveaux traitements de données avec l’équipe"],
+     q2:["p","Fournit les restitutions qui éclairent les décisions et le CMI"],
+     q1:["p","Travaille avec les métiers sur leurs données"]},
+ de:{q4:["c","Développe les traitements et les transformations de données dont les applications ont besoin"],
+     q7:["c","Fait tourner les flux qui alimentent les bases de données centralisées de l’infrastructure"],
+     q5:["p","Intègre et déploie les traitements de données dans la chaîne de livraison"],
+     q8:["p","Met à disposition les données dont les data analysts ont besoin pour les restitutions"],
+     q6:["p","Applique la minimisation et la sécurité des données (RGPD)"]},
  usa:{q1:["c","Expriment leurs usages, leurs difficultés et leurs retours ; le panel représente la diversité des usagers"],
       q3:["c","Participent aux entretiens, ateliers de co-conception et tests de prototypes"],
       q4:["p","Assistent aux sprint reviews et démonstrations"],
