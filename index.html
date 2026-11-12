@@ -826,6 +826,12 @@ function buildMap(svg,interactive){
 
   const arrows=S("g",{},svg);
   let car=null;
+  if(interactive){ // la rame du tram, sous les arrêts et les flèches
+    const mark=svg.querySelector("[data-q='q2'][data-nokb]")||arrows;
+    car=S("g",{class:"tramcar"});svg.insertBefore(car,svg.querySelector(".qd[data-nokb]"));
+    S("rect",{x:-19,y:-8.5,width:38,height:17,rx:6,fill:"var(--tram)",stroke:"var(--paper)","stroke-width":2.5},car);
+    [-10,0,10].forEach(dx=>S("rect",{x:dx-3.5,y:-4.5,width:7,height:6,rx:1.2,fill:"var(--paper)"},car));
+  }
 
   return {arrows,loop,car};
 }
@@ -1114,6 +1120,13 @@ function route(){const h=location.hash.slice(1);
 addEventListener("hashchange",route);
 document.getElementById("views").addEventListener("change",e=>{location.hash=e.target.value==="a-plat"?"a-plat":"carte"});addEventListener("resize",()=>{if(view==="flat")fitPoster()});
 route();
+/* la rame fait le tour de la boucle (désactivé si l'utilisateur préfère réduire les animations) */
+(function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;let t0=null;
+  function f(ts){if(t0==null)t0=ts;if(M&&M.car&&M.loop&&document.documentElement.classList.contains("fit")||M&&M.car&&!document.getElementById("explore-view").hidden){
+      const L=M.loop.getTotalLength(),s=((ts-t0)/30000%1)*L,a=M.loop.getPointAtLength(s),b=M.loop.getPointAtLength((s+2)%L);
+      M.car.setAttribute("transform",`translate(${a.x} ${a.y}) rotate(${Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI})`)}
+    requestAnimationFrame(f)}
+  requestAnimationFrame(f)})();
 /* écran large : la carte prend la largeur qui correspond à sa hauteur, le panneau prend le reste */
 function fitMap(){const ex=document.querySelector(".explore"),ms=document.getElementById("mapscroll");
   if(!document.documentElement.classList.contains("fit")||!matchMedia("(min-width: 1200px) and (min-height: 620px)").matches){ex.style.removeProperty("--mapw");return}
